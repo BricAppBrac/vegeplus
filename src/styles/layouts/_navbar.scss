@@ -1,0 +1,335 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // height: calc(100% - 5vh);
+  height: 100%;
+  
+  margin: auto auto;
+  background: url(../../assets/img/champetre.jpg) center/cover;
+
+
+  .nav-container {
+    width: 100vw;
+    padding: 20px;
+    @media screen and (max-width: 1200px) {
+      margin: 5px auto;
+    }
+    @media screen and (max-width: 500px) {
+      margin: 5px auto;
+      padding: 0 auto;
+    }
+   
+    .logo {
+      border: 2px solid whitesmoke;
+      box-shadow: 8px 7px 18px 3px whitesmoke;
+      border-radius: 20px;
+      background: $parchemin;
+      backdrop-filter: blur(10px);
+      max-width: 1100px;
+      max-height: 110px;
+      margin: 3px auto;
+      display: grid;
+      height: 100%;
+
+      grid-template-columns: 25% 40% 35%;
+      grid-template-rows: 1fr 1fr;
+      grid-template-areas:
+        "lo na bt"
+        "sl sl sl";
+
+      text-align: center;
+
+      @media screen and (max-width: 1200px) {
+        margin: 5px 30px;
+      }
+
+      @media screen and (max-width: 1050px) {
+        max-width: calc(850px - 2vw);
+        margin: 0 auto;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+          "lo na" 
+          "sl bt";
+      }
+      @media screen and (max-width: 880px) {
+        padding: 0 auto;
+        max-width: calc(650px - 4vw);
+        margin: 0 auto;
+      }
+      // @media screen and (max-width: 480px) {
+      //   grid-template-columns: 40% 60%;
+      //   padding-left: 10px;
+      //   max-width: calc(560px - 4vw);
+      // }
+      // @media screen and (max-width: 600px) {
+      //   max-width: calc(560px - 4vw);
+      // }
+      // @media screen and (max-width: 500px) {
+      //   width: 80%;
+      //   max-height: 120px;
+      // }
+      @media screen and (max-width: 450px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+          "lo"
+          "na"
+          "bt";
+   
+       padding-left: 5px;
+       justify-content:left;
+         }
+        
+      
+
+      .imglogo {
+        background: url(../../assets/img/logovg.png) center/cover;
+        padding: 3px;
+        width: 65%;
+
+        @media screen and (max-width: 1050px) {
+         width: 50%;
+         padding: 5px;
+        }
+        @media screen and (max-width: 450px) {
+          width: 30%;
+          padding: 5px;
+         }
+      }
+
+      h2 {
+        grid-area: lo;
+        font-family: $font1;
+        font-size: 2.2rem ;
+        text-align: left;
+        padding-left: 20px;
+        padding-top: 8px;
+        letter-spacing: 1.5px;
+
+        @media screen and (max-width: 1520px) {
+          font-size: 2.4vw;
+        }
+        @media screen and (max-width: 1200px) {
+          font-size: 1.7rem;
+        }
+        @media screen and (max-width: 1050px) {
+          font-size: 1.6rem;
+          width: calc(280px - 4vw);
+          letter-spacing: 1px;
+        }
+        @media screen and (max-width: 500px) {
+          padding-left: 10px;
+          font-size: 1.5rem;
+          
+        }
+        @media screen and (max-width: 420px) {
+          padding-left: 3px;
+          font-size: 1.4rem;
+          
+        }
+    
+      }
+
+      ul {
+        grid-area: na;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+       
+
+        @media screen and (max-width: 600px) {
+          justify-content: space-between;
+        }
+        @media screen and (max-width: 500px) {
+          margin-right: 7px;
+        }
+        @media screen and (max-width: 380px) {
+          margin-right: 2px;
+          justify-content: space-around;
+        }
+
+        li {
+          font-weight: 600;
+          font-size: 1.2rem;
+          color: whitesmoke;
+          letter-spacing: 2px;
+
+          @media screen and (max-width: 1050px) {
+            font-size: 1.1rem;
+            padding: 2px 8px;
+          }
+          @media screen and (max-width: 600px) {
+            font-size: 1rem;
+            padding: 0 5px;
+            letter-spacing: normal;
+          }
+          @media screen and (max-width: 400px) {
+            font-size: 0.9rem;
+          
+          }
+          // @media screen and (max-width: 500px) {
+          //   font-family: $font2;
+          //   font-size: 0.8rem;
+           
+          // }
+          /* couleur du lien après la visite de l'utilisateur */
+          a.nav-active {
+            background: $green;
+            @media screen and (max-width: 1185px) {
+              padding: 1px;
+            }
+          }
+          a {
+            text-decoration: none;
+            color: whitesmoke;
+            padding: 5px;
+            border-radius: 10px;
+            /* liens cliquables non-soulignés*/
+            
+            &:visited {
+              color: whitesmoke;
+              text-decoration: none;
+            }
+            &:hover {
+              // letter-spacing: 2.5px;
+              background: $brown1;
+             
+              @media screen and (max-width: 600px) {
+                letter-spacing: 1px;
+              }
+            }
+           
+          }
+        
+        }
+
+        &:hover span{
+          display: block;
+          position: absolute;   /* positionnement hors flux */
+          top: 40%;
+          padding: 0 10px;     /* un peu d'espace latéral */
+          color: red;
+          background: $green;
+          transition: all .5s;  /* la transition à appliquer */
+          border-radius: 20px;
+          font-size: 1.5rem;
+          font-family: $font2;
+
+          @media screen and (max-width: 1050px) {
+            font-size: 1.3rem;
+            top: 90%;
+            left: 40%;
+          }
+          @media screen and (max-width: 880px) {
+            font-size: 1rem;
+           
+          }
+        }
+       
+        span {
+          display: none;
+        }
+      }
+
+      .nav-buttons {
+        font-size: 2rem;
+        padding: 0 5px 0 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        position: relative;
+        
+
+        @media screen and (max-width: 1050px) {
+          font-size: 1.4rem;
+        }
+
+        @media screen and (max-width: 400px) {
+          font-size: 1.2rem;
+        }
+
+      
+  
+        button {
+          grid-area: bt;
+          margin: 5px;
+          padding: 5px;
+          font-weight: 700;
+          font-family: $font2;
+          border-radius: 10px;
+          border: 2px $green;
+          @media screen and (max-width: 500px) {
+           
+            margin: 8px;
+            padding: 5px;
+          }
+          @media screen and (max-width: 460px) {
+            font-size: 0.7rem;
+          }
+          @media screen and (max-width: 400px) {
+            margin: 3px;
+            padding: 2px;
+            
+           }
+         
+         
+        }
+      }
+
+      h3 {
+        grid-area: sl;
+        font-size: 1.3rem;
+        padding: 3px 7px;
+        letter-spacing: 2px;
+
+        @media screen and (max-width: 1130px) {
+          font-size: 1.2rem;
+        }
+        @media screen and (max-width: 1050px) {
+          font-size: 1.1rem;
+          letter-spacing: 1px;
+        }
+      @media screen and (max-width: 930px) {
+        max-width: calc(650px - 4vw);
+      }
+      @media screen and (max-width: 880px) {
+        padding: 0 auto;
+        width: calc(250px - 2vw);
+        margin: 0 auto;
+      }
+     
+      @media screen and (max-width: 600px) {
+        width: calc(200px - 2vw);
+        font-size: 1rem;
+        letter-spacing: normal;
+      }
+      @media screen and (max-width: 500px) {
+       
+        font-size: 0.9rem;
+        width: calc(180px - 2vw);
+        padding: 0 10px;
+        letter-spacing: normal;
+        text-align: center;
+      }
+      @media screen and (max-width: 480px) {
+       
+        width: calc(150px - 2vw);
+       
+      }
+
+      @media screen and (max-width: 460px) {
+        display: none;}
+       }
+      @media screen and (max-width: 390px) {
+       padding-left: 3px;
+       
+      }
+     
+      
+
+    }
+  }
+}

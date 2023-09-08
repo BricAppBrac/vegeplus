@@ -1,0 +1,161 @@
+.dayscards-liste {
+align-items: center;
+
+.compo-card {
+  border-radius: 20px;
+  // width: 70%;
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 10px;
+  
+
+  box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+  background: url(../../assets/img/champetre.jpg) center/cover;
+
+  @media screen and (max-width: 500px) {
+    max-width: 95%;
+  }
+
+  .compo-card-content {
+    background: $parchemin2;
+    border-radius: 20px;
+    padding: 3px;
+    position: relative;
+
+    h3 {
+      padding: 3px 10px 5px 10px;
+      font-size: 1.2rem;
+      font-family: $font2;
+      align-items: center;
+      background: whitesmoke;
+      border-radius: 20px;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 1.1rem;
+      }
+
+      @media screen and (max-width: 1000px) {
+        font-size: 1rem;
+      }
+    }
+
+    h4 {
+      padding: 5px;
+      font-size: 1rem;
+      font-family: $font2;
+      text-align: left;
+    }
+
+    .ingredients-liste {
+      display: flex;
+      background-color: $green3;
+      border-radius: 5px;
+      margin: 0 5px 5px 5px;
+
+      p {
+        padding: 0 3px 0 3px;
+        font-size: 1rem;
+        font-family: $font2;
+
+        @media screen and (max-width: 1300px) {
+          font-size: 1.1rem;
+        }
+        @media screen and (max-width: 930px) {
+          font-size: 1rem;
+        }
+        @media screen and (max-width: 860px) {
+          font-size: 0.9rem;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .checkbox-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      // height: 40px;
+      margin: 0 auto;
+      padding: 0;
+    
+
+      .box-delete,
+      .box-details {
+        // height: 30px;
+
+        a, button {
+          border: 2px solid $brown1;
+          background-color: $green3;
+          transition: all 0.2s linear;
+          border-radius: 5px;
+          font-size: 1.4rem;
+          font-weight: 700;
+          align-items: center;
+          color: $green2;
+          margin: 0 5px 5px 0;
+          display: block;
+
+          &:hover {
+            letter-spacing: 2.5px;
+            background: $brown1;
+            color: wheat;
+          }
+        
+        }
+
+        a {
+          padding: 3px 6px;
+        
+
+          &:before {
+            content: "";
+            color: $green2;
+          }
+        }
+
+        button {
+          padding: 5px 7px;
+      
+        }
+      }
+
+      .delete-container {
+
+        display: flex;
+        margin-bottom: 5px;
+
+        .box-message-conf {
+
+        .box-message {
+          color: red;
+          font-size: 1.2rem;
+          margin-bottom: 2px;
+        }
+
+        .conf-suppr {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+
+          button {
+            padding: 0;
+            border: none;
+            background: none;
+            margin: 0 10px;
+
+            i {
+              color: red;
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+      }
+
+     
+    }
+  }
+}
+}

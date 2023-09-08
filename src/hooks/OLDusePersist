@@ -1,0 +1,19 @@
+import { useState, useEffect } from "react";
+
+const usePersist = () => {
+  const persistedValue = localStorage.getItem("persist");
+  console.log("Persisted Value:", persistedValue);
+
+  const [persistState, setPersistState] = useState(
+    persistedValue ? JSON.parse(persistedValue) : false
+  );
+  console.log("Persist State inside usePersist:", persistState);
+
+  useEffect(() => {
+    localStorage.setItem("persist", JSON.stringify(persistState));
+  }, [persistState]);
+
+  return [persistState, setPersistState];
+};
+
+export default usePersist;

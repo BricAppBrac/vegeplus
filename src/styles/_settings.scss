@@ -1,0 +1,208 @@
+// couleurs
+$brown1: rgb(37, 21, 11);
+$parchemin: rgba(187, 176, 159, 0.644);
+$parchemin2: rgba(187, 176, 159, 0.822);
+$parchemin3: rgba(209, 205, 199, 0.822);
+$green: rgb(136, 184, 96);
+$green2: rgb(40,75,35);
+$green3: rgb(206, 228, 187);
+$code: rgb(214, 86, 48);
+$title: rgb(44, 15, 110);
+$footer: rgb(40,75,35);
+
+// polices
+@font-face {
+  font-family: "DancingScript";
+  src: url(../assets/fonts/DancingScript-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "Comic";
+  src: url(../assets/fonts/ComicRelief.ttf);
+}
+@font-face {
+  font-family: "Inconsolata";
+  src: url(../assets/fonts/Inconsolata-Regular.ttf);
+}
+
+$font1: DancingScript, sans-serif;
+$font2: Comic, sans-serif;
+$font3: Inconsolata, "Courrier New";
+
+
+// paramètres généraux
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  li {
+    list-style: none;
+  }
+  
+}
+
+body {
+  font-family: $font2;
+  background: url(../assets/img/photogrimoire.jpg) center/cover;
+  height: 100vh;
+  color: $brown1;
+  // user-select: none; /*pour ne pas autoriser la sélection du nom de la case*/
+
+   
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      text-align: center;
+      font-family: $font1;
+      letter-spacing: 1.5px;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 2.6rem;
+      }
+
+      @media screen and (max-width: 1000px) {
+        font-size: 2.4rem;
+      }
+
+     
+      @media screen and (max-width: 800px) {
+        font-size: 2.2rem;
+        padding: 10px auto;
+        margin: 0 auto;
+      }
+    }
+
+     h2 {
+          padding: 10px 15px;
+          font-size: 2.4rem;
+          font-family: $font1;
+          font-weight: 100px;
+          text-align: center;
+
+          @media screen and (max-width: 1300px) {
+            font-size: 2.3rem;
+          }
+
+          @media screen and (max-width: 1000px) {
+            font-size: 2.1rem;
+          }
+          @media screen and (max-width: 800px) {
+            font-size: 1.9rem;
+          }
+        }
+
+        .errmsg {
+         
+         
+            background: whitesmoke;
+            margin: 10px;
+            padding: 10px;
+            width: fit-content;
+            border-radius: 20px;
+            color: $code;
+            font-size: 1.3rem;
+         
+        } 
+
+        .errmsg-link {
+         
+         
+          background:$green3;
+          margin: 10px;
+          padding: 10px;
+          width: fit-content;
+          border-radius: 5px;
+          color: $brown1;
+          font-size: 1.3rem;
+       
+      } 
+
+        .title-errmsg {
+         
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+
+            h1 {
+              background: $green3;
+              border-radius: 20px;
+            }
+
+           
+        
+        }
+
+        .gestion-admin {
+
+          button {
+            width: 30px;
+            margin: 10px auto 10px 35%;
+            color: $code;
+            font-size: 1.2rem;
+            background: $green3;
+            border-radius: 5px;
+            padding: 5px;
+            border: 1px solid $green;
+          }
+        
+        
+
+          .title-admin {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+
+            h1, a {
+              background: $green3;
+              border-radius: 20px;
+            }
+
+            a {
+              width: 50px;
+              padding: 10px;
+              font-size: 1.4rem;
+              margin: auto 20px
+             
+            }
+          }
+
+        .table {
+          // display: flex;
+          // flex-direction: column;
+          margin: 30px 20px;
+          padding: 10px;
+          background: url(../assets/img/champetre.jpg) center/cover;
+        
+        
+        
+          .table__thead,
+          .table__tr {
+            background: $parchemin3;
+           
+            margin: 10px;
+            padding: 20px;
+        
+          
+        
+            .table__th,
+            .table__cell {
+              background: whitesmoke;
+              width: 200px;
+              margin: 5px auto;
+              padding: 2px;
+        
+             
+            }
+        
+           
+        
+          }
+        }
+      }
+
+     
+
+}

@@ -1,0 +1,99 @@
+.sort-nav-menus {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: space-between;
+  width: 90%;
+  margin: 7px auto;
+  padding: 7px;
+  background-color: $green2;
+  border: 2px solid whitesmoke;
+  box-shadow: 8px 7px 18px 3px whitesmoke;
+  border-radius: 20px;
+  font-size: 1.3rem;
+
+  p {
+    color: whitesmoke;
+    margin: 2px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    margin: 5px auto;
+  }
+  @media screen and (max-width: 500px) {
+    margin: 5px auto;
+    padding: 0 auto;
+  }
+  .sort-nav-menus-container {
+    display: flex;
+    flex-direction: row;
+
+    ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      @media screen and (max-width: 600px) {
+        justify-content: space-between;
+      }
+      @media screen and (max-width: 500px) {
+        margin-right: 7px;
+      }
+      @media screen and (max-width: 380px) {
+        margin-right: 2px;
+        justify-content: space-around;
+      }
+
+     
+      li {
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: whitesmoke;
+        letter-spacing: 2px;
+        border: 3px solid $brown1;
+        border-radius: 20px;
+        margin: 0 10px;
+        padding: 5px 10px;
+        background: $green;
+
+        &:hover {
+          background: $brown1;
+          cursor: pointer;
+        }
+
+        // &:active {
+        //   background: $parchemin;
+        // }
+
+        &.sortnav-menus-active {
+          background: $parchemin;
+        }
+
+        select,
+        input {
+          color:$brown1;
+          font-family: $font2;
+          font-size: 1rem;
+          font-weight: 700;
+        }
+
+
+        @media screen and (max-width: 1050px) {
+          font-size: 1.1rem;
+          padding: 2px 8px;
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 1rem;
+          padding: 0 5px;
+          letter-spacing: normal;
+        }
+        @media screen and (max-width: 380px) {
+          font-size: 0.9rem;
+          max-width: 40px;
+        }
+      }
+    }
+  }
+ 
+  }
+

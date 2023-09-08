@@ -1,0 +1,81 @@
+.homebase {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+  h1 {
+    background: $green;
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 20px;
+
+  }
+
+  h2 {
+    background: $green3;
+    margin: 30px;
+
+  }
+
+  h3 {
+    background: $code;
+    color: $green3;
+    margin: 30px;
+    padding: 10px;
+    font-family: $font1;
+    font-size: 2rem;
+
+  }
+
+  button {
+    width: 30px;
+    margin: 10px auto 10px 35%;
+  }
+
+  i {
+    color: $green3;
+  }
+
+  .errmsg {
+    background: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .homebase-users,
+  .homebase-recipes,
+  .homebase-menus {
+    padding: 10px;
+
+     .title_plus {
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        width:fit-content;
+      }
+    }
+  }
+
+  .homebase-title {
+    display: flex;
+  }
+
+  
+
+
+   
+
+
+ 
+
+
+
+
+
+
+
+
+
+}

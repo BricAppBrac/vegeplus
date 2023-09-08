@@ -1,0 +1,184 @@
+.menusliste-card {
+  border-radius: 20px;
+  width: 70%;
+  max-width: 700px;
+  // margin: 10px;
+  margin: 5px auto;
+  padding: 10px;
+
+  box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+  background: url(../../assets/img/champetre.jpg) center/cover;
+
+  @media screen and (max-width: 500px) {
+    max-width: 95%;
+  }
+
+  .menusliste-card-content {
+    background: $parchemin2;
+    border-radius: 20px;
+    padding: 3px;
+    position: relative;
+    // display: grid;
+    // grid-template-columns: 1fr;
+
+
+    h3 {
+      padding: 3px 10px 0px 10px;
+      font-size: 1.2rem;
+      font-family: $font2;
+      align-items: center;
+      background: whitesmoke;
+      border-radius: 20px;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 1.1rem;
+      }
+
+      @media screen and (max-width: 1000px) {
+        font-size: 1rem;
+      }
+    }
+
+    h4 {
+      padding: 5px;
+      font-size: 1rem;
+      font-family: $font2;
+
+    }
+
+    .days-liste {
+      display: grid;
+      background-color: $green3;
+      border-radius: 15px;
+      margin: 0 5px 5px 5px;
+      text-align: center;
+      border: 10px solid whitesmoke;
+
+    }
+
+    .button-container,
+    .day-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // height: 40px;
+      margin: 2px auto;
+      padding: 0;
+
+
+
+      .box-copy,
+      .box-basket,
+      .box-delete {
+        // height: 30px;
+
+        a,
+        i,
+        button {
+          border: 2px solid $brown1;
+          background-color: $green3;
+          transition: all 0.2s linear;
+          border-radius: 5px;
+          font-size: 1.8rem;
+          font-weight: 700;
+          align-items: center;
+          color: $green2;
+          margin: 0 5px 5px 0;
+          display: block;
+
+          &:hover {
+            letter-spacing: 2.5px;
+            background: $brown1;
+            color: wheat;
+          }
+
+
+
+        }
+
+        a {
+          padding: 3px 6px;
+
+
+          &:before {
+            content: "";
+            color: $green2;
+          }
+        }
+
+
+
+        button,
+        i {
+          padding: 5px 9px;
+          margin: 0 2px;
+
+        }
+
+
+      }
+
+      .box-details {
+        // height: 30px;
+        // padding: 5px;
+
+        i {
+          // border: 2px solid $brown1;
+          background-color: $green3;
+          transition: all 0.2s linear;
+          // border-radius: 5px;
+          font-size: 1.5rem;
+          font-weight: 700;
+          align-items: center;
+          color: $green2;
+          // margin: 0 5px 5px 0;
+          display: block;
+          padding: 5px 9px;
+          margin: 0 2px;
+
+          &:hover {
+            letter-spacing: 2.5px;
+            background: $brown1;
+            color: wheat;
+          }
+
+
+
+        }
+
+        // a {
+        //   padding: 3px 6px;
+
+
+        //   &:before {
+        //     content: "";
+        //     color: $green2;
+        //   }
+        // }
+
+
+
+        // button, i {
+        //   padding: 5px 9px;
+        //   margin: 0 2px;
+
+        // }
+
+
+      }
+
+
+
+    }
+
+    .button-container {
+      flex-direction: row;
+    }
+
+    .day-container {
+      flex-direction: column;
+    }
+  }
+
+
+}

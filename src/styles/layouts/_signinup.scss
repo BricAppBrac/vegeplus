@@ -1,0 +1,95 @@
+
+.signin-and-up {
+  position: fixed;
+  // top: 17%;
+  height: 100vh;
+  width: 100vw;
+  // width: 70%;
+  //   height: 70%;
+  z-index: 2;
+  // left: 15%;
+  
+
+  .sign-overlay {
+    // width: 70%;
+    // height: 70%;
+    width: 100%;
+    height: 100%;
+    background: rgba(19, 18, 18, 0.678);
+    
+    position: relative;
+    // left: 15%;
+
+    .sign-absolute {
+      position: absolute;
+     background: url(../../assets/img/champetre.jpg) center/cover;
+      // top: 23%;
+      left: 50%;
+      transform: translateX(-50%);
+      // transform: translate(-50%, -50%);
+      min-width: 340px;
+      width: 40%;
+     
+      padding: 15px;
+      font-size: 1.3rem;
+
+      @media screen and (max-width: 700px) {
+        font-size: 1.2rem;
+      }
+     
+      @media screen and (max-width: 500px) {
+        font-size: 1rem;
+        min-width: 300px;
+      }
+
+      .sign-title {
+        display: flex;
+        justify-content: space-between;
+         background: whitesmoke;
+         padding: 5px;
+        button {
+          font-weight: 700;
+          padding: 0 3px 3px 3px;
+          font-size: 1.5rem;
+          line-height: 70%;
+          
+        }
+      }
+
+      .signup-form,
+      .signin-form {
+        background: $parchemin2;
+        padding: 7px;
+
+        .signup-input,
+        .signin-input {
+          color: $brown1;
+          max-width: 300px;
+          padding-bottom: 5px;
+          font-weight: 700;
+         input {
+          font-size: 1.5rem;
+          padding: 0 3px;
+
+          @media screen and (max-width: 600px) {
+            font-size: 1.2rem;
+            max-width: 290px;
+          }
+
+         }
+        }
+
+        .espace-message {
+          font-size: 1.2rem;
+          color: red;
+        }
+
+        button {
+          font-weight: 700;
+          padding: 3px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+}

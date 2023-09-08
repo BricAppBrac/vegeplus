@@ -1,0 +1,215 @@
+.recipe-new {
+  border-radius: 20px;
+  max-width: 1200px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+  background: url(../../assets/img/champetre.jpg) center/cover;
+
+  @media screen and (max-width: 500px) {
+    max-width: 95%;
+  }
+
+  .new-form {
+    background: $parchemin2;
+    border-radius: 20px;
+    padding: 3px;
+
+    label {
+      padding: 0 5px;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    #newTitle {
+      border-radius: 20px;
+      padding: 2px;
+    }
+    input,
+    select {
+      width: 98%;
+      font-size: large;
+    }
+
+    h4 {
+      margin-right: 30px;
+      padding: 15px 10px 0 10px;
+      font-size: 1.6rem;
+      font-family: $font2;
+      text-align: left;
+      min-width: 180px;
+    }
+
+    p {
+      padding: 0 3px 0 3px;
+      font-size: 1.4rem;
+      font-family: $font2;
+      color: red;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 1.2rem;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 1rem;
+      }
+    }
+
+    .seasons-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      position: relative;
+
+      .new-input {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          margin-left: 10px;
+        }
+
+        // input[type="checkbox"] {
+        //   cursor: pointer;
+        //   // display: inline-block;
+        //   margin-top: 12px;
+        //   width: 22px;
+        //   height: 22px;
+        //   border: 4px solid $brown1;
+        //   padding: 5px 11px;
+        //   background-color: whitesmoke;
+
+        //   border-radius: 3px;
+
+        //   &:checked {
+        //     background-color: $green;
+        //   }
+        // }
+
+        ////////////////////////////////////////////////////////////////
+          input[type=checkbox] {
+            position: absolute;
+            cursor: pointer;
+            width: 0px;
+            height: 0px;
+
+          &:checked:before {
+                content: "";
+                position: absolute;
+            display: block;
+            width: 22px;
+            height: 22px;
+            border: 4px solid $brown1;
+            background-color: $green;
+            transition: all 0.2s linear;
+          }
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            width: 22px;
+            height: 22px;
+            border: 3px solid $brown1;
+            border-radius: 3px;
+            background-color: whitesmoke;
+          }
+
+          &:after {
+            content: "";
+            display: block;
+            width: 0px;
+            height: 0px;
+            border: solid $brown1;
+            border-width: 0 0px 0px 0;
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            // transition: all 0.2s linear;
+          }
+
+         &:checked:after {
+            content: "";
+            display: block;
+            width: 12px;
+            height: 21px;
+            border: solid $brown1;
+            border-width: 0 4px 4px 0;
+            z-index: 1;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            top: 26px;
+            left: 36px;
+          }
+
+        }
+        /////////////////////////////////////////
+      }
+    }
+    .ingredients-label {
+      margin: 10px 5px;
+      display: flex;
+    }
+
+    .ingredients-container {
+      border: 4px solid $green2;
+      border-radius: 10px;
+      max-height: 200px;
+      overflow: auto;
+
+     
+
+      .ingredient-bloc {
+        margin: 5px 5px;
+        display: flex;
+      }
+     
+    }
+    .steps-container {
+      border: 4px solid $green2;
+      border-radius: 10px;
+      max-height: 150px;
+      overflow: auto;
+      .new-input {
+        padding-left: 5px;
+        margin: 4px auto;
+      }
+    }
+    .button-container {
+      display: flex;
+      justify-content: right;
+      button {
+        font-weight: 700;
+        margin: 5px;
+        padding: 5px;
+        font-size: 1.2rem;
+        border-radius: 20px;
+
+        i {
+          font-size: 1.4rem;
+          color: $brown1;
+          padding: 2px;
+
+          &:hover {
+            color: wheat;
+  
+          }
+        }
+
+        &:hover {
+          letter-spacing: 2.5px;
+          background: $brown1;
+          color: wheat;
+
+        }
+      }
+    }
+  }
+}

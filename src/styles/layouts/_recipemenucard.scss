@@ -1,0 +1,71 @@
+.recipe-menu-card {
+  border-radius: 20px;
+  // width: 70%;
+  max-width: 700px;
+
+  padding: 10px;
+  margin: 10px auto;
+
+  box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+  background: url(../../assets/img/champetre.jpg) center/cover;
+
+  @media screen and (max-width: 500px) {
+    max-width: 95%;
+  }
+
+  .recipe-menu-card-content {
+    background: $parchemin2;
+    border-radius: 20px;
+    padding: 3px;
+    // position: relative;
+    text-align: center;
+
+    h3 {
+      padding: 3px 10px 5px 10px;
+      margin: 5px;
+      font-size: 1.2rem;
+      font-family: $font2;
+      align-items: center;
+      background: whitesmoke;
+      border-radius: 20px;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 1.1rem;
+      }
+
+      @media screen and (max-width: 1000px) {
+        font-size: 1rem;
+      }
+    }
+
+    h4 {
+      padding: 1px 10px;
+      font-size: 1rem;
+      font-family: $font2;
+      text-align: left;
+       background-color: $green3;
+      border-radius: 10px;
+    }
+
+    .ingredients-liste {
+      display: flex;
+      // background-color: $green3;
+      // border-radius: 5px;
+      margin: 0 5px 2px 5px;
+     
+
+      p {
+        // padding: 0 3px 0 3px;
+        padding: 1px 10px;
+        margin: 0 5px;
+        font-size: 1rem;
+        font-family: $font2;
+        font-weight:600;
+        background-color: wheat;
+        border-radius: 3px;
+      }
+    }
+
+
+  }
+}

@@ -1,0 +1,26 @@
+.pagelistecourses {
+  display: grid;
+  grid-template-rows: 255px, 1fr, 150px;
+
+  .pagelistecourses-content {
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+
+    .pagelistecourses-text {
+      border-top: 2px solid whitesmoke;
+      height: fit-content;
+      border-radius: 20px;
+      width: 90%;
+      margin: 20px auto;
+      backdrop-filter: blur(20px);
+      background: rgba(245, 245, 245, 0.315);
+      box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+      height: fit-content;
+      text-align: center;
+
+  
+       ////////////////////////////////////////////////////////
+    }
+  }
+}

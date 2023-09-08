@@ -1,0 +1,27 @@
+.menuscards-liste {
+  // display: flex;
+  // justify-content: space-around;
+  // align-items: flex-start;
+  // padding: 0;
+  display: grid;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: 1fr 1fr;
+  
+  align-items: center;
+  margin: 0 auto;
+  // width: 70%;
+
+ 
+
+  .days-bloc {
+    // display: block;
+   
+   
+
+    .day-container {
+      align-items: center;
+    }
+  }
+
+ 
+}

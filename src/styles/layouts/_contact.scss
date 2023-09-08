@@ -1,0 +1,40 @@
+.contact-container {
+  min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+
+    display: grid;
+    grid-template-rows: 15% 85%;
+  background: $parchemin;
+
+
+  .contact-footer {
+    text-align: center;
+    // margin: 50px auto;
+    user-select: text;
+    /*pour autoriser la sélection de l'email*/
+
+    button {
+      padding: 10px;
+      margin: 50px auto;
+      border-radius: 15px;
+      outline: none;
+      border: 6px solid $green;
+      transition: 0.3s;
+      text-align: center;
+      align-items: center;
+
+      min-width: 280px;
+      width: 75%;
+      max-width: 800px;
+
+      color: $brown1;
+      font-size: 1.1rem;
+      font-family: $font2;
+
+      @media screen and (max-width: 1300px) {
+        font-size: 1rem;
+      }
+  }
+  }  
+}

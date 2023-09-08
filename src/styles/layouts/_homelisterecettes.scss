@@ -1,0 +1,165 @@
+.homelisterecettes {
+  display: grid;
+  grid-template-rows: 255px, 1fr, 150px;
+
+  .homeliste-content {
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+
+    .homeliste-text {
+      border-top: 2px solid whitesmoke;
+      height: fit-content;
+      border-radius: 20px;
+      width: 90%;
+      margin: 20px auto;
+      backdrop-filter: blur(20px);
+      background: rgba(245, 245, 245, 0.315);
+      box-shadow: 13px 11px 18px 3px rgb(37 21 11);
+      height: fit-content;
+
+    ////////////////////////////////////////////////////////
+    ///////////  AUTORISATION ADMIN   //////////////////////
+    ///////////////////////////////////////////////////////////
+    /// 
+      .action-links {
+        margin: 10px auto;
+        padding-left: 5%;
+        padding-bottom: 10px;
+        border: 3px solid whitesmoke;
+        border-radius: 20px;
+        width: 95%;
+
+        /* couleur du lien après la visite de l'utilisateur */
+        // a.nav-active {
+        //   background: $green;
+        // }
+        a {
+          text-decoration: none;
+          font-weight: 600;
+          letter-spacing: 2px;
+          font-size: 1.3rem;
+          color: whitesmoke;
+          padding: 2px;
+          border-radius: 10px;
+
+       
+
+          /* liens cliquables non-soulignés*/
+          &:visited {
+            color: whitesmoke;
+            text-decoration: none;
+          }
+          &:hover {
+            letter-spacing: 2px;
+            background: $brown1;
+            color: $green;
+            @media screen and (max-width: 600px) {
+              letter-spacing: 1px;
+            }
+          }
+
+          i {
+            width: 25px;
+            height: 25px;
+          }
+        }
+
+        .link-item {
+          font-weight: 600;
+          letter-spacing: 2px;
+          font-size: 1.3rem;
+          color: whitesmoke;
+          padding: 2px;
+          padding-bottom: 10px;
+          align-items: center;
+          
+          button {
+            font-size: 1.3rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            margin: 5px;
+            padding: 5px;
+            font-weight: 700;
+            font-family: $font2;
+            border-radius: 10px;
+            border: 2px $green;
+            color: $brown1;
+            cursor: pointer;
+
+            a {
+              text-decoration: none;
+              font-weight: 600;
+              letter-spacing: 2px;
+              font-size: 1.3rem;
+              color:$brown1;
+              padding: 2px;
+              border-radius: 10px;
+    
+           
+    
+              /* liens cliquables non-soulignés*/
+              &:visited {
+                color:$brown1;
+                text-decoration: none;
+              }
+              &:hover {
+                letter-spacing: 2.5px;
+                background: $brown1;
+                color: $green;
+                @media screen and (max-width: 600px) {
+                  letter-spacing: 1px;
+                }
+              }
+    
+              i {
+                width: 25px;
+                height: 25px;
+               
+              }
+    
+            
+      
+            }
+            
+
+            &:hover {
+              letter-spacing: 2.5px;
+              background: $brown1;
+              color: $green;
+            }
+          }
+        }
+
+      
+        .select-items {
+          display: flex;
+          align-items: center;
+        }
+
+        p {
+          color: red;
+          font-size: 1.3rem;
+          padding-left: 2%;
+        }
+
+        @media screen and (max-width: 800px) {
+          width: 85%;
+        }
+
+        @media screen and (max-width: 680px) {
+          width: 90%;
+        }
+
+        @media screen and (max-width: 600px) {
+          width: 95%;
+
+          margin: 10px auto;
+        }
+      }
+       ////////////////////////////////////////////////////////
+    }
+  }
+}
