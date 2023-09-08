@@ -38,8 +38,6 @@ const App = () => {
 
         <Route path="/pagedetailsrecipe" element={<PageDetailsRecipe />} />
 
-        <Route path="/menusvalides" element={<MenusValides />} />
-
         {/* ***** Protected routes pour utilisateur Inscrit, Abonné et Administrateur*/}
         <Route element={<PersistLogin />}>
           {/* un seul rôle : ROLES.Abonné  ou tous les rôles ...Object.values(ROLES) */}
@@ -64,7 +62,7 @@ const App = () => {
                   />
                 }
               >
-                {/* <Route path="/menusvalides" element={<MenusValides />} /> */}
+                <Route path="/menusvalides" element={<MenusValides />} />
                 <Route path="/listecourses" element={<PageListeCourses />} />
 
                 {/* *****  Protected routes de l'application pour utilisateur Administrateur seulement */}

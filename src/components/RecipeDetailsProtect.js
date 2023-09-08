@@ -23,18 +23,26 @@ const RecipeDetailsProtect = () => {
 
   const dispatch = useDispatch();
 
-  let content;
+  useEffect(() => {
+    // Vérifiez si les données de recette sont manquantes ou non initialisées
+    if (!checkedRecipe || checkedRecipe.length === 0) {
+      console.log(
+        "Accès direct ???? REDIRECTION /PrivateRoute/HomeListeRecettesProtect"
+      );
+      // Redirigez immédiatement l'utilisateur vers la page d'accueil ou une autre page appropriée
+      navigate("/PrivateRoute/HomeListeRecettesProtect", { replace: true });
+    } else {
+      dispatch(setConfirmDelete("détails-0"));
+      console.log("après dispatch setConfirmDelete");
+    }
+  }, [checkedRecipe, navigate]);
 
-  // Vérifiez si les données de recette sont manquantes ou non initialisées
-  if (checkedRecipe === [] || checkedRecipe.length === 0) {
-    console.log("Accès direct ???? ");
-    // Redirigez l'utilisateur vers la page d'accueil ou une autre page appropriée
-    content = null;
-    navigate("/");
-  } else {
-    dispatch(setConfirmDelete("détails-0"));
-    console.log("après dispatch setConfirmDelete");
+  if (!checkedRecipe || checkedRecipe.length === 0) {
+    // Si checkedRecipe est vide, il ne faut pas rendre le composant
+    return null;
   }
+
+  let content;
 
   content = (
     <>

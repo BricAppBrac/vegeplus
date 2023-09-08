@@ -34,24 +34,24 @@ const ListeMenus = () => {
       })
     : [];
 
-  if (isSuccess) {
-    dispatch(getListeMenus(listemenus));
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(getListeMenus(listemenus));
+    }
+  }, [dispatch, isSuccess, listemenus]);
 
   useEffect(() => {
     // Dispatch de l'action pour définir le tri des menus
 
     dispatch(setSortMenus(["Croissant", null]));
   }, [dispatch]);
-  if (listemenus.length === 0) {
-    console.log("listemenus vide");
-    console.log(listemenus);
-    content = <h3>Pas de Menus sauvegardés</h3>;
-  }
 
   return (
     <div className="menuscards-liste">
       {isLoading && <div>Loading...</div>}{" "}
+      {!isLoading && listemenus.length === 0 && (
+        <h3>Pas de Menus sauvegardés</h3>
+      )}{" "}
       {/* Display a loading indicator while fetching data */}
       {isSuccess &&
         listemenus &&

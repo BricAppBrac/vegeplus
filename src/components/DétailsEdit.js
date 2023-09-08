@@ -1087,6 +1087,22 @@ const DétailsEdit = () => {
     console.log("displayEdit useEffect: " + displayEdit);
   }, []);
 
+  useEffect(() => {
+    // Vérifiez si les données de recette sont manquantes ou non initialisées
+    if (!checkedRecipe || checkedRecipe.length === 0) {
+      console.log(
+        "Accès direct ???? REDIRECTION /PrivateRoute/HomeListeRecettesProtect"
+      );
+      // Redirigez immédiatement l'utilisateur vers la page d'accueil ou une autre page appropriée
+      navigate("/PrivateRoute/HomeListeRecettesProtect", { replace: true });
+    }
+  }, [checkedRecipe, navigate]);
+
+  if (!checkedRecipe || checkedRecipe.length === 0) {
+    // Si checkedRecipe est vide, il ne faut pas rendre le composant
+    return null;
+  }
+
   let content;
 
   // if (checkedRecipe === [] || checkedRecipe.length === 0) {

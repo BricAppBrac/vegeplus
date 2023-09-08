@@ -28,9 +28,9 @@ const RecipeDetails = () => {
   useEffect(() => {
     // Vérifiez si les données de recette sont manquantes ou non initialisées
     if (!checkedRecipe || checkedRecipe.length === 0) {
-      console.log("Accès direct ???? ");
+      console.log("Accès direct ???? REDIRECTION /*");
       // Redirigez immédiatement l'utilisateur vers la page d'accueil ou une autre page appropriée
-      navigate("/*");
+      navigate("/*", { replace: true });
     }
   }, [checkedRecipe, navigate]);
 

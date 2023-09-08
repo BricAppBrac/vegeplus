@@ -37,6 +37,7 @@ const HomeMenu = () => {
   const indicStopResetDate = useSelector(
     (state) => state.indicStopResetDate.stopResetDate
   );
+
   let selectedRecipesId = selectedRecipes.map((recipe) => recipe._id);
 
   let arrayW = [];
@@ -386,6 +387,22 @@ const HomeMenu = () => {
       }
     }
   };
+
+  useEffect(() => {
+    // Vérifiez si les données de recette sont manquantes ou non initialisées
+    if (!liste || liste.length === 0) {
+      console.log(
+        "Accès direct ???? REDIRECTION /PrivateRoute/HomeListeRecettesProtect"
+      );
+      // Redirigez immédiatement l'utilisateur vers la page d'accueil ou une autre page appropriée
+      navigate("/PrivateRoute/HomeListeRecettesProtect", { replace: true });
+    }
+  }, [liste, navigate]);
+
+  if (!liste || liste.length === 0) {
+    // Si liste des recettes est vide, il ne faut pas rendre le composant
+    return null;
+  }
 
   useEffect(() => {
     console.log("*******************************************");
