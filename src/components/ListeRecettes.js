@@ -28,9 +28,6 @@ const ListeRecettes = () => {
 
   // Create 'liste' based on 'data'
 
-  console.log("data");
-  console.log(data);
-
   const liste = isSuccess
     ? data.ids.map((recipeId) => {
         const recipe = data.entities[recipeId];
@@ -47,14 +44,14 @@ const ListeRecettes = () => {
       })
     : [];
 
+  console.log("liste après constitution à partir de data ****************");
+  console.log(liste);
+
   useEffect(() => {
     if (isSuccess) {
       dispatch(getListe(liste));
     }
   }, [isSuccess, liste, dispatch]);
-
-  console.log("liste après constitution à partir de data ****************");
-  console.log(liste);
 
   useEffect(() => {
     dispatch(setSort(["Croissant", null, null]));

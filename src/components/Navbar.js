@@ -65,7 +65,7 @@ const Navbar = () => {
                 Menu de la semaine
               </NavLink>
               <span>
-                Cliquer sur inscription gratuite pour plus de fonctionnalités
+                Inscription gratuite pour pouvoir créer le Menu de la Semaine
               </span>
             </li>
           </ul>

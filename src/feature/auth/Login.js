@@ -64,8 +64,6 @@ const Login = () => {
     console.log("handleFormIn");
 
     try {
-      console.log("Email try catch:", userEmail); // Vérifiez la valeur de userEmail
-      console.log("Password try catch:", userPassword); // Vérifiez la valeur de userPassword
       const { accessToken } = await login({
         email: userEmail,
         password: userPassword,

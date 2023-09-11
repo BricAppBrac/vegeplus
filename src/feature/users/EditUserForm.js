@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { ROLES } from "../../config/roles";
 
-const USER_REGEX = /^[A-Za-z0-9]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
+const USER_REGEX = /^[A-Za-z0-9]{4,25}$/;
+const PWD_REGEX = /^[A-z0-9!*#$%]{8,12}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const EditUserForm = ({ user }) => {
@@ -55,7 +55,7 @@ const EditUserForm = ({ user }) => {
     console.log("*************** UseEffect password ************");
     // setValidPassword(PWD_REGEX.test(password));
     if (password !== "") {
-      console.log("nouveau password : " + password);
+      console.log("nouveau password");
       handleCanSavePwd();
     } else {
       console.log("password masqué inchangé");
@@ -145,7 +145,7 @@ const EditUserForm = ({ user }) => {
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     setValidUsername(USER_REGEX.test(username));
-    console.log("checkedPassword : " + checkedPassword);
+
     // Si erreur, alimentation messageInfo
     if (PWD_REGEX.test(checkedPassword)) {
       setMessageInfo("");
@@ -372,7 +372,7 @@ const EditUserForm = ({ user }) => {
         <div className="form__content">
           {/* // PSEUDO */}
           <label className="form__label" htmlFor="username">
-            Pseudo: <span className="nowrap">[3-20 lettres]</span>
+            Pseudo: <span className="nowrap">[4-25 lettres]</span>
           </label>
           <input
             className={`form__input ${validUserClass}`}
@@ -385,7 +385,7 @@ const EditUserForm = ({ user }) => {
           />
           {/* // MOT DE PASSE */}
           <label className="form__label" htmlFor="password">
-            Mot de passe: <span className="nowrap">[4-12 car avec !@#$%]</span>
+            Mot de passe: <span className="nowrap">[8-12 car avec !*#$%]</span>
           </label>
           <input
             className={`form__input ${validPwdClass}`}

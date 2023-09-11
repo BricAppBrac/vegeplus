@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUp, setCloseUp } from "../feature/signInUp.slice";
+import {
+  useAddNewUserMutation,
+  // useGetUsersQuery,
+} from "../feature/users/usersApiSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -14,16 +18,32 @@ const SignUp = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPseudo, setUserPseudo] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const [userRole, setUserRole] = useState("Inscrit");
+  const [userActive, setUserActive] = useState(true);
   const [userRepeatPassword, setUserRepeatPassword] = useState("");
 
-  const [message, setMessage] = useState(
-    "-- Inscrivez-vous pour générer le Menu de la Semaine -- Votre Email sera utilisé pour la création du compte, et non communiqué à des tiers"
+  const [messageInfo, setMessageInfo] = useState(
+    "-- Inscrivez-vous pour pouvoir créer le Menu de la Semaine -- Email utilisé pour créer votre compte, et non communiqué à des tiers --"
   );
 
+  const USER_REGEX = /^[A-Za-z0-9]{4,25}$/;
+  const PWD_REGEX = /^[A-z0-9!*#$%]{8,12}$/;
+  const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  const [addNewUser, { isLoading, isSuccess, isError, error }] =
+    useAddNewUserMutation();
+
+  // const { refetch } = useGetUsersQuery();
+
+  function checkPseudo(userPseudo) {
+    return USER_REGEX.test(userPseudo);
+  }
+
   function checkEmail(userEmail) {
-    let re =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(userEmail);
+    // let re =
+    //   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // return re.test(userEmail);
+    return EMAIL_REGEX.test(userEmail);
   }
 
   function checkPassword(userPassword) {
@@ -32,59 +52,95 @@ const SignUp = () => {
       userPassword.match(/[A-Z]/g) &&
       userPassword.match(/[a-z]/g) &&
       userPassword.match(/[^a-zA-Z\d]/g) &&
-      userPassword.length >= 8
+      userPassword.length > 7 &&
+      userPassword.length < 13
     )
       return true;
     else return false;
+    // return PWD_REGEX.test(userPassword);
   }
+
+  const handleCreateUser = async () => {
+    console.log("handleCreateUser début");
+
+    try {
+      const result = await addNewUser({
+        username: userPseudo,
+        password: userPassword,
+        email: userEmail,
+        role: userRole,
+        active: userActive,
+      });
+      if (result.error) {
+        setMessageInfo(result.error.data.message);
+      } else {
+        setMessageInfo(
+          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+        );
+        console.log(
+          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+        );
+      }
+
+      // refetch();
+    } catch (error) {
+      // Gérer l'erreur ici si nécessaire
+      console.log("Une erreur s'est produite");
+      console.log(error);
+    }
+
+    console.log("handleCreateUser fin");
+  };
 
   const handleForm = async (e) => {
     e.preventDefault();
 
+    // Contrôle de la structure du Pseudo
+
+    if (!checkPseudo(userPseudo)) {
+      setMessageInfo("Pseudo invalide");
+      console.log("Pseudo invalide: car 4-25 / AZaz09");
+      console.log(userPseudo);
+
+      return;
+    }
+
     // Contrôle de la structure de l'email
 
     if (!checkEmail(userEmail)) {
-      setMessage("Email invalide");
+      setMessageInfo("Email invalide");
       console.log("Email invalide : ");
       console.log(userEmail);
 
       return;
     }
 
-    // Check mot de passe
-    // if ((userPassword.length || userRepeatPassword.length) < 6) {
-    //   setMessage("6 caractères min");
-    //   console.log("Err 6 caractères min : ");
-    //   console.log(userPassword);
-    //   console.log(userRepeatPassword);
-    //   return;
-    // }
-
     if (!checkPassword(userPassword)) {
-      setMessage(
-        "Mot de passe invalide: 1 MAJ / 1 min / 1 chiffre / 1 car spécial / 8 car min"
+      setMessageInfo(
+        "Mot de passe invalide: 1 MAJ / 1 min / 1 chiffre / !*#$% / car: 8-12"
       );
-      console.log("Mot de passe invalide : ");
+      console.log("Mot de passe invalide");
 
       return;
     }
     // Comparaison des mots de passe saisis
     else if (userPassword !== userRepeatPassword) {
-      setMessage("les mots de passe ne sont pas égaux");
-      console.log("Err mots de passe non égaux : ");
-      console.log(userPassword);
-      console.log(userRepeatPassword);
+      setMessageInfo("les mots de passe ne sont pas égaux");
+      console.log("Err mots de passe non égaux");
+
       return;
     } else {
       // Création d'un compte utilisateur dans la BDD
-      // A FAIRE
+      handleCreateUser();
 
       // Remise à zéro des inputs
       setUserEmail("");
       setUserPseudo("");
       setUserPassword("");
       setUserRepeatPassword("");
-      setMessage("Email à envoyer pour valider l'inscription");
+      setMessageInfo(
+        "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+      );
       return;
     }
   };
@@ -92,8 +148,8 @@ const SignUp = () => {
   const closeModal = async () => {
     await dispatch(setCloseUp(true));
     dispatch(setSignUp(false));
-    setMessage(
-      "-- Inscrivez-vous pour plus de fonctionnalités : Création de Menus, Liste de Courses --"
+    setMessageInfo(
+      "-- Inscrivez-vous pour pouvoir créer le Menu de la Semaine -- Email utilisé pour créer votre compte, et non communiqué à des tiers --"
     );
   };
 
@@ -119,6 +175,7 @@ const SignUp = () => {
                     id="signupPseudo"
                     maxLength={25}
                     value={userPseudo}
+                    autoComplete="off"
                     onChange={(e) => setUserPseudo(e.target.value)}
                   />
                 </div>
@@ -131,6 +188,7 @@ const SignUp = () => {
                     className="form-control"
                     id="signupEmail"
                     value={userEmail}
+                    autoComplete="off"
                     onChange={(e) => setUserEmail(e.target.value)}
                   />
                 </div>
@@ -143,6 +201,7 @@ const SignUp = () => {
                     className="form-control"
                     id="signupPassword"
                     value={userPassword}
+                    autoComplete="off"
                     onChange={(e) => setUserPassword(e.target.value)}
                   />
                 </div>
@@ -155,10 +214,11 @@ const SignUp = () => {
                     className="form-control"
                     id="repeatPassword"
                     value={userRepeatPassword}
+                    autoComplete="off"
                     onChange={(e) => setUserRepeatPassword(e.target.value)}
                   />
                 </div>
-                <p className="espace-message">{message}</p>
+                <p className="espace-message">{messageInfo}</p>
                 <button>Valider</button>
               </form>
             </div>
