@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUp, setCloseUp } from "../feature/signInUp.slice";
-import { useAddNewUserMutation } from "../feature/users/usersApiSlice";
-import { useSendEmailMutation } from "../feature/auth/authApiSlice";
+import {
+  useAddNewUserMutation,
+  // useGetUsersQuery,
+} from "../feature/users/usersApiSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -30,8 +32,6 @@ const SignUp = () => {
 
   const [addNewUser, { isLoading, isSuccess, isError, error }] =
     useAddNewUserMutation();
-
-  const [sendEmail] = useSendEmailMutation();
 
   // const { refetch } = useGetUsersQuery();
 
@@ -74,17 +74,7 @@ const SignUp = () => {
       if (result.error) {
         setMessageInfo(result.error.data.message);
       } else {
-        // Remise à zéro des inputs
-        setUserEmail("");
-        setUserPseudo("");
-        setUserPassword("");
-        setUserRepeatPassword("");
-        console.log(
-          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
-        );
-        setMessageInfo(
-          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
-        );
+        handleSendEmail();
       }
 
       // refetch();
@@ -98,47 +88,16 @@ const SignUp = () => {
   };
 
   const handleSendEmail = async () => {
-    console.log("handleSendEmail début");
+    console.log("handleSendEmail");
     // Envoyer un email à l'adresse userEmail pour confirmer existence de cette adresse
 
-    try {
-      // A compléter
-      const emailData = {
-        to: userEmail,
-        subject: "Finalisation de votre inscription à l'application VG+",
-        text: "Bienvenue! Votre inscription gratuite est validée. Pour vous désinscrire, merci d'en faire la demande à l'adresse bricappbrac@gmail.com",
-      };
-
-      console.log("***** emailData ********");
-      console.log(emailData);
-
-      const response = await sendEmail(emailData);
-      console.log("response");
-      console.log(response);
-
-      if (response.data.message === "E-mail envoyé avec succès") {
-        // L'envoi de l'email a réussi
-        handleCreateUser();
-      } else {
-        // L'envoi de l'email n'a pas abouti
-        setMessageInfo("Pb lors de la vérification de votre email");
-        console.log("Email inexistant ?");
-        console.log("response");
-        console.log(response);
-        console.log("response.data");
-        console.log(response.data);
-        console.log("response.error");
-        console.log(response.error);
-      }
-
-      // refetch();
-    } catch (error) {
-      // Gérer l'erreur ici si nécessaire
-      console.log("Une erreur s'est produite");
-      console.log(error);
-    }
-
-    console.log("handleSendEmail fin");
+    // Selon retour du serveur, valider ou non l'iscription
+    // setMessageInfo(
+    //   "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+    // );
+    // console.log(
+    //   "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+    // );
   };
 
   const handleForm = async (e) => {
@@ -179,9 +138,17 @@ const SignUp = () => {
 
       return;
     } else {
-      // Vérification de l'existence de l'email avant création d'un compte utilisateur dans la BDD
-      handleSendEmail();
+      // Création d'un compte utilisateur dans la BDD
+      handleCreateUser();
 
+      // Remise à zéro des inputs
+      setUserEmail("");
+      setUserPseudo("");
+      setUserPassword("");
+      setUserRepeatPassword("");
+      setMessageInfo(
+        "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+      );
       return;
     }
   };

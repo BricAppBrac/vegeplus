@@ -51,8 +51,37 @@ export const authApiSlice = apiSlice.injectEndpoints({
         }
       },
     }),
+
+    // Mutation pour l'envoi d'e-mails
+    sendEmail: builder.mutation({
+      query: (emailData) => ({
+        url: "/send-email",
+        method: "POST",
+        body: emailData,
+      }),
+
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          console.log(data);
+          if (data && data.message === "E-mail envoyé avec succès") {
+            console.log("E-mail envoyé avec succès");
+          } else {
+            // Gérer le cas où l'envoi d'e-mail a échoué
+            console.log("Échec de l'envoi d'e-mail");
+          }
+        } catch (err) {
+          console.log(err);
+          // Gérer les erreurs d'envoi d'e-mails ici.
+        }
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation, useSendLogoutMutation, useRefreshMutation } =
-  authApiSlice;
+export const {
+  useLoginMutation,
+  useSendLogoutMutation,
+  useRefreshMutation,
+  useSendEmailMutation,
+} = authApiSlice;
