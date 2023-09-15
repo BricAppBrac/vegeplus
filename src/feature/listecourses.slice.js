@@ -17,7 +17,7 @@ export const listecoursesSlice = createSlice({
     },
 
     createListeCourses: (state, { payload }) => {
-      console.log("SLICE CREATE-LISTE-COURSES");
+      // console.log("SLICE CREATE-LISTE-COURSES");
 
       state.listeCoursesData = payload;
     },

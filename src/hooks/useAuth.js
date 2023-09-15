@@ -3,7 +3,7 @@ import { selectCurrentToken } from "../feature/auth/auth.slice";
 import jwtDecode from "jwt-decode";
 
 const useAuth = () => {
-  console.log("useAuth");
+  // console.log("useAuth");
   const token = useSelector(selectCurrentToken);
   let isAdmin = false;
   let isAbo = false;
@@ -22,23 +22,23 @@ const useAuth = () => {
     if (isAbo) userStatus = "Abonné";
     if (isAdmin) userStatus = "Administrateur";
 
-    console.log("token ok");
-    console.log("username : " + username);
-    console.log("role : " + role);
+    // console.log("token ok");
+    // console.log("username : " + username);
+    // console.log("role : " + role);
 
-    console.log("userStatus : " + userStatus);
-    console.log("isAdmin : " + isAdmin);
-    console.log("isAbo : " + isAbo);
-    console.log("isInscrit : " + isInscrit);
+    // console.log("userStatus : " + userStatus);
+    // console.log("isAdmin : " + isAdmin);
+    // console.log("isAbo : " + isAbo);
+    // console.log("isInscrit : " + isInscrit);
 
     return { username, role, userStatus, isAdmin, isAbo, isInscrit };
   }
-  console.log("token KO");
+  // console.log("token KO");
 
-  console.log("userStatus : " + userStatus);
-  console.log("isAdmin : " + isAdmin);
-  console.log("isAbo : " + isAbo);
-  console.log("isInscrit : " + isInscrit);
+  // console.log("userStatus : " + userStatus);
+  // console.log("isAdmin : " + isAdmin);
+  // console.log("isAbo : " + isAbo);
+  // console.log("isInscrit : " + isInscrit);
   return { username: "", role: "", isAdmin, isAbo, isInscrit, userStatus };
 };
 

@@ -36,7 +36,7 @@ const RecipesList = () => {
   if (isLoading) content = <p>Loading...</p>;
 
   const handleLogout = async () => {
-    console.log("handleLogout");
+    // console.log("handleLogout");
     try {
       await sendLogout();
     } catch (err) {
@@ -47,7 +47,7 @@ const RecipesList = () => {
   };
 
   const handleHome = async () => {
-    console.log("handleHome");
+    // console.log("handleHome");
     if (isAdmin || isAbo || isInscrit) {
       navigate("/PrivateRoute/HomeListeRecettesProtect");
     } else {

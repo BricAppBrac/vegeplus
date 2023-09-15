@@ -10,18 +10,15 @@ const initialState = menusAdapter.getInitialState();
 export const menusApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getMenus: builder.query({
-      query: () => "/menu",
-      validateStatus: (response, result) => {
-        return response.status === 200 && !result.isError;
-      },
-      keepUnusedDataFor: 60, // Sans subscription dans UsersList dans ce temps imparti, on repart sur Loading - 60 secondes par défaut
-      // transformResponse: (responseData) => {
-      //   const loadedMenus = responseData.map((menu) => {
-      //     menu.id = menu._id;
-      //     return menu;
-      //   });
-      //   return menusAdapter.setAll(initialState, loadedMenus);
-      // },
+      query: () => ({
+        url: "/menu",
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+      // Sans subscription dans UsersList dans ce temps imparti, on repart sur Loading - 60 secondes par défaut
+      // keepUnusedDataFor: 60,
+
       transformResponse: (responseData) => {
         if (Array.isArray(responseData)) {
           const loadedMenus = responseData.map((menu) => {
@@ -45,15 +42,43 @@ export const menusApiSlice = apiSlice.injectEndpoints({
       },
     }),
     addNewMenu: builder.mutation({
-      query: (initialMenuData) => ({
-        url: "/menu",
-        method: "POST",
-        body: {
-          ...initialMenuData,
-        },
-      }),
+      query: (initialMenuData) => {
+        const requestBody = {
+          user: initialMenuData.user,
+          prefNbJ: initialMenuData.prefNbJ,
+          prefNbMeal: initialMenuData.prefNbMeal,
+          prefDayOne: initialMenuData.prefDayOne,
+          menuJ: initialMenuData.menuJ,
+        };
+        console.log("Request body sent to the server:", requestBody);
+
+        return {
+          url: "/menu",
+          method: "POST",
+          body: requestBody,
+        };
+      },
+      onQueryStarted: () => {
+        console.log("Mutation started: addNewMenu");
+      },
+      onQuerySuccess: (response) => {
+        console.log("Mutation succeeded: addNewMenu");
+        console.log("Response from server:", response);
+      },
+      onQueryError: (error) => {
+        console.error("Mutation failed: addNewMenu", error);
+      },
       // Forcer le cache à se mettre à jour:
       invalidatesTags: [{ type: "Menu", id: "LIST" }],
+      // query: (initialMenuData) => ({
+      //   url: "/menu",
+      //   method: "POST",
+      //   body: {
+      //     ...initialMenuData,
+      //   },
+      // }),
+      // // Forcer le cache à se mettre à jour:
+      // invalidatesTags: [{ type: "Menu", id: "LIST" }],
     }),
     updateMenu: builder.mutation({
       query: (initialMenuData) => ({

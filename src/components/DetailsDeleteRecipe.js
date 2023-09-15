@@ -20,15 +20,8 @@ const DetailsDeleteRecipe = (props) => {
   const { refetch } = useGetRecipesQuery();
 
   //////////////////////////////////////////
-
-  const handleEdit = () => {
-    //-----------------------------
-    console.log("handleEdit");
-    console.log(checkedRecipe.title);
-  };
-  //////////////////////////////////////////
   const handleCancel = () => {
-    console.log("handleCancel");
+    // console.log("handleCancel");
     if (origin === "détails-1") {
       setMessage("");
       setOrigin("détails-0");
@@ -49,7 +42,7 @@ const DetailsDeleteRecipe = (props) => {
       if (response.error) {
         console.error("Failed to delete recipe:", response.error);
       } else {
-        console.log("DELETE RECIPE BDD");
+        // console.log("DELETE RECIPE BDD");
         dispatch(deleteRecipe(recipeId));
         // Après une suppression réussie, actualisez la liste des recettes en appelant refetch()
         // await refetch();
@@ -62,14 +55,14 @@ const DetailsDeleteRecipe = (props) => {
   //////////////////////////////////////////
   const handleConfirm = async () => {
     //------------------------------------
-    console.log("delOrigin : " + props.delOrigin);
-    console.log("recipeId : " + props.recipeId);
-    console.log("origin : " + origin);
+    // console.log("delOrigin : " + props.delOrigin);
+    // console.log("recipeId : " + props.recipeId);
+    // console.log("origin : " + origin);
 
     if (origin === "détails-0") {
       setMessage("Confirmer la suppression");
       dispatch(setConfirmDelete("détails-1"));
-      console.log("après dispatch setConfirmDelete");
+      // console.log("après dispatch setConfirmDelete");
       setOrigin("détails-1");
       // Lancez la requête pour obtenir les recettes
       const recipesQuery = await refetch();
@@ -79,12 +72,10 @@ const DetailsDeleteRecipe = (props) => {
 
       setOrigin("détails-2");
       dispatch(setConfirmDelete("détails-2"));
-      console.log("après dispatch setConfirmDelete");
+      // console.log("après dispatch setConfirmDelete");
       await handleDelete(props.recipeId);
       refetch();
       navigate("/PrivateRoute/HomeListeRecettesProtect");
-      // Lancez la requête pour obtenir les recettes
-      // const recipesQuery = await refetch();
     }
   };
 
@@ -102,7 +93,7 @@ const DetailsDeleteRecipe = (props) => {
         {origin === "détails-1" ? (
           ""
         ) : (
-          <button onClick={() => handleEdit()}>
+          <button>
             <NavLink to="/PrivateRoute/pagedetailsedit">
               <i className="fa-solid fa-file-pen"></i>
             </NavLink>
@@ -116,11 +107,6 @@ const DetailsDeleteRecipe = (props) => {
               <p>{message}</p>
             </div>
             <div className="conf-suppr">
-              {/* <button onClick={() => handleConfirm()}>
-                <NavLink to="/PrivateRoute/HomeListeRecettesProtect">
-                  <i className="fa-solid fa-thumbs-up"></i>
-                </NavLink>
-              </button> */}
               <button onClick={() => handleConfirm()}>
                 <i className="fa-solid fa-thumbs-up"></i>
               </button>

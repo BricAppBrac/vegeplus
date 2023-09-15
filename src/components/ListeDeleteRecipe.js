@@ -22,7 +22,7 @@ const ListeDeleteRecipe = (props) => {
 
   //////////////////////////////////////////
   const handleCancel = () => {
-    console.log("handleCancel");
+    // console.log("handleCancel");
     if (origin === "liste-1") {
       setMessage("");
       setOrigin("liste-0");
@@ -30,18 +30,18 @@ const ListeDeleteRecipe = (props) => {
   };
   //////////////////////////////////////////
   const handleDetails = () => {
-    console.log("handleDetails");
-    console.log(props.recipe);
+    // console.log("handleDetails");
+    // console.log(props.recipe);
     dispatch(setChecked(props.recipe));
     dispatch(createRecipe(props.recipe));
-    console.log("après dispatch setChecked et createRecipe");
+    // console.log("après dispatch setChecked et createRecipe");
   };
 
   //////////////////////////////////////////
   const handleConfirm = async () => {
-    console.log("delOrigin : " + props.delOrigin);
-    console.log("recipeId : " + props.recipe._id);
-    console.log("origin : " + origin);
+    // console.log("delOrigin : " + props.delOrigin);
+    // console.log("recipeId : " + props.recipe._id);
+    // console.log("origin : " + origin);
 
     const handleDelete = async () => {
       // axios.delete("http://localhost:5000/recipe/" + props.recipe._id);
@@ -56,7 +56,7 @@ const ListeDeleteRecipe = (props) => {
         if (response.error) {
           console.error("Failed to delete recipe:", response.error);
         } else {
-          console.log("DELETE RECIPE BDD");
+          // console.log("DELETE RECIPE BDD");
           dispatch(deleteRecipe(props.recipe._id));
 
           // Après une mise à jour réussie, appeler refetch() pour actualiser la liste des utilisateurs
@@ -71,13 +71,13 @@ const ListeDeleteRecipe = (props) => {
       setMessage("Confirmer la suppression");
       setOrigin("liste-1");
       dispatch(setConfirmDelete("liste-1"));
-      console.log("après dispatch setConfirmDelete");
+      // console.log("après dispatch setConfirmDelete");
     }
     if (origin === "liste-1") {
       setMessage("Suppression effectuée");
       setOrigin("liste-2");
       dispatch(setConfirmDelete("liste-2"));
-      console.log("après dispatch setConfirmDelete");
+      // console.log("après dispatch setConfirmDelete");
       handleDelete();
     }
   };

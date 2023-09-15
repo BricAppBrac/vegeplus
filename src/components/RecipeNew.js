@@ -59,7 +59,7 @@ const RecipeNew = () => {
       if (response.error) {
         console.error("Failed to add new recipe:", response.error);
       } else {
-        console.log("Successfully added new recipe");
+        // console.log("Successfully added new recipe");
         // Après une mise à jour réussie, appeler refetch()
         refetch();
       }
@@ -83,19 +83,19 @@ const RecipeNew = () => {
   ///////////////////////
   const handleSeasons = (newSeas) => {
     if (document.getElementById(newSeas).checked == true) {
-      console.log("checked");
+      // console.log("checked");
       arrayNew = newSeasons;
       arrayW.push(newSeas);
       arrayNew = [...arrayNew, ...arrayW];
     } else {
-      console.log("décochée");
+      // console.log("décochée");
       arrayW = newSeasons;
       arrayNew = arrayW.filter(function (element) {
         return element !== newSeas;
       });
     }
-    console.log("Seasons array");
-    console.log(arrayNew);
+    // console.log("Seasons array");
+    // console.log(arrayNew);
     setNewSeasons(arrayNew);
     data.seasons = arrayNew;
     arrayNew = [];
@@ -111,32 +111,32 @@ const RecipeNew = () => {
     newQuantityRef,
     newCategoryRef
   ) => {
-    console.log("newVal handleIngrédients :");
-    console.log(newVal);
-    console.log("ingId :" + ingId);
+    // console.log("newVal handleIngrédients :");
+    // console.log(newVal);
+    // console.log("ingId :" + ingId);
 
     arrayNew = [...newIngredients];
-    console.log("arrayNew avant ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew avant ajout :");
+    // console.log(arrayNew);
     arrayNew[ingId] = newVal;
-    console.log("arrayNew après ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew après ajout :");
+    // console.log(arrayNew);
 
     setNewIngredients(arrayNew);
-    console.log("newIngredients après:");
-    console.log(newIngredients);
+    // console.log("newIngredients après:");
+    // console.log(newIngredients);
 
     // Contrôle du trio Ing / Qtt / Cat
     if (arrayNew[ingId]) {
-      console.log("ingrédient renseigné : " + arrayNew[ingId]);
+      // console.log("ingrédient renseigné : " + arrayNew[ingId]);
 
       if (!newQuantities[ingId] || !newCategories[ingId]) {
         setMessageNew(
           "Saisir une quantité et une catégorie pour chaque ingrédient"
         );
-        console.log(
-          "Saisir une quantité et une catégorie pour chaque ingrédient"
-        );
+        // console.log(
+        //   "Saisir une quantité et une catégorie pour chaque ingrédient"
+        // );
         document.getElementById("form-new-validation").disabled = "disabled";
         newIngredientRef.current.style.backgroundColor = "#d65630";
         newIngredientRef.current.style.color = "rgb(206, 228, 187)";
@@ -169,39 +169,39 @@ const RecipeNew = () => {
     newQuantityRef,
     newCategoryRef
   ) => {
-    console.log("handleQuantities :");
-    console.log("newQtt Quantité :");
-    console.log(newQtt);
-    console.log("qttId :" + qttId);
+    // console.log("handleQuantities :");
+    // console.log("newQtt Quantité :");
+    // console.log(newQtt);
+    // console.log("qttId :" + qttId);
 
-    console.log("newQuantityRef :");
-    console.log(newQuantityRef);
+    // console.log("newQuantityRef :");
+    // console.log(newQuantityRef);
 
-    console.log("newQuantities avant ajout");
-    console.log(newQuantities);
+    // console.log("newQuantities avant ajout");
+    // console.log(newQuantities);
 
     arrayNew = [...newQuantities];
-    console.log("arrayNew avant ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew avant ajout :");
+    // console.log(arrayNew);
     arrayNew[qttId] = newQtt;
-    console.log("arrayNew après ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew après ajout :");
+    // console.log(arrayNew);
 
     setNewQuantities(arrayNew);
-    console.log("newQuantities après:");
-    console.log(newQuantities);
+    // console.log("newQuantities après:");
+    // console.log(newQuantities);
 
     // Contrôle du trio Ing / Qtt / Cat
     if (arrayNew[qttId]) {
-      console.log("quantité renseignée : " + arrayNew[qttId]);
+      // console.log("quantité renseignée : " + arrayNew[qttId]);
 
       if (!newIngredients[qttId] || !newCategories[qttId]) {
         setMessageNew(
           "Saisir un ingrédient et une catégorie pour chaque quantité"
         );
-        console.log(
-          "Saisir un ingrédient et une catégorie pour chaque quantité"
-        );
+        // console.log(
+        //   "Saisir un ingrédient et une catégorie pour chaque quantité"
+        // );
         document.getElementById("form-new-validation").disabled = "disabled";
         newIngredientRef.current.style.backgroundColor = "#d65630";
         newIngredientRef.current.style.color = "rgb(206, 228, 187)";
@@ -234,40 +234,40 @@ const RecipeNew = () => {
     newQuantityRef,
     newCategoryRef
   ) => {
-    console.log("newCat Catégorie :");
-    console.log(newCat);
-    console.log("catId :" + catId);
+    // console.log("newCat Catégorie :");
+    // console.log(newCat);
+    // console.log("catId :" + catId);
 
-    console.log("newCategoryRef :");
-    console.log(newCategoryRef);
+    // console.log("newCategoryRef :");
+    // console.log(newCategoryRef);
 
-    console.log("newCategories avant ajout");
-    console.log(newCategories);
+    // console.log("newCategories avant ajout");
+    // console.log(newCategories);
 
     arrayNew = [...newCategories];
-    console.log("arrayNew avant ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew avant ajout :");
+    // console.log(arrayNew);
     arrayNew[catId] = newCat;
 
-    console.log("arrayNew après ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew après ajout :");
+    // console.log(arrayNew);
 
     setNewCategories(arrayNew);
 
-    console.log("newCategories après:");
-    console.log(newCategories);
+    // console.log("newCategories après:");
+    // console.log(newCategories);
 
     // Contrôle du trio Ing / Qtt / Cat
     if (arrayNew[catId]) {
-      console.log("catégorie renseignée : " + arrayNew[catId]);
+      // console.log("catégorie renseignée : " + arrayNew[catId]);
 
       if (!newIngredients[catId] || !newQuantities[catId]) {
         setMessageNew(
           "Saisir un ingrédient et une quantité pour chaque catégorie"
         );
-        console.log(
-          "Saisir un ingrédient et une quantité pour chaque catégorie"
-        );
+        // console.log(
+        //   "Saisir un ingrédient et une quantité pour chaque catégorie"
+        // );
         document.getElementById("form-new-validation").disabled = "disabled";
         newIngredientRef.current.style.backgroundColor = "#d65630";
         newIngredientRef.current.style.color = "rgb(206, 228, 187)";
@@ -294,20 +294,20 @@ const RecipeNew = () => {
   // Stockage des étapes
   /////////////////////////////
   const handleSteps = (newStp, stpId) => {
-    console.log("newStp Etape :");
-    console.log(newStp);
-    console.log("stpId :" + stpId);
+    // console.log("newStp Etape :");
+    // console.log(newStp);
+    // console.log("stpId :" + stpId);
 
     arrayNew = [...newSteps];
-    console.log("arrayNew avant ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew avant ajout :");
+    // console.log(arrayNew);
     arrayNew[stpId] = newStp;
-    console.log("arrayNew après ajout :");
-    console.log(arrayNew);
+    // console.log("arrayNew après ajout :");
+    // console.log(arrayNew);
 
     setNewSteps(arrayNew);
-    console.log("newSteps après:");
-    console.log(newSteps);
+    // console.log("newSteps après:");
+    // console.log(newSteps);
     data.steps = arrayNew;
     arrayW = [];
     arrayNew = [];
@@ -316,7 +316,7 @@ const RecipeNew = () => {
   // Reset du formulaire
   //////////////////////////
   const resetForm = () => {
-    console.log("Réinit du formulaire");
+    // console.log("Réinit du formulaire");
     document.getElementById("new-form").reset();
   };
 
@@ -324,7 +324,7 @@ const RecipeNew = () => {
   // Contrôle du Trio Ingrédient / Quantité / Catégorie pour toutes les lignes avant validation
   /////////////////////////////////////////////////////////////////////////////////////////////
   const handleTrioFinal = () => {
-    console.log("handleTrioFinal");
+    // console.log("handleTrioFinal");
 
     let validate = true;
     //////////////////////////////////////////////
@@ -333,9 +333,9 @@ const RecipeNew = () => {
         console.log("ligne vide : " + i);
       } else {
         // Cas Ingrédient non renseigné, et l'un des 2 autres renseigné
-        console.log("ligne renseignée : " + i);
+        // console.log("ligne renseignée : " + i);
         if (!data.ingredients[i]) {
-          console.log("ingrédient non renseigné");
+          // console.log("ingrédient non renseigné");
           setMessageNew(
             "Saisir une quantité et une catégorie pour chaque ingrédient"
           );
@@ -344,7 +344,7 @@ const RecipeNew = () => {
         }
         // Cas Quantité non renseignée, et l'un des 2 autres renseigné
         if (!data.quantities[i]) {
-          console.log("quantité non renseignée");
+          // console.log("quantité non renseignée");
           setMessageNew(
             "Saisir une quantité et une catégorie pour chaque ingrédient"
           );
@@ -353,7 +353,7 @@ const RecipeNew = () => {
         }
         // Cas Catégorie non renseignée, et l'un des 2 autres renseigné
         if (!data.categories[i]) {
-          console.log("catégorie non renseignée");
+          // console.log("catégorie non renseignée");
           setMessageNew(
             "Saisir une quantité et une catégorie pour chaque ingrédient"
           );
@@ -365,7 +365,7 @@ const RecipeNew = () => {
 
     // Cas toutes les zones sont renseignées
     if (validate) {
-      console.log("toutes les lignes sont renseignées correctement");
+      // console.log("toutes les lignes sont renseignées correctement");
       setMessageNew("Effectuer les modifications et valider");
       document.getElementById("form-new-validation").disabled = false;
     }
@@ -376,7 +376,7 @@ const RecipeNew = () => {
   /////////////////////////////////////////////////////////////////////////////////
   const handleSubmitNew = async (e) => {
     e.preventDefault();
-    console.log("début SUBMIT");
+    // console.log("début SUBMIT");
 
     // setMessageNew("Saisir les informations et valider");
 
@@ -386,26 +386,26 @@ const RecipeNew = () => {
       // Traitement normal
 
       // Suppression des lignes blanches dans steps
-      console.log("suppression des lignes blanches : steps");
+      // console.log("suppression des lignes blanches : steps");
       arrayW = newSteps;
       arrayNew = arrayW.filter((step) => {
         if (step === "" || step === undefined) {
           console.log("step non renseigné");
         } else {
-          console.log("step renseigné : " + step);
+          // console.log("step renseigné : " + step);
           return step;
         }
       });
-      console.log("arrayNew :");
-      console.log(arrayNew);
+      // console.log("arrayNew :");
+      // console.log(arrayNew);
       setNewSteps(arrayNew);
-      console.log("newSteps :");
-      console.log(newSteps);
+      // console.log("newSteps :");
+      // console.log(newSteps);
 
       /////////////////////////
       // Suppression des lignes blanches Trio
       ///////
-      console.log("suppression des lignes blanches : TRIO");
+      // console.log("suppression des lignes blanches : TRIO");
 
       arrayNewIngredientsStockage = newIngredients;
       arrayNewQuantitiesStockage = newQuantities;
@@ -413,12 +413,12 @@ const RecipeNew = () => {
 
       // for (let i = 0; i < arrayNewIngredientsStockage.length; i++) {
 
-      console.log("arrayNewIngredientsStockage");
-      console.log(arrayNewIngredientsStockage);
-      console.log("arrayNewQuantitiesStockage");
-      console.log(arrayNewQuantitiesStockage);
-      console.log("arrayNewCategoriesStockage");
-      console.log(arrayNewCategoriesStockage);
+      // console.log("arrayNewIngredientsStockage");
+      // console.log(arrayNewIngredientsStockage);
+      // console.log("arrayNewQuantitiesStockage");
+      // console.log(arrayNewQuantitiesStockage);
+      // console.log("arrayNewCategoriesStockage");
+      // console.log(arrayNewCategoriesStockage);
 
       arrayNewIngredients = arrayNewIngredientsStockage.filter(function (
         element,
@@ -431,7 +431,7 @@ const RecipeNew = () => {
         ) {
           console.log("ing trio à supprimer : " + element);
         } else {
-          console.log("ing trio à conserver : " + element);
+          // console.log("ing trio à conserver : " + element);
           return element;
         }
       });
@@ -447,7 +447,7 @@ const RecipeNew = () => {
         ) {
           console.log("qtt trio à supprimer : " + element);
         } else {
-          console.log("qtt trio à conserver : " + element);
+          // console.log("qtt trio à conserver : " + element);
           return element;
         }
       });
@@ -463,17 +463,17 @@ const RecipeNew = () => {
         ) {
           console.log("cat trio à supprimer : " + element);
         } else {
-          console.log("cat trio à conserver : " + element);
+          // console.log("cat trio à conserver : " + element);
           return element;
         }
       });
       // }
-      console.log("arrayNewIngredients :");
-      console.log(arrayNewIngredients);
-      console.log("arrayNewQuantities :");
-      console.log(arrayNewQuantities);
-      console.log("arrayNewCategories :");
-      console.log(arrayNewCategories);
+      // console.log("arrayNewIngredients :");
+      // console.log(arrayNewIngredients);
+      // console.log("arrayNewQuantities :");
+      // console.log(arrayNewQuantities);
+      // console.log("arrayNewCategories :");
+      // console.log(arrayNewCategories);
 
       //////////////////
 
@@ -508,8 +508,8 @@ const RecipeNew = () => {
       // });
 
       try {
-        console.log("recipeData avant addNewRecipe");
-        console.log(recipeData);
+        // console.log("recipeData avant addNewRecipe");
+        // console.log(recipeData);
         await handleAddNewRecipe(recipeData);
       } catch (error) {
         console.error("An error occurred while adding new recipe:", error);
@@ -530,7 +530,7 @@ const RecipeNew = () => {
       // dispatch(deleteNewRecipe());
     } else {
       setMessageNew("Saisir les informations et valider");
-      console.log("Attention, Validation sans saisie");
+      // console.log("Attention, Validation sans saisie");
     }
   };
   /////////////////////////////////////////////////////////////////////////////////

@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 
 const UsersList = () => {
-  console.log("UsersList");
+  // console.log("UsersList");
 
   const {
     data: users,
@@ -35,7 +35,7 @@ const UsersList = () => {
   if (isLoading) content = <p>Loading...</p>;
 
   const handleLogout = async () => {
-    console.log("handleLogout");
+    // console.log("handleLogout");
     try {
       await sendLogout();
     } catch (err) {
@@ -65,9 +65,8 @@ const UsersList = () => {
   if (isSuccess) {
     const { ids } = users;
 
-    const tableContent = ids?.length
-      ? ids.map((userId) => <User key={userId} userId={userId} />)
-      : null;
+    const tableContent =
+      ids?.length && ids.map((userId) => <User key={userId} userId={userId} />);
 
     content = (
       <div className="gestion-admin">

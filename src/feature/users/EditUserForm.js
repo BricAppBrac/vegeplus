@@ -15,9 +15,9 @@ const PWD_REGEX = /^[A-z0-9!*#$%]{8,12}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const EditUserForm = ({ user }) => {
-  console.log("EditUserForm");
-  console.log("user : ");
-  console.log(user);
+  // console.log("EditUserForm");
+  // console.log("user : ");
+  // console.log(user);
   // Statut après appel de la fonction useUpdateUserMutation()
   const [updateUser, { isLoading, isSuccess, isError, error }] =
     useUpdateUserMutation();
@@ -44,7 +44,7 @@ const EditUserForm = ({ user }) => {
   const [messageInfo, setMessageInfo] = useState("");
 
   useEffect(() => {
-    console.log("*************** UseEffect username ************");
+    // console.log("*************** UseEffect username ************");
     // setValidUsername(USER_REGEX.test(username));
     if (username !== undefined) {
       handleCanSave();
@@ -52,18 +52,19 @@ const EditUserForm = ({ user }) => {
   }, [username]);
 
   useEffect(() => {
-    console.log("*************** UseEffect password ************");
+    // console.log("*************** UseEffect password ************");
     // setValidPassword(PWD_REGEX.test(password));
     if (password !== "") {
-      console.log("nouveau password");
+      // console.log("nouveau password");
       handleCanSavePwd();
-    } else {
-      console.log("password masqué inchangé");
     }
+    // else {
+    //   console.log("password masqué inchangé");
+    // }
   }, [password]);
 
   useEffect(() => {
-    console.log("*************** UseEffect email ************");
+    // console.log("*************** UseEffect email ************");
     // setValidEmail(EMAIL_REGEX.test(email));
     if (email !== undefined) {
       handleCanSave();
@@ -71,28 +72,28 @@ const EditUserForm = ({ user }) => {
   }, [email]);
 
   useEffect(() => {
-    console.log("*************** UseEffect active ************");
+    // console.log("*************** UseEffect active ************");
     // setValidEmail(EMAIL_REGEX.test(email));
 
     handleCanSave();
   }, [active]);
 
   useEffect(() => {
-    console.log("*************** UseEffect role ************");
+    // console.log("*************** UseEffect role ************");
     // setValidEmail(EMAIL_REGEX.test(email));
 
     handleCanSave();
   }, [role]);
 
   useEffect(() => {
-    console.log("*************** UseEffect canSave ************");
+    // console.log("*************** UseEffect canSave ************");
     console.log(canSave);
   }, [canSave]);
 
   useEffect(() => {
-    console.log(
-      "*************** UseEffect isSuccess isDelSuccess navigate ************"
-    );
+    // console.log(
+    //   "*************** UseEffect isSuccess isDelSuccess navigate ************"
+    // );
     if (isSuccess || isDelSuccess) {
       console.log("isSuccess : " + isSuccess);
       console.log("isDelSuccess : " + isDelSuccess);
@@ -105,7 +106,7 @@ const EditUserForm = ({ user }) => {
   }, [isSuccess, isDelSuccess, navigate]);
 
   const handleCheckEmail = (checkedEmail) => {
-    console.log("-------------- handleCheckEmail DEBUT --------------");
+    // console.log("-------------- handleCheckEmail DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidUsername(USER_REGEX.test(username));
 
@@ -117,14 +118,14 @@ const EditUserForm = ({ user }) => {
     }
 
     // MAJ state Email pour déclencher useEffect de contrôle
-    console.log("email : " + checkedEmail);
+    // console.log("email : " + checkedEmail);
     setEmail(checkedEmail);
     setValidEmail(EMAIL_REGEX.test(checkedEmail));
-    console.log("-------------- handleCheckEmail FIN --------------");
+    // console.log("-------------- handleCheckEmail FIN --------------");
   };
 
   const handleCheckUsername = (checkedUsername) => {
-    console.log("-------------- handleCheckUsername DEBUT --------------");
+    // console.log("-------------- handleCheckUsername DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     // Si erreur, alimentation messageInfo
@@ -134,14 +135,14 @@ const EditUserForm = ({ user }) => {
       setMessageInfo("Pseudo invalide");
     }
     // MAJ state Username pour déclencher useEffect de contrôle
-    console.log("username : " + checkedUsername);
+    // console.log("username : " + checkedUsername);
     setUsername(checkedUsername);
     setValidUsername(USER_REGEX.test(checkedUsername));
-    console.log("-------------- handleCheckUsername FIN --------------");
+    // console.log("-------------- handleCheckUsername FIN --------------");
   };
 
   const handleCheckPassword = (checkedPassword) => {
-    console.log("-------------- handleCheckPassword DEBUT --------------");
+    // console.log("-------------- handleCheckPassword DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     setValidUsername(USER_REGEX.test(username));
@@ -149,113 +150,113 @@ const EditUserForm = ({ user }) => {
     // Si erreur, alimentation messageInfo
     if (PWD_REGEX.test(checkedPassword)) {
       setMessageInfo("");
-      console.log("messageInfo OK: " + messageInfo);
+      // console.log("messageInfo OK: " + messageInfo);
     } else {
       setMessageInfo("Mot de passe invalide");
-      console.log("messageInfo mdp invalide: " + messageInfo);
+      // console.log("messageInfo mdp invalide: " + messageInfo);
     }
     // MAJ state Password pour déclencher useEffect de contrôle
     setPassword(checkedPassword);
     setValidPassword(PWD_REGEX.test(checkedPassword));
-    console.log("-------------- handleCheckPassword FIN --------------");
+    // console.log("-------------- handleCheckPassword FIN --------------");
   };
 
   const handleCanSave = () => {
-    console.log("-------------- handleCanSave DEBUT --------------");
+    // console.log("-------------- handleCanSave DEBUT --------------");
 
-    console.log("handleCanSave sans changement de password");
-    console.log("email : " + email);
-    console.log("username : " + username);
+    // console.log("handleCanSave sans changement de password");
+    // console.log("email : " + email);
+    // console.log("username : " + username);
     const newCanSave = [validUsername, validEmail].every(Boolean) && !isLoading;
     setCanSave(newCanSave);
     // console.log("validRole : " + validRole);
-    console.log("validUsername : " + validUsername);
-    console.log("validEmail : " + validEmail);
-    console.log("canSave : " + newCanSave);
+    // console.log("validUsername : " + validUsername);
+    // console.log("validEmail : " + validEmail);
+    // console.log("canSave : " + newCanSave);
 
-    console.log("-------------- handleCanSave FIN --------------");
+    // console.log("-------------- handleCanSave FIN --------------");
   };
 
   const handleCanSavePwd = () => {
-    console.log("-------------- handleCanSavePwd DEBUT --------------");
+    // console.log("-------------- handleCanSavePwd DEBUT --------------");
 
-    console.log("handleCanSave with password");
+    // console.log("handleCanSave with password");
 
     const newCanSave =
       [validUsername, validPassword, validEmail].every(Boolean) && !isLoading;
     setCanSave(newCanSave);
-    console.log("validPassword : " + validPassword);
-    console.log("validUsername : " + validUsername);
-    console.log("validEmail : " + validEmail);
-    console.log("canSave : " + newCanSave);
+    // console.log("validPassword : " + validPassword);
+    // console.log("validUsername : " + validUsername);
+    // console.log("validEmail : " + validEmail);
+    // console.log("canSave : " + newCanSave);
 
-    console.log("-------------- handleCanSavePwd FIN --------------");
+    // console.log("-------------- handleCanSavePwd FIN --------------");
   };
 
   const onUsernameChanged = (e) => {
-    console.log("-------------- onUsernameChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onUsernameChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setUsername(e.target.value);
     handleCheckUsername(e.target.value);
-    console.log("-------------- onUsernameChanged FIN --------------");
+    // console.log("-------------- onUsernameChanged FIN --------------");
   };
 
   // const onPasswordChanged = (e) => setPassword(e.target.value);
   const onPasswordChanged = (e) => {
-    console.log("-------------- onPasswordChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onPasswordChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     e.target.value !== undefined && setPassword(e.target.value);
     e.target.value !== undefined && handleCheckPassword(e.target.value);
-    console.log("-------------- onPasswordChanged FIN --------------");
+    // console.log("-------------- onPasswordChanged FIN --------------");
   };
 
   // const onEmailChanged = (e) => setEmail(e.target.value);
   const onEmailChanged = (e) => {
-    console.log("-------------- onEmailChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onEmailChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setEmail(e.target.value);
     handleCheckEmail(e.target.value);
-    console.log("-------------- onEmailChanged FIN --------------");
+    // console.log("-------------- onEmailChanged FIN --------------");
   };
 
   // const onRoleChanged = (e) => setRole(e.target.value);
   const onRoleChanged = (e) => {
-    console.log("-------------- onRoleChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onRoleChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     setValidUsername(USER_REGEX.test(username));
     setRole(e.target.value);
 
-    console.log("-------------- onRoleChanged FIN --------------");
+    // console.log("-------------- onRoleChanged FIN --------------");
   };
 
   // const onActiveChanged = (e) => setActive((prev) => !prev);
   const onActiveChanged = (e) => {
-    console.log("-------------- onActiveChanged DEBUT --------------");
+    // console.log("-------------- onActiveChanged DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
-    console.log("email : " + email);
-    console.log("username : " + username);
+    // console.log("email : " + email);
+    // console.log("username : " + username);
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     setValidUsername(USER_REGEX.test(username));
 
     setActive((prev) => !prev);
 
-    console.log("-------------- onActiveChanged FIN --------------");
+    // console.log("-------------- onActiveChanged FIN --------------");
   };
 
   const onSaveUserClicked = async (e) => {
-    console.log("-------------- onSaveUserClicked DEBUT --------------");
+    // console.log("-------------- onSaveUserClicked DEBUT --------------");
 
     try {
       let result;
       if (password) {
-        console.log("PATCH BDD avec new PWD");
+        // console.log("PATCH BDD avec new PWD");
         result = await updateUser({
           id: user.id,
           username,
@@ -265,7 +266,7 @@ const EditUserForm = ({ user }) => {
           active,
         });
       } else {
-        console.log("PATCH BDD avec old PWD");
+        // console.log("PATCH BDD avec old PWD");
         result = await updateUser({
           id: user.id,
           username,
@@ -288,11 +289,11 @@ const EditUserForm = ({ user }) => {
       console.log("Une erreur s'est produite");
     }
 
-    console.log("-------------- onSaveUserClicked FIN --------------");
+    // console.log("-------------- onSaveUserClicked FIN --------------");
   };
 
   const onDeleteUserClicked = async () => {
-    console.log("-------------- onDeleteUserClicked DEBUT --------------");
+    // console.log("-------------- onDeleteUserClicked DEBUT --------------");
 
     try {
       const result = await deleteUser({
@@ -300,17 +301,17 @@ const EditUserForm = ({ user }) => {
       });
 
       setMessageInfo("");
-      console.log("Suppression réussie !");
+      // console.log("Suppression réussie !");
     } catch (error) {
       setMessageInfo(error.message);
-      console.error("Erreur lors de la suppression :", error);
+      // console.error("Erreur lors de la suppression :", error);
     }
 
     // Après une mise à jour réussie, appeler refetch() pour actualiser la liste des utilisateurs
     // refetch();
     navigate("/PrivateRoute/homebase");
 
-    console.log("-------------- onDeleteUserClicked FIN --------------");
+    // console.log("-------------- onDeleteUserClicked FIN --------------");
   };
 
   const options = Object.values(ROLES).map((role) => {

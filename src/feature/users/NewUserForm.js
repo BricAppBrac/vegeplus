@@ -10,7 +10,7 @@ const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const NewUserForm = () => {
-  console.log("NewUserForm");
+  // console.log("NewUserForm");
 
   // Statut apès appel de la fonction useAddNewUserMutation()
   const [addNewUser, { isLoading, isSuccess, isError, error }] =
@@ -36,30 +36,30 @@ const NewUserForm = () => {
   const [messageInfo, setMessageInfo] = useState("");
 
   useEffect(() => {
-    console.log("*************** UseEffect username ************");
+    // console.log("*************** UseEffect username ************");
     // setValidUsername(USER_REGEX.test(username));
     handleCanSave();
   }, [username]);
 
   useEffect(() => {
-    console.log("*************** UseEffect password ************");
+    // console.log("*************** UseEffect password ************");
     // setValidPassword(PWD_REGEX.test(password));
     handleCanSave();
   }, [password]);
 
   useEffect(() => {
-    console.log("*************** UseEffect email ************");
+    // console.log("*************** UseEffect email ************");
     // setValidEmail(EMAIL_REGEX.test(email));
     handleCanSave();
   }, [email]);
 
   useEffect(() => {
-    console.log("*************** UseEffect canSave ************");
+    // console.log("*************** UseEffect canSave ************");
     console.log(canSave);
   }, [canSave]);
 
   useEffect(() => {
-    console.log("*************** UseEffect isSuccess navigate ************");
+    // console.log("*************** UseEffect isSuccess navigate ************");
     if (isSuccess) {
       setUsername("");
       setPassword("");
@@ -70,7 +70,7 @@ const NewUserForm = () => {
   }, [isSuccess, navigate]);
 
   const handleCheckEmail = (checkedEmail) => {
-    console.log("-------------- handleCheckEmail DEBUT --------------");
+    // console.log("-------------- handleCheckEmail DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidUsername(USER_REGEX.test(username));
 
@@ -83,15 +83,15 @@ const NewUserForm = () => {
     }
 
     // MAJ state Email pour déclencher useEffect de contrôle
-    console.log("email : " + checkedEmail);
+    // console.log("email : " + checkedEmail);
 
     setEmail(checkedEmail);
     setValidEmail(EMAIL_REGEX.test(checkedEmail));
-    console.log("-------------- handleCheckEmail FIN --------------");
+    // console.log("-------------- handleCheckEmail FIN --------------");
   };
 
   const handleCheckUsername = (checkedUsername) => {
-    console.log("-------------- handleCheckUsername DEBUT --------------");
+    // console.log("-------------- handleCheckUsername DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
 
@@ -102,14 +102,14 @@ const NewUserForm = () => {
       setMessageInfo("Pseudo invalide");
     }
     // MAJ state Username pour déclencher useEffect de contrôle
-    console.log("username : " + checkedUsername);
+    // console.log("username : " + checkedUsername);
     setUsername(checkedUsername);
     setValidUsername(USER_REGEX.test(checkedUsername));
-    console.log("-------------- handleCheckUsername FIN --------------");
+    // console.log("-------------- handleCheckUsername FIN --------------");
   };
 
   const handleCheckPassword = (checkedPassword) => {
-    console.log("-------------- handleCheckPassword DEBUT --------------");
+    // console.log("-------------- handleCheckPassword DEBUT --------------");
     // Contrôle des données inchangées pour maj indicateurs
     setValidEmail(EMAIL_REGEX.test(email));
     setValidUsername(USER_REGEX.test(username));
@@ -123,77 +123,77 @@ const NewUserForm = () => {
     // MAJ state Password pour déclencher useEffect de contrôle
     setPassword(checkedPassword);
     setValidPassword(PWD_REGEX.test(checkedPassword));
-    console.log("-------------- handleCheckPassword FIN --------------");
+    // console.log("-------------- handleCheckPassword FIN --------------");
   };
 
   const handleCanSave = () => {
-    console.log("-------------- handleCanSave DEBUT --------------");
+    // console.log("-------------- handleCanSave DEBUT --------------");
 
     const newCanSave =
       [validPassword, validUsername, validEmail].every(Boolean) && !isLoading;
     setCanSave(newCanSave);
     // console.log("validRole : " + validRole);
-    console.log("validUsername : " + validUsername);
-    console.log("validEmail : " + validEmail);
-    console.log("validPassword : " + validPassword);
-    console.log("canSave : " + newCanSave);
+    // console.log("validUsername : " + validUsername);
+    // console.log("validEmail : " + validEmail);
+    // console.log("validPassword : " + validPassword);
+    // console.log("canSave : " + newCanSave);
 
-    console.log("-------------- handleCanSave FIN --------------");
+    // console.log("-------------- handleCanSave FIN --------------");
   };
 
   // const onUsernameChanged = (e) => setUsername(e.target.value);
 
   const onUsernameChanged = (e) => {
-    console.log("-------------- onUsernameChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onUsernameChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setUsername(e.target.value);
     handleCheckUsername(e.target.value);
-    console.log("-------------- onUsernameChanged FIN --------------");
+    // console.log("-------------- onUsernameChanged FIN --------------");
   };
 
   // const onPasswordChanged = (e) => setPassword(e.target.value);
   const onPasswordChanged = (e) => {
-    console.log("-------------- onPasswordChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onPasswordChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setPassword(e.target.value);
     handleCheckPassword(e.target.value);
-    console.log("-------------- onPasswordChanged FIN --------------");
+    // console.log("-------------- onPasswordChanged FIN --------------");
   };
 
   // const onEmailChanged = (e) => setEmail(e.target.value);
   const onEmailChanged = (e) => {
-    console.log("-------------- onEmailChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onEmailChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setEmail(e.target.value);
     handleCheckEmail(e.target.value);
-    console.log("-------------- onEmailChanged FIN --------------");
+    // console.log("-------------- onEmailChanged FIN --------------");
   };
 
   // const onRoleChanged = (e) => setRole(e.target.value);
   const onRoleChanged = (e) => {
-    console.log("-------------- onRoleChanged DEBUT --------------");
-    console.log("e.target.value");
-    console.log(e.target.value);
+    // console.log("-------------- onRoleChanged DEBUT --------------");
+    // console.log("e.target.value");
+    // console.log(e.target.value);
     setRole(e.target.value);
     handleCanSave(); // rôle toujours OK car select
-    console.log("-------------- onRoleChanged FIN --------------");
+    // console.log("-------------- onRoleChanged FIN --------------");
   };
 
   // const onActiveChanged = (e) => setActive((prev) => !prev);
   const onActiveChanged = (e) => {
-    console.log("-------------- onActiveChanged DEBUT --------------");
+    // console.log("-------------- onActiveChanged DEBUT --------------");
 
     setActive((prev) => !prev);
     handleCanSave(); // statut toujours OK car checkbox
-    console.log("-------------- onActiveChanged FIN --------------");
+    // console.log("-------------- onActiveChanged FIN --------------");
   };
 
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
-    console.log("-------------- onSaveUserClicked DEBUT --------------");
+    // console.log("-------------- onSaveUserClicked DEBUT --------------");
 
     try {
       if (canSave) {
@@ -211,7 +211,7 @@ const NewUserForm = () => {
       console.log("Une erreur s'est produite");
     }
 
-    console.log("-------------- onSaveUserClicked FIN --------------");
+    // console.log("-------------- onSaveUserClicked FIN --------------");
   };
 
   const options = Object.values(ROLES).map((role) => {

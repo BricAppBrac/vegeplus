@@ -8,11 +8,11 @@ const RecipeCard = ({ recipe }) => {
   const dispatch = useDispatch();
 
   const handleDetails = () => {
-    console.log("handleDetails");
-    console.log(recipe.title);
+    // console.log("handleDetails");
+    // console.log(recipe.title);
     dispatch(setChecked(recipe));
     dispatch(createRecipe(recipe));
-    console.log("après dispatch setChecked et createRecipe");
+    // console.log("après dispatch setChecked et createRecipe");
   };
 
   return (

@@ -42,7 +42,7 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
           categories: initialRecipeData.categories,
           steps: initialRecipeData.steps,
         };
-        console.log("Request body sent to the server:", requestBody);
+        // console.log("Request body sent to the server:", requestBody);
 
         return {
           url: "/recipe",
@@ -50,13 +50,13 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
           body: requestBody,
         };
       },
-      onQueryStarted: () => {
-        console.log("Mutation started: addNewRecipe");
-      },
-      onQuerySuccess: (response) => {
-        console.log("Mutation succeeded: addNewRecipe");
-        console.log("Response from server:", response);
-      },
+      // onQueryStarted: () => {
+      //   console.log("Mutation started: addNewRecipe");
+      // },
+      // onQuerySuccess: (response) => {
+      //   console.log("Mutation succeeded: addNewRecipe");
+      //   console.log("Response from server:", response);
+      // },
       onQueryError: (error) => {
         console.error("Mutation failed: addNewRecipe", error);
       },
@@ -69,11 +69,11 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
         const requestBody = {
           ...updatedRecipeData,
         };
-        console.log("Request body sent to the server for update:", requestBody);
-        console.log(
-          "Request body._id sent to the server for update:",
-          updatedRecipeData._id
-        );
+        // console.log("Request body sent to the server for update:", requestBody);
+        // console.log(
+        //   "Request body._id sent to the server for update:",
+        //   updatedRecipeData._id
+        // );
 
         return {
           url: `/recipe/${updatedRecipeData._id}`,
@@ -81,13 +81,13 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
           body: requestBody,
         };
       },
-      onQueryStarted: () => {
-        console.log("Mutation started: updateRecipe");
-      },
-      onQuerySuccess: (response) => {
-        console.log("Mutation succeeded: updateRecipe");
-        console.log("Response from server:", response);
-      },
+      // onQueryStarted: () => {
+      //   console.log("Mutation started: updateRecipe");
+      // },
+      // onQuerySuccess: (response) => {
+      //   console.log("Mutation succeeded: updateRecipe");
+      //   console.log("Response from server:", response);
+      // },
       onQueryError: (error) => {
         console.error("Mutation failed: updateRecipe", error);
       },

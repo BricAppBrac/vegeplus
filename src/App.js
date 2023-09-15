@@ -12,10 +12,6 @@ import MenusValides from "./pages/MenusValides";
 import PageListeCourses from "./pages/PageListeCourses";
 import EditUser from "./feature/users/EditUser";
 import NewUserForm from "./feature/users/NewUserForm";
-// import EditMenu from "./feature/menus/EditMenu";
-// import NewMenu from "./feature/menus/NewMenu";
-// import EditRecipe from "./feature/recipes/EditRecipe";
-// import NewRecipe from "./feature/recipes/NewRecipe";
 import UsersList from "./feature/users/UsersList";
 import RecipesList from "./feature/recipes/RecipesList";
 import MenusList from "./feature/menus/MenusList";
@@ -32,10 +28,8 @@ const App = () => {
       <Routes>
         {/* ***** Public routes pour utilisateur Inconnu*/}
         <Route path="/*" element={<HomeListeRecettes />} />
-
         <Route path="/mentions-legales" element={<Mentions />} />
         <Route path="/contact" element={<Contact />} />
-
         <Route path="/pagedetailsrecipe" element={<PageDetailsRecipe />} />
 
         {/* ***** Protected routes pour utilisateur Inscrit, Abonné et Administrateur*/}
@@ -46,12 +40,10 @@ const App = () => {
           >
             <Route element={<Prefetch />}>
               {/* *****  Protected routes pour utilisateur Inscrit compris*/}
-
               <Route
                 path="/PrivateRoute/HomeListeRecettesProtect"
                 element={<HomeListeRecettesSecurisee />}
               />
-
               <Route path="/homemenu" element={<HomeMenu />} />
 
               {/* *****  Protected routes pour utilisateur Abonné et Administrateur*/}
@@ -93,18 +85,17 @@ const App = () => {
 
                   <Route path="/recipes" element={<RecipesList />} />
                   <Route path="/recipes/admin" element={<RecipesList />} />
-                  {/* <Route path="/recipes/:id" element={<EditRecipe />} /> */}
-                  {/* <Route path="/recipes/new" element={<NewRecipe />} /> */}
-
                   <Route path="/menus" element={<MenusList />} />
-                  {/* <Route path="/menus/:id" element={<EditMenu />} />
-                    <Route path="/menus/new" element={<NewMenu />} /> */}
                 </Route>
+                {/*Fin ROUTES avec auth ADMIN */}
               </Route>
+              {/*Fin ROUTES avec auth ADMIN et ABONNE */}
             </Route>
+            {/*Fin PREFETCH */}
           </Route>
+          {/*Fin ROUTES avec auth ADMIN et ABONNE et INSCRIT*/}
         </Route>
-        {/* End of Protected routes */}
+        {/* End of Protected routes PERSISTLOGIN*/}
       </Routes>
     </BrowserRouter>
   );

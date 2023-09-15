@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignUp, setCloseUp } from "../feature/signInUp.slice";
-import { useAddNewUserMutation } from "../feature/users/usersApiSlice";
+import {
+  useAddNewUserMutation,
+  useCheckDuplicateEmailQuery,
+  useCheckDuplicateUsernameQuery,
+} from "../feature/users/usersApiSlice";
 import { useSendEmailMutation } from "../feature/auth/authApiSlice";
 
 const SignUp = () => {
@@ -28,10 +32,42 @@ const SignUp = () => {
   const PWD_REGEX = /^[A-z0-9!*#$%]{8,12}$/;
   const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-  const [addNewUser, { isLoading, isSuccess, isError, error }] =
-    useAddNewUserMutation();
+  const [
+    addNewUser,
+    {
+      isLoading: addUserLoading,
+      isSuccess: addUserSuccess,
+      isError: isAddUserError,
+      error: addUserError,
+    },
+  ] = useAddNewUserMutation();
+
+  const [
+    checkDuplicateUsername,
+    {
+      isLoading: checkUsernameLoading,
+      isSuccess: checkUsernameSuccess,
+      isError: isCheckUsernameError,
+      error: checkUsernameError,
+    },
+  ] = useCheckDuplicateUsernameQuery();
+
+  const [
+    checkDuplicateEmail,
+    {
+      isLoading: checkEmailLoading,
+      isSuccess: checkEmailSuccess,
+      isError: checkEmailError,
+      error: isCheckEmailError,
+    },
+  ] = useCheckDuplicateEmailQuery();
 
   const [sendEmail] = useSendEmailMutation();
+
+  // Initialiser une variable pour suivre les erreurs de handleForm
+  let hasError = false;
+
+  // const [formSubmitted, setFormSubmitted] = useState(false);
 
   // const { refetch } = useGetUsersQuery();
 
@@ -63,35 +99,28 @@ const SignUp = () => {
   const handleCreateUser = async () => {
     console.log("handleCreateUser début");
 
-    try {
-      const result = await addNewUser({
-        username: userPseudo,
-        password: userPassword,
-        email: userEmail,
-        role: userRole,
-        active: userActive,
-      });
-      if (result.error) {
-        setMessageInfo(result.error.data.message);
-      } else {
-        // Remise à zéro des inputs
-        setUserEmail("");
-        setUserPseudo("");
-        setUserPassword("");
-        setUserRepeatPassword("");
-        console.log(
-          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
-        );
-        setMessageInfo(
-          "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
-        );
-      }
+    const result = await addNewUser({
+      username: userPseudo,
+      password: userPassword,
+      email: userEmail,
+      role: userRole,
+      active: userActive,
+    });
 
-      // refetch();
-    } catch (error) {
-      // Gérer l'erreur ici si nécessaire
-      console.log("Une erreur s'est produite");
-      console.log(error);
+    if (result.error) {
+      setMessageInfo(result.error.data.message);
+    } else {
+      // Remise à zéro des inputs
+      setUserEmail("");
+      setUserPseudo("");
+      setUserPassword("");
+      setUserRepeatPassword("");
+      console.log(
+        "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+      );
+      setMessageInfo(
+        "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+      );
     }
 
     console.log("handleCreateUser fin");
@@ -101,89 +130,142 @@ const SignUp = () => {
     console.log("handleSendEmail début");
     // Envoyer un email à l'adresse userEmail pour confirmer existence de cette adresse
 
-    try {
-      // A compléter
-      const emailData = {
-        to: userEmail,
-        subject: "Finalisation de votre inscription à l'application VG+",
-        text: "Bienvenue! Votre inscription gratuite est validée. Pour vous désinscrire, merci d'en faire la demande à l'adresse bricappbrac@gmail.com",
-      };
+    // A compléter
+    const emailData = {
+      to: userEmail,
+      subject: "Finalisation de votre inscription à l'application VG+",
+      text: "Bienvenue! Votre inscription gratuite est validée. Vous pourrez-vous désinscrire dans votre espace perso",
+    };
 
-      console.log("***** emailData ********");
-      console.log(emailData);
+    console.log("***** emailData ********");
+    console.log(emailData);
 
-      const response = await sendEmail(emailData);
+    const response = await sendEmail(emailData);
+    console.log("response");
+    console.log(response);
+
+    if (
+      response.data.message &&
+      response.data.message === "E-mail envoyé avec succès"
+    ) {
+      // L'envoi de l'email a réussi
+      handleCreateUser();
+    } else {
+      // L'envoi de l'email n'a pas abouti
+      setMessageInfo("Pb lors de la vérification de votre email");
+      console.log("Email inexistant ?");
       console.log("response");
       console.log(response);
-
-      if (response.data.message === "E-mail envoyé avec succès") {
-        // L'envoi de l'email a réussi
-        handleCreateUser();
-      } else {
-        // L'envoi de l'email n'a pas abouti
-        setMessageInfo("Pb lors de la vérification de votre email");
-        console.log("Email inexistant ?");
-        console.log("response");
-        console.log(response);
-        console.log("response.data");
-        console.log(response.data);
-        console.log("response.error");
-        console.log(response.error);
-      }
-
-      // refetch();
-    } catch (error) {
-      // Gérer l'erreur ici si nécessaire
-      console.log("Une erreur s'est produite");
-      console.log(error);
+      console.log("response.error");
+      console.log(response.error);
     }
 
     console.log("handleSendEmail fin");
   };
 
-  const handleForm = async (e) => {
-    e.preventDefault();
-
+  const handleCheckPseudo = async () => {
     // Contrôle de la structure du Pseudo
-
+    console.log("handleCheckPseudo");
     if (!checkPseudo(userPseudo)) {
       setMessageInfo("Pseudo invalide");
       console.log("Pseudo invalide: car 4-25 / AZaz09");
       console.log(userPseudo);
-
-      return;
+      hasError = true;
     }
+  };
 
+  const handleCheckEmail = async () => {
     // Contrôle de la structure de l'email
-
+    console.log("handleCheckEmail");
     if (!checkEmail(userEmail)) {
       setMessageInfo("Email invalide");
       console.log("Email invalide : ");
       console.log(userEmail);
-
-      return;
+      hasError = true;
     }
+  };
 
+  const handleCheckDuplicateUsername = async () => {
+    console.log("handleCheckDuplicateUsername");
+    const dataUsername = await checkDuplicateUsername({
+      username: userPseudo,
+    });
+
+    if (dataUsername.error) {
+      setMessageInfo(
+        "Une erreur s'est produite lors de la vérification du pseudo."
+      );
+      console.log("Error checking duplicate username:", dataUsername.error);
+      hasError = true;
+    } else if (dataUsername && dataUsername.exists) {
+      setMessageInfo("Pseudo déjà utilisé");
+      hasError = true;
+    }
+  };
+
+  const handleCheckDuplicateEmail = async () => {
+    console.log("handleCheckDuplicateEmail");
+    const dataEmail = await checkDuplicateEmail({
+      email: userEmail,
+    });
+
+    if (dataEmail.error) {
+      setMessageInfo(
+        "Une erreur s'est produite lors de la vérification de l' email."
+      );
+      console.log("Error checking duplicate email:", dataEmail.error);
+      hasError = true;
+    } else if (dataUsername && dataEmail.exists) {
+      setMessageInfo("Email déjà utilisé");
+      hasError = true;
+    }
+  };
+
+  const handleCheckPassword = async () => {
+    console.log("handleCheckPassword");
+    // Contrôle du mot de passe
     if (!checkPassword(userPassword)) {
       setMessageInfo(
         "Mot de passe invalide: 1 MAJ / 1 min / 1 chiffre / !*#$% / car: 8-12"
       );
       console.log("Mot de passe invalide");
-
-      return;
+      hasError = true;
     }
+
     // Comparaison des mots de passe saisis
-    else if (userPassword !== userRepeatPassword) {
+    if (userPassword !== userRepeatPassword) {
       setMessageInfo("les mots de passe ne sont pas égaux");
       console.log("Err mots de passe non égaux");
-
-      return;
-    } else {
-      // Vérification de l'existence de l'email avant création d'un compte utilisateur dans la BDD
-      handleSendEmail();
-
-      return;
+      hasError = true;
     }
+  };
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+    console.log("handleForm - début");
+
+    // Contrôle de la structure du Pseudo
+    await handleCheckPseudo();
+
+    // Contrôle de la structure de l'email
+    await handleCheckEmail();
+
+    // Check for duplicate username
+    await handleCheckDuplicateUsername();
+
+    // Check for duplicate email
+    await handleCheckDuplicateEmail();
+
+    // Contrôle du mot de passe
+    await handleCheckPassword();
+
+    if (!hasError) {
+      // Si aucune erreur n'a été détectée, appeler handleSendEmail
+      console.log("Pas d'erreur, envoi de l'email");
+      handleSendEmail();
+    }
+
+    console.log("handleForm - fin");
   };
 
   const closeModal = async () => {
@@ -217,7 +299,14 @@ const SignUp = () => {
                     maxLength={25}
                     value={userPseudo}
                     autoComplete="off"
-                    onChange={(e) => setUserPseudo(e.target.value)}
+                    onChange={(e) => {
+                      setUserPseudo(e.target.value);
+                    }}
+                    // onChange={(e) => {
+                    //   if (!formSubmitted) {
+                    //     setUserPseudo(e.target.value);
+                    //   }
+                    // }}
                   />
                 </div>
                 <div className="signup-input">
@@ -230,7 +319,14 @@ const SignUp = () => {
                     id="signupEmail"
                     value={userEmail}
                     autoComplete="off"
-                    onChange={(e) => setUserEmail(e.target.value)}
+                    onChange={(e) => {
+                      setUserEmail(e.target.value);
+                    }}
+                    // onChange={(e) => {
+                    //   if (!formSubmitted) {
+                    //     setUserEmail(e.target.value);
+                    //   }
+                    // }}
                   />
                 </div>
                 <div className="signup-input">
@@ -260,7 +356,7 @@ const SignUp = () => {
                   />
                 </div>
                 <p className="espace-message">{messageInfo}</p>
-                <button>Valider</button>
+                <button type="submit">Valider</button>
               </form>
             </div>
           </div>

@@ -56,15 +56,15 @@ const DétailsEdit = () => {
   const navigate = useNavigate();
 
   const handleUpdateRecipe = async (data) => {
-    console.log("data pour update");
-    console.log(data);
+    // console.log("data pour update");
+    // console.log(data);
     try {
       const response = await updateRecipeMutation(data);
 
       if (response.error) {
         console.error("Failed to update recipe:", response.error);
       } else {
-        console.log("Successfully updated recipe");
+        // console.log("Successfully updated recipe");
         // Après une mise à jour réussie, appeler refetch()
         refetch();
       }
@@ -82,7 +82,7 @@ const DétailsEdit = () => {
   const handleTitle = (updateTitle) => {
     //--------------------------------------
     // setEditTitle(updateTitle);
-    console.log("handleTitle : " + updateTitle);
+    // console.log("handleTitle : " + updateTitle);
 
     data = {
       title: newRecipeData.title,
@@ -95,16 +95,16 @@ const DétailsEdit = () => {
       _id: newRecipeData._id,
     };
 
-    console.log("data avant");
-    console.log(data);
+    // console.log("data avant");
+    // console.log(data);
     data.title = updateTitle;
-    console.log("data après");
-    console.log(data);
+    // console.log("data après");
+    // console.log(data);
 
     // dispatch(editNewRecipe(data));
     // console.log("après dispatch editNewRecipe");
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
   };
   ////////////////////////////
   // Stockage des saisons
@@ -122,30 +122,30 @@ const DétailsEdit = () => {
       _id: newRecipeData._id,
     };
     if (document.getElementById(newSeas).checked === true) {
-      console.log("checked");
+      // console.log("checked");
       // arrayNew = editSeasons;
       arrayW = [];
       arrayNew = data.seasons;
       arrayW.push(newSeas);
       arrayNew = [...arrayNew, ...arrayW];
     } else {
-      console.log("décochée");
+      // console.log("décochée");
       // arrayW = editSeasons;
       arrayW = data.seasons;
       arrayNew = arrayW.filter(function (element) {
         return element !== newSeas;
       });
     }
-    console.log("Seasons array");
-    console.log(arrayNew);
+    // console.log("Seasons array");
+    // console.log(arrayNew);
     // setEditSeasons(arrayNew);
     data.seasons = [...arrayNew];
-    console.log("data handleSeasons");
-    console.log(data);
+    // console.log("data handleSeasons");
+    // console.log(data);
     // dispatch(editNewRecipe(data));
     // console.log("après dispatch editNewRecipe");
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
     // arrayNew = [];
     // arrayW = [];
   };
@@ -154,12 +154,12 @@ const DétailsEdit = () => {
   /////////////////////////////
   const handleIngredients = (newVal, ingId) => {
     //--------------------------------------
-    console.log("appel handleIngredients");
-    console.log("newVal Ingrédient :" + newVal);
-    console.log("ingId :" + ingId);
-    console.log(
-      "newRecipeData.ingredients.length : " + newRecipeData.ingredients.length
-    );
+    // console.log("appel handleIngredients");
+    // console.log("newVal Ingrédient :" + newVal);
+    // console.log("ingId :" + ingId);
+    // console.log(
+    //   "newRecipeData.ingredients.length : " + newRecipeData.ingredients.length
+    // );
 
     data = {
       title: newRecipeData.title,
@@ -172,8 +172,8 @@ const DétailsEdit = () => {
       _id: newRecipeData._id,
     };
 
-    console.log("data début *************************");
-    console.log(data);
+    // console.log("data début *************************");
+    // console.log(data);
 
     arrayNewIngredients = [...data.ingredients];
     arrayNewQuantities = [...data.quantities];
@@ -182,7 +182,7 @@ const DétailsEdit = () => {
     // Gestion des lignes blanches : si ingId est > array.length, alimenter par du blanc
 
     if (ingId > newRecipeData.ingredients.length) {
-      console.log("ingId > newRecipeData.ingredients.length");
+      // console.log("ingId > newRecipeData.ingredients.length");
       for (let i = newRecipeData.ingredients.length; i < ingId; i++) {
         arrayW = [];
 
@@ -201,21 +201,21 @@ const DétailsEdit = () => {
         data = newData;
 
         dispatch(createRecipe(data));
-        console.log("après dispatch createRecipe ligne vide : " + i);
+        // console.log("après dispatch createRecipe ligne vide : " + i);
       }
     }
-    console.log(data);
-    console.log("arrayNew :");
-    console.log(arrayNewIngredients);
-    console.log(arrayNewQuantities);
-    console.log(arrayNewCategories);
+    // console.log(data);
+    // console.log("arrayNew :");
+    // console.log(arrayNewIngredients);
+    // console.log(arrayNewQuantities);
+    // console.log(arrayNewCategories);
     // Si cette ligne de la recette sélectionnée était déjà renseignée, on remplace la zone concernée
     if (
       checkedRecipe.ingredients[ingId] ||
       checkedRecipe.quantities[ingId] ||
       checkedRecipe.categories[ingId]
     ) {
-      console.log("handleIngredients - ligne existante à maj");
+      // console.log("handleIngredients - ligne existante à maj");
       arrayW = arrayNewIngredients.splice(ingId, 1, newVal);
     }
     // Si cette ligne n'était pas renseignée dans la recette sélectionnée
@@ -227,7 +227,7 @@ const DétailsEdit = () => {
         !data.quantities[ingId] &&
         !data.categories[ingId]
       ) {
-        console.log("handleIngredients - nouveau trio - premier caractère");
+        // console.log("handleIngredients - nouveau trio - premier caractère");
         arrayW = [];
         arrayW.push(newVal);
         arrayNewIngredients = [...arrayNewIngredients, ...arrayW];
@@ -247,20 +247,20 @@ const DétailsEdit = () => {
       // caractères suivants
       else {
         arrayW = [];
-        console.log("handleIngredients - nouveau trio - caractères suivants");
+        // console.log("handleIngredients - nouveau trio - caractères suivants");
         arrayW = arrayNewIngredients.splice(ingId, 1, newVal);
       }
     }
-    console.log("arrayNewIngredients");
-    console.log(arrayNewIngredients);
+    // console.log("arrayNewIngredients");
+    // console.log(arrayNewIngredients);
     data.ingredients = arrayNewIngredients;
 
-    console.log("data après splice/push handleIngredients");
+    // console.log("data après splice/push handleIngredients");
 
-    console.log(data);
+    // console.log(data);
 
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
     // }
 
     ////////////////////////////////////////////////////////////////////////
@@ -292,13 +292,13 @@ const DétailsEdit = () => {
       // dispatch(editNewRecipe(data));
       // console.log("après dispatch editNewRecipe");
       dispatch(createRecipe(data));
-      console.log("après dispatch createRecipe");
+      // console.log("après dispatch createRecipe");
       validate = true;
       handleValidationOpen(ingId);
-      console.log(
-        "data après handleValidationOpen avec 3 zones trio à blanc - handleIngredients"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec 3 zones trio à blanc - handleIngredients"
+      // );
+      // console.log(data);
     } else if (
       !data.ingredients[ingId] ||
       !data.quantities[ingId] ||
@@ -307,25 +307,25 @@ const DétailsEdit = () => {
       setMessageEdit("Saisir un ingrédient, une quantité et une catégorie");
       validate = false;
       handleValidationOpen(ingId);
-      console.log(
-        "data après handleValidationOpen avec zone trio à blanc - handleIngredients"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec zone trio à blanc - handleIngredients"
+      // );
+      // console.log(data);
     } else {
       setMessageEdit("Effectuer les modifications et valider");
       validate = true;
       handleValidationOpen(ingId);
-      console.log(
-        "data après handleValidationOpen zones trio renseignées - handleIngredients"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen zones trio renseignées - handleIngredients"
+      // );
+      // console.log(data);
     }
     ////////////////////////////////////////////////
     // Contrôle du trio pour toutes les autres lignes
     ////////////////////////////////////////////////
     handleTrioFinal();
-    console.log("data après handleTrioFinal");
-    console.log(data);
+    // console.log("data après handleTrioFinal");
+    // console.log(data);
   };
   /////////////////////////////
   // Stockage des quantités
@@ -338,9 +338,9 @@ const DétailsEdit = () => {
     editCategoryRef
   ) => {
     //--------------------------------------
-    console.log("appel handleQuantities :");
-    console.log("newQtt : " + newQtt);
-    console.log("qttId :" + qttId);
+    // console.log("appel handleQuantities :");
+    // console.log("newQtt : " + newQtt);
+    // console.log("qttId :" + qttId);
 
     data = {
       title: newRecipeData.title,
@@ -353,8 +353,8 @@ const DétailsEdit = () => {
       _id: newRecipeData._id,
     };
 
-    console.log("data début *************************");
-    console.log(data);
+    // console.log("data début *************************");
+    // console.log(data);
     arrayNewIngredients = [...data.ingredients];
     arrayNewQuantities = [...data.quantities];
     arrayNewCategories = [...data.categories];
@@ -362,7 +362,7 @@ const DétailsEdit = () => {
     // Gestion des lignes blanches : si qttId est > array.length, alimenter par du blanc
 
     if (qttId > newRecipeData.quantities.length) {
-      console.log("qttId > newRecipeData.quantities.length");
+      // console.log("qttId > newRecipeData.quantities.length");
       for (let i = newRecipeData.quantities.length; i < qttId; i++) {
         arrayW = [];
         arrayW.push("");
@@ -379,21 +379,21 @@ const DétailsEdit = () => {
         };
         data = newData;
         dispatch(createRecipe(data));
-        console.log("après dispatch createRecipe ligne vide : " + i);
+        // console.log("après dispatch createRecipe ligne vide : " + i);
       }
     }
-    console.log(data);
-    console.log("arrayNew :");
-    console.log(arrayNewIngredients);
-    console.log(arrayNewQuantities);
-    console.log(arrayNewCategories);
+    // console.log(data);
+    // console.log("arrayNew :");
+    // console.log(arrayNewIngredients);
+    // console.log(arrayNewQuantities);
+    // console.log(arrayNewCategories);
     // Si cette ligne de la recette sélectionnée était déjà renseignée, on remplace la zone concernée
     if (
       checkedRecipe.ingredients[qttId] ||
       checkedRecipe.quantities[qttId] ||
       checkedRecipe.categories[qttId]
     ) {
-      console.log("handleQuantities - ligne existante à maj");
+      // console.log("handleQuantities - ligne existante à maj");
       arrayW = arrayNewQuantities.splice(qttId, 1, newQtt);
     }
 
@@ -405,7 +405,7 @@ const DétailsEdit = () => {
         !data.ingredients[qttId] &&
         !data.categories[qttId]
       ) {
-        console.log("handleQuantities - nouveau trio - premier caractère");
+        // console.log("handleQuantities - nouveau trio - premier caractère");
 
         arrayW = [];
         arrayW.push(newQtt);
@@ -426,18 +426,18 @@ const DétailsEdit = () => {
       // caractères suivants
       else {
         arrayW = [];
-        console.log("handleQuantities - nouveau trio - caractères suivants");
+        // console.log("handleQuantities - nouveau trio - caractères suivants");
         arrayW = arrayNewQuantities.splice(qttId, 1, newQtt);
       }
     }
-    console.log("arrayNewQuantities");
-    console.log(arrayNewQuantities);
+    // console.log("arrayNewQuantities");
+    // console.log(arrayNewQuantities);
     data.quantities = arrayNewQuantities;
 
-    console.log("data après splice/push handleQuantities");
-    console.log(data);
+    // console.log("data après splice/push handleQuantities");
+    // console.log(data);
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
 
     //////////////////////////////////////////////////////
     // Contrôle du trio Ing / Qtt / Cat
@@ -469,13 +469,13 @@ const DétailsEdit = () => {
       // dispatch(editNewRecipe(data));
       // console.log("après dispatch editNewRecipe");
       dispatch(createRecipe(data));
-      console.log("après dispatch createRecipe");
+      // console.log("après dispatch createRecipe");
       validate = true;
       handleValidationOpen(qttId);
-      console.log(
-        "data après handleValidationOpen avec 3 zones trio à blanc - handleQuantities"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec 3 zones trio à blanc - handleQuantities"
+      // );
+      // console.log(data);
     } else if (
       !data.ingredients[qttId] ||
       !data.quantities[qttId] ||
@@ -484,24 +484,24 @@ const DétailsEdit = () => {
       setMessageEdit("Saisir un ingrédient, une quantité et une catégorie");
       validate = false;
       handleValidationOpen(qttId);
-      console.log(
-        "data après handleValidationOpen avec zone trio à blanc - handleQuantities"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec zone trio à blanc - handleQuantities"
+      // );
+      // console.log(data);
     } else {
       setMessageEdit("Effectuer les modifications et valider");
       validate = true;
       handleValidationOpen(qttId);
-      console.log(
-        "data après handleValidationOpen zones trio renseignées - handleQuantities"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen zones trio renseignées - handleQuantities"
+      // );
+      // console.log(data);
       ////////////////////////////////////////////////
       // Contrôle du trio pour toutes les autres lignes
       ////////////////////////////////////////////////
       handleTrioFinal();
-      console.log("data après handleTrioFinal");
-      console.log(data);
+      // console.log("data après handleTrioFinal");
+      // console.log(data);
     }
   };
   /////////////////////////////
@@ -509,9 +509,9 @@ const DétailsEdit = () => {
   /////////////////////////////
   const handleCategories = (newCat, catId) => {
     //--------------------------------------
-    console.log("appel handleCategories");
-    console.log("newCat Catégorie :" + newCat);
-    console.log("catId :" + catId);
+    // console.log("appel handleCategories");
+    // console.log("newCat Catégorie :" + newCat);
+    // console.log("catId :" + catId);
 
     data = {
       title: newRecipeData.title,
@@ -524,8 +524,8 @@ const DétailsEdit = () => {
       _id: newRecipeData._id,
     };
 
-    console.log("data début *************************");
-    console.log(data);
+    // console.log("data début *************************");
+    // console.log(data);
 
     arrayNewCategories = [...data.categories];
     arrayNewQuantities = [...data.quantities];
@@ -534,7 +534,7 @@ const DétailsEdit = () => {
     // Gestion des lignes blanches : si catId est > array.length, alimenter par du blanc
 
     if (catId > newRecipeData.categories.length) {
-      console.log("catId > newRecipeData.categories.length");
+      // console.log("catId > newRecipeData.categories.length");
       for (let i = newRecipeData.categories.length; i < catId; i++) {
         arrayW = [];
         arrayW.push("");
@@ -551,22 +551,22 @@ const DétailsEdit = () => {
         };
         data = newData;
         dispatch(createRecipe(data));
-        console.log("après dispatch createRecipe ligne vide : " + i);
+        // console.log("après dispatch createRecipe ligne vide : " + i);
       }
     }
-    console.log(data);
+    // console.log(data);
 
-    console.log("arrayNew :");
-    console.log(arrayNewIngredients);
-    console.log(arrayNewQuantities);
-    console.log(arrayNewCategories);
+    // console.log("arrayNew :");
+    // console.log(arrayNewIngredients);
+    // console.log(arrayNewQuantities);
+    // console.log(arrayNewCategories);
     // Si cette ligne de la recette sélectionnée était déjà renseignée, on remplace la zone concernée
     if (
       checkedRecipe.ingredients[catId] ||
       checkedRecipe.quantities[catId] ||
       checkedRecipe.categories[catId]
     ) {
-      console.log("handleCategories - ligne existante à maj");
+      // console.log("handleCategories - ligne existante à maj");
       arrayW = arrayNewCategories.splice(catId, 1, newCat);
     }
 
@@ -578,7 +578,7 @@ const DétailsEdit = () => {
         !data.ingredients[catId] &&
         !data.categories[catId]
       ) {
-        console.log("handleCategories - nouveau trio - premier caractère");
+        // console.log("handleCategories - nouveau trio - premier caractère");
 
         arrayW = [];
         arrayW.push(newCat);
@@ -602,18 +602,18 @@ const DétailsEdit = () => {
       // caractères suivants
       else {
         arrayW = [];
-        console.log("handleCategories - nouveau trio - caractères suivants");
+        // console.log("handleCategories - nouveau trio - caractères suivants");
         arrayW = arrayNewCategories.splice(catId, 1, newCat);
       }
     }
-    console.log("arrayNewCategories");
-    console.log(arrayNewCategories);
+    // console.log("arrayNewCategories");
+    // console.log(arrayNewCategories);
     data.categories = arrayNewCategories;
 
-    console.log("data après splice/push handleCategories");
-    console.log(data);
+    // console.log("data après splice/push handleCategories");
+    // console.log(data);
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
 
     ////////////////////////////////////////////////
     // Contrôle du trio Ing / Qtt / Cat
@@ -624,8 +624,8 @@ const DétailsEdit = () => {
       !data.categories[catId]
     ) {
       setMessageEdit("Ligne effacée, valider pour confirmer");
-      console.log("arrayNewIngredients : &&&&");
-      console.log(arrayNewIngredients);
+      // console.log("arrayNewIngredients : &&&&");
+      // console.log(arrayNewIngredients);
       validate = true;
 
       arrayW = arrayNewIngredients.filter(function (element, index) {
@@ -649,13 +649,13 @@ const DétailsEdit = () => {
       // dispatch(editNewRecipe(data));
       // console.log("après dispatch editNewRecipe");
       dispatch(createRecipe(data));
-      console.log("après dispatch createRecipe");
+      // console.log("après dispatch createRecipe");
       validate = true;
       handleValidationOpen(catId);
-      console.log(
-        "data après handleValidationOpen avec 3 zones trio à blanc - handleCategories"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec 3 zones trio à blanc - handleCategories"
+      // );
+      // console.log(data);
     } else if (
       !data.ingredients[catId] ||
       !data.quantities[catId] ||
@@ -664,24 +664,24 @@ const DétailsEdit = () => {
       setMessageEdit("Saisir un ingrédient, une quantité et une catégorie");
       validate = false;
       handleValidationOpen(catId);
-      console.log(
-        "data après handleValidationOpen avec zone trio à blanc - handleCategories"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen avec zone trio à blanc - handleCategories"
+      // );
+      // console.log(data);
     } else {
       setMessageEdit("Effectuer les modifications et valider");
       validate = true;
       handleValidationOpen(catId);
-      console.log(
-        "data après handleValidationOpen zones trio renseignées - handleCategories"
-      );
-      console.log(data);
+      // console.log(
+      //   "data après handleValidationOpen zones trio renseignées - handleCategories"
+      // );
+      // console.log(data);
       ////////////////////////////////////////////////
       // Contrôle du trio pour toutes les autres lignes
       ////////////////////////////////////////////////
       handleTrioFinal();
-      console.log("data après handleTrioFinal");
-      console.log(data);
+      // console.log("data après handleTrioFinal");
+      // console.log(data);
     }
 
     // arrayW = [];
@@ -694,10 +694,10 @@ const DétailsEdit = () => {
   /////////////////////////////
   const handleSteps = (newStp, stpId) => {
     //--------------------------------------
-    console.log("appel handleSteps");
-    console.log("newStp Etape : " + newStp);
-    console.log("stpId : " + stpId);
-    console.log("newRecipeData.steps.length : " + newRecipeData.steps.length);
+    // console.log("appel handleSteps");
+    // console.log("newStp Etape : " + newStp);
+    // console.log("stpId : " + stpId);
+    // console.log("newRecipeData.steps.length : " + newRecipeData.steps.length);
     data = {
       title: newRecipeData.title,
       author: "Melissande",
@@ -710,13 +710,13 @@ const DétailsEdit = () => {
     };
 
     arrayNew = [...data.steps];
-    console.log("arrayNew steps avant lignes blanches");
-    console.log(arrayNew);
+    // console.log("arrayNew steps avant lignes blanches");
+    // console.log(arrayNew);
 
     // Gestion des lignes blanches : si stpId est > array.length, alimenter par du blanc
 
     if (stpId > newRecipeData.steps.length) {
-      console.log("stpId > newRecipeData.steps.length");
+      // console.log("stpId > newRecipeData.steps.length");
       for (let i = newRecipeData.steps.length; i < stpId; i++) {
         arrayW = [];
 
@@ -727,45 +727,45 @@ const DétailsEdit = () => {
         data = newData;
 
         dispatch(createRecipe(data));
-        console.log("après dispatch createRecipe ligne vide : " + i);
+        // console.log("après dispatch createRecipe ligne vide : " + i);
       }
     }
-    console.log(data);
+    // console.log(data);
 
     // Si cette ligne de la recette sélectionnée était déjà renseignée, on remplace la zone concernée
     if (checkedRecipe.steps[stpId]) {
-      console.log("arrayNew");
-      console.log(arrayNew);
+      // console.log("arrayNew");
+      // console.log(arrayNew);
       arrayW = arrayNew.splice(stpId, 1, newStp);
-      console.log("arrayW");
-      console.log(arrayW);
+      // console.log("arrayW");
+      // console.log(arrayW);
     } else {
       //Si c'est le premier caractère
 
       if (!data.steps[stpId]) {
         // if (!newRecipeData.steps[stpId]) {
-        console.log("handleSteps - 1er caractère");
+        // console.log("handleSteps - 1er caractère");
         arrayW = [];
         arrayW.push(newStp);
         arrayNew = [...arrayNew, ...arrayW];
-        console.log("arrayNew");
-        console.log(arrayNew);
+        // console.log("arrayNew");
+        // console.log(arrayNew);
       }
       // caractères suivants
       else {
-        console.log("handleSteps - caractères suivants");
+        // console.log("handleSteps - caractères suivants");
         arrayW = arrayNew.splice(stpId, 1, newStp);
-        console.log("arrayNew");
-        console.log(arrayNew);
+        // console.log("arrayNew");
+        // console.log(arrayNew);
       }
     }
 
     newData = { ...data, steps: arrayNew };
     data = newData;
-    console.log("data après splice/push handleSteps");
-    console.log(data);
+    // console.log("data après splice/push handleSteps");
+    // console.log(data);
     dispatch(createRecipe(data));
-    console.log("après dispatch createRecipe");
+    // console.log("après dispatch createRecipe");
 
     // arrayW = [];
     // arrayNew = [];
@@ -774,8 +774,8 @@ const DétailsEdit = () => {
   ////////////////////////////////////
   const handleValidationOpen = (indexRef) => {
     return new Promise((resolve, reject) => {
-      console.log("handleValidationOpen");
-      console.log("validate : " + validate);
+      // console.log("handleValidationOpen");
+      // console.log("validate : " + validate);
       if (validate) {
         document.getElementById("form-validation").disabled = false;
         document.getElementById(
@@ -792,7 +792,7 @@ const DétailsEdit = () => {
           "whitesmoke";
         document.getElementById("category" + indexRef).style.color =
           "rgb(37, 21, 11)";
-        console.log("back white : " + indexRef);
+        // console.log("back white : " + indexRef);
         resolve(); // la promesse est résolue si la validation est correcte
       } else {
         document.getElementById("form-validation").disabled = "disabled";
@@ -810,7 +810,7 @@ const DétailsEdit = () => {
           "#d65630";
         document.getElementById("category" + indexRef).style.color =
           "rgb(206, 228, 187)";
-        console.log("back orange : " + indexRef);
+        // console.log("back orange : " + indexRef);
         resolve(); // la promesse est résolue si la validation est correcte
         // reject(new Error("Validation failed")); // la promesse est rejetée si la validation a échoué
       }
@@ -820,9 +820,9 @@ const DétailsEdit = () => {
   // Contrôle du Trio Ingrédient / Quantité / Catégorie pour toutes les lignes avant validation
   /////////////////////////////////////////////////////////////////////////////////////////////
   function handleTrioFinal() {
-    console.log("handleTrioFinal");
-    console.log("data");
-    console.log(data);
+    // console.log("handleTrioFinal");
+    // console.log("data");
+    // console.log(data);
     validate = true;
 
     //////////////////////////////////////////////
@@ -847,7 +847,7 @@ const DétailsEdit = () => {
         // arrayNewCategoriesStockage.push(data.categories[i]);
         // Cas Ingrédient non renseigné, et l'un des 2 autres renseigné
         if (!data.ingredients[i]) {
-          console.log("ingrédient non renseigné : " + i);
+          // console.log("ingrédient non renseigné : " + i);
           setMessageEdit(
             "*Saisir un ingrédient, une quantité et une catégorie"
           );
@@ -858,7 +858,7 @@ const DétailsEdit = () => {
         }
         // Cas Quantité non renseignée, et l'un des 2 autres renseigné
         if (!data.quantities[i]) {
-          console.log("quantité non renseignée: " + i);
+          // console.log("quantité non renseignée: " + i);
           setMessageEdit(
             "**Saisir un ingrédient, une quantité et une catégorie"
           );
@@ -869,7 +869,7 @@ const DétailsEdit = () => {
         }
         // Cas Catégorie non renseignée, et l'un des 2 autres renseigné
         if (!data.categories[i]) {
-          console.log("catégorie non renseignée: " + i);
+          // console.log("catégorie non renseignée: " + i);
           setMessageEdit(
             "***Saisir un ingrédient, une quantité et une catégorie"
           );
@@ -885,9 +885,9 @@ const DétailsEdit = () => {
     // Cas toutes les zones sont renseignées
     //////////////////////////////////////////
     if (validate) {
-      console.log("toutes les lignes sont renseignées correctement");
+      // console.log("toutes les lignes sont renseignées correctement");
       setMessageEdit("Effectuer les modifications et valider");
-      console.log("mise à blanc de toutes les zones");
+      // console.log("mise à blanc de toutes les zones");
       // console.log("array Stockage");
       // console.log(arrayNewIngredientsStockage);
       // console.log(arrayNewQuantitiesStockage);
@@ -920,26 +920,27 @@ const DétailsEdit = () => {
   const handleSubmitEdit = async (e) => {
     //--------------------------------------
     e.preventDefault();
-    console.log("début SUBMIT EDIT");
+    // console.log("début SUBMIT EDIT");
 
     // Suppression des lignes blanches dans steps
-    console.log("suppression des lignes blanches : steps");
+    // console.log("suppression des lignes blanches : steps");
     arrayW = newRecipeData.steps;
     arrayNewSteps = arrayW.filter((step) => {
       if (step !== "") {
-        console.log("step renseigné : " + step);
+        // console.log("step renseigné : " + step);
         return step;
-      } else {
-        console.log("step non renseigné");
       }
+      // else {
+      //   console.log("step non renseigné");
+      // }
     });
-    console.log("arrayNewSteps :");
-    console.log(arrayNewSteps);
+    // console.log("arrayNewSteps :");
+    // console.log(arrayNewSteps);
 
     /////////////////////////
     // Suppression des lignes blanches Trio
     ///////
-    console.log("suppression des lignes blanches : TRIO");
+    // console.log("suppression des lignes blanches : TRIO");
 
     arrayNewIngredientsStockage = newRecipeData.ingredients;
     arrayNewQuantitiesStockage = newRecipeData.quantities;
@@ -947,12 +948,12 @@ const DétailsEdit = () => {
 
     // for (let i = 0; i < arrayNewIngredientsStockage.length; i++) {
 
-    console.log("arrayNewIngredientsStockage");
-    console.log(arrayNewIngredientsStockage);
-    console.log("arrayNewQuantitiesStockage");
-    console.log(arrayNewQuantitiesStockage);
-    console.log("arrayNewCategoriesStockage");
-    console.log(arrayNewCategoriesStockage);
+    // console.log("arrayNewIngredientsStockage");
+    // console.log(arrayNewIngredientsStockage);
+    // console.log("arrayNewQuantitiesStockage");
+    // console.log(arrayNewQuantitiesStockage);
+    // console.log("arrayNewCategoriesStockage");
+    // console.log(arrayNewCategoriesStockage);
 
     arrayNewIngredients = arrayNewIngredientsStockage.filter(function (
       element,
@@ -965,7 +966,7 @@ const DétailsEdit = () => {
       ) {
         console.log("ing trio à supprimer : " + element);
       } else {
-        console.log("ing trio à conserver : " + element);
+        // console.log("ing trio à conserver : " + element);
         return element;
       }
     });
@@ -981,7 +982,7 @@ const DétailsEdit = () => {
       ) {
         console.log("qtt trio à supprimer : " + element);
       } else {
-        console.log("qtt trio à conserver : " + element);
+        // console.log("qtt trio à conserver : " + element);
         return element;
       }
     });
@@ -997,17 +998,17 @@ const DétailsEdit = () => {
       ) {
         console.log("cat trio à supprimer : " + element);
       } else {
-        console.log("cat trio à conserver : " + element);
+        // console.log("cat trio à conserver : " + element);
         return element;
       }
     });
     // }
-    console.log("arrayNewIngredients :");
-    console.log(arrayNewIngredients);
-    console.log("arrayNewQuantities :");
-    console.log(arrayNewQuantities);
-    console.log("arrayNewCategories :");
-    console.log(arrayNewCategories);
+    // console.log("arrayNewIngredients :");
+    // console.log(arrayNewIngredients);
+    // console.log("arrayNewQuantities :");
+    // console.log(arrayNewQuantities);
+    // console.log("arrayNewCategories :");
+    // console.log(arrayNewCategories);
 
     //////////////////
 
@@ -1027,9 +1028,9 @@ const DétailsEdit = () => {
     };
 
     dispatch(createRecipe(data));
-    console.log("dispatch createRecipe");
-    console.log("data submit");
-    console.log(data);
+    // console.log("dispatch createRecipe");
+    // console.log("data submit");
+    // console.log(data);
 
     //---------------------------------------------
     //Mise à jour d'une recette dans la BDD:
@@ -1071,28 +1072,22 @@ const DétailsEdit = () => {
     dispatch(setChecked(data));
   };
 
-  const handleBack = () => {
-    console.log("handleBack");
-    // dispatch(deleteNewRecipe(checkedRecipe._id));
-    // console.log("après dispatch deleteNewRecipe");
-  };
-
   /////////////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     console.log("useEffect init :");
-    console.log("checkedRecipe");
-    console.log(checkedRecipe);
-    console.log("newRecipeData");
-    console.log(newRecipeData);
-    console.log("displayEdit useEffect: " + displayEdit);
+    // console.log("checkedRecipe");
+    // console.log(checkedRecipe);
+    // console.log("newRecipeData");
+    // console.log(newRecipeData);
+    // console.log("displayEdit useEffect: " + displayEdit);
   }, []);
 
   useEffect(() => {
     // Vérifiez si les données de recette sont manquantes ou non initialisées
     if (!checkedRecipe || checkedRecipe.length === 0) {
-      console.log(
-        "Accès direct ???? REDIRECTION /PrivateRoute/HomeListeRecettesProtect"
-      );
+      // console.log(
+      //   "Accès direct ???? REDIRECTION /PrivateRoute/HomeListeRecettesProtect"
+      // );
       // Redirigez immédiatement l'utilisateur vers la page d'accueil ou une autre page appropriée
       navigate("/PrivateRoute/HomeListeRecettesProtect", { replace: true });
     }
@@ -1237,7 +1232,7 @@ const DétailsEdit = () => {
             </div>
             <p className="espace-message">{messageEdit}</p>
             <div className="edit-button-container">
-              <button onClick={() => handleBack()}>
+              <button>
                 <NavLink to="/PrivateRoute/HomeListeRecettesProtect">
                   <i className="fa-solid fa-rotate-left"></i>
                 </NavLink>

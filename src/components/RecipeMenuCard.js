@@ -1,8 +1,8 @@
 import React from "react";
 
 const RecipeMenuCard = ({ element }) => {
-  console.log("element passé en props");
-  console.log(element);
+  // console.log("element passé en props");
+  // console.log(element);
 
   return (
     <div className="recipe-menu-card">

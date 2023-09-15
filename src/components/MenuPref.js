@@ -20,10 +20,10 @@ const MenuPref = () => {
   let selectedRecipesId = selectedRecipes.map((recipe) => recipe._id);
   /////////////////////////////////////////////////////
   const handleChangeMeal = (meal, index, mealnb) => {
-    console.log("handleChangeMeal");
-    console.log("recette : " + meal.title);
-    console.log("index dans compoListe : " + index);
-    console.log("meal : " + mealnb);
+    // console.log("handleChangeMeal");
+    // console.log("recette : " + meal.title);
+    // console.log("index dans compoListe : " + index);
+    // console.log("meal : " + mealnb);
 
     // sélection d'un nouveau repas aléatoire, différent de ceux déjà dans compoListe : newmeal
     let i = 0;
@@ -31,23 +31,24 @@ const MenuPref = () => {
     while (arrayW.length < 1 && i < 900) {
       const randomIndex = Math.floor(Math.random() * liste.length);
       const randomRecipe = liste[randomIndex];
-      console.log("selectedRecipesId");
-      console.log(selectedRecipesId);
+      // console.log("selectedRecipesId");
+      // console.log(selectedRecipesId);
       if (!selectedRecipesId.includes(randomRecipe._id)) {
-        console.log("Id à sélectionner : " + i + " / " + randomRecipe.title);
+        // console.log("Id à sélectionner : " + i + " / " + randomRecipe.title);
         arrayW.push(randomRecipe);
-      } else {
-        console.log("Id déja inclus : " + i + " / " + randomRecipe.title);
       }
+      // else {
+      //   console.log("Id déja inclus : " + i + " / " + randomRecipe.title);
+      // }
       i++;
     }
-    console.log("arrayW");
-    console.log(arrayW);
+    // console.log("arrayW");
+    // console.log(arrayW);
     let newmeal = arrayW[0];
-    console.log("oldmeal");
-    console.log(meal);
-    console.log("newmeal");
-    console.log(newmeal);
+    // console.log("oldmeal");
+    // console.log(meal);
+    // console.log("newmeal");
+    // console.log(newmeal);
 
     ////////////////////////////
     dispatch(editCompo([newmeal, index, mealnb]));
@@ -56,11 +57,11 @@ const MenuPref = () => {
 
   ///////////////////////////////////////
   const handleDeleteMeal = (meal, index, mealnb) => {
-    console.log("handleDeleteMeal");
+    // console.log("handleDeleteMeal");
 
-    console.log("recette : " + meal.title);
-    console.log("index dans compoListe : " + index);
-    console.log("meal : " + mealnb);
+    // console.log("recette : " + meal.title);
+    // console.log("index dans compoListe : " + index);
+    // console.log("meal : " + mealnb);
 
     // Remplacement du repas supprimé par un repas non prévu
 
@@ -75,10 +76,10 @@ const MenuPref = () => {
       _id: Date.now(),
     };
 
-    console.log("oldmeal");
-    console.log(meal);
-    console.log("emptymeal");
-    console.log(emptyMeal);
+    // console.log("oldmeal");
+    // console.log(meal);
+    // console.log("emptymeal");
+    // console.log(emptyMeal);
 
     ////////////////////////////
     dispatch(editCompo([emptyMeal, index, mealnb]));
@@ -87,8 +88,8 @@ const MenuPref = () => {
 
   //////////////////////////////////////////
   const handleDetailsMeal = (meal) => {
-    console.log("handleDetailsMeal");
-    console.log(meal);
+    // console.log("handleDetailsMeal");
+    // console.log(meal);
     dispatch(setChecked(meal));
     dispatch(setStopReset(true));
     navigate("/pagedetailsrecipe");

@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListeMenus } from "../feature/menusliste.slice";
 import { setSortMenus } from "../feature/sortmenus.slice";
 import { useGetMenusQuery } from "../feature/menus/menusApiSlice";
-
-import { faHourglass3 } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../hooks/useAuth";
 
 const ListeMenus = () => {
   const dispatch = useDispatch();
   // const listemenus = useSelector((state) => state.listeMenus.menusData);
+  const { username, isAdmin, isAbo, isInscrit } = useAuth();
 
   const sortSelectedMenus = useSelector(
     (state) => state.sortSelectMenus.sortSelectedMenus
@@ -18,10 +18,23 @@ const ListeMenus = () => {
 
   // Execute the query and fetch data
   const { data, error, isLoading, isSuccess } = useGetMenusQuery();
-
   // Create 'listemenus' based on 'data'
+  let filteredIds;
+  if (isSuccess) {
+    // const { ids } = menus;
+    const { ids, entities } = data;
+
+    if (isAdmin) {
+      filteredIds = [...data.ids];
+    } else {
+      filteredIds = data.ids.filter(
+        (menuId) => entities[menuId].user === username
+      );
+    }
+  }
+
   const listemenus = isSuccess
-    ? data.ids.map((menuId) => {
+    ? filteredIds.map((menuId) => {
         const menu = data.entities[menuId];
         return {
           _id: menu._id,
@@ -33,6 +46,8 @@ const ListeMenus = () => {
         };
       })
     : [];
+  // console.log("listemenus --------------");
+  // console.log(listemenus);
 
   useEffect(() => {
     if (isSuccess) {
@@ -46,16 +61,28 @@ const ListeMenus = () => {
     dispatch(setSortMenus(["Croissant", null]));
   }, [dispatch]);
 
-  return (
-    <div className="menuscards-liste">
-      {isLoading && <div>Loading...</div>}{" "}
-      {!isLoading && listemenus.length === 0 && (
-        <h3>Pas de Menus sauvegardés</h3>
-      )}{" "}
-      {/* Display a loading indicator while fetching data */}
-      {isSuccess &&
-        listemenus &&
-        listemenus
+  let content;
+
+  if (isLoading) {
+    content = (
+      <div className="menuscards-liste">
+        <div>Loading...</div>;
+      </div>
+    );
+  }
+
+  if (!isLoading && listemenus.length === 0) {
+    content = (
+      <div className="menuscards-liste">
+        <h3>Pas de Menus sauvegardés</h3>;
+      </div>
+    );
+  }
+
+  if (isSuccess && listemenus) {
+    content = (
+      <div className="menuscards-liste">
+        {listemenus
           .slice()
 
           ///////////////////////////////
@@ -65,37 +92,38 @@ const ListeMenus = () => {
             // tri selon jour demandé
 
             if (sortSelectedMenus[1]) {
-              console.log(
-                "sortSelectedMenus[1] rens : " + sortSelectedMenus[1]
-              );
-              console.log("menu.menuJ : ");
-              console.log(menu.menuJ);
+              // console.log(
+              //   "sortSelectedMenus[1] rens : " + sortSelectedMenus[1]
+              // );
+              // console.log("menu.menuJ : ");
+              // console.log(menu.menuJ);
 
               // **** GESTION FORMAT DATE **********************************
 
               let selectedDayFormat = new Date(sortSelectedMenus[1]);
               let dayFormat = new Date().toISOString().substring(0, 10);
               dayFormat = selectedDayFormat.toLocaleDateString("fr-FR");
-              console.log("dayFormat");
-              console.log(dayFormat);
+              // console.log("dayFormat");
+              // console.log(dayFormat);
               //********************************** */
               // Verif si date incluse dans le tableau MenuJ
               //****************************************** */
 
               for (let i = 0; i < menu.prefNbJ; i++) {
-                console.log("menu.menuJ[i] / i : " + i);
-                console.log(menu.menuJ[i]);
+                // console.log("menu.menuJ[i] / i : " + i);
+                // console.log(menu.menuJ[i]);
                 if (menu.menuJ[i].includes(dayFormat)) {
-                  console.log("date inclue");
+                  // console.log("date inclue");
                   return menu;
-                } else {
-                  console.log("date NON inclue");
                 }
+                // else {
+                //   console.log("date NON inclue");
+                // }
               }
             } else {
-              console.log(
-                "sortSelectedMenus[1] non rens : " + sortSelectedMenus[1]
-              );
+              // console.log(
+              //   "sortSelectedMenus[1] non rens : " + sortSelectedMenus[1]
+              // );
               return menu;
             }
           })
@@ -112,10 +140,22 @@ const ListeMenus = () => {
                 console.log("Cas qui ne devrait pas arriver");
             }
           })
-          .map((menu) => <MenusListeCard key={menu._id} menu={menu} />)}
-      {error && <div>Error: {error.message} </div>}
-    </div>
-  );
+          .map((menu) => (
+            <MenusListeCard key={menu._id} menu={menu} />
+          ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    content = (
+      <div className="menuscards-liste">
+        <div>Error: {error.message} </div>
+      </div>
+    );
+  }
+
+  return content;
 };
 
 export default ListeMenus;

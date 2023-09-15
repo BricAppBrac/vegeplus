@@ -17,8 +17,8 @@ const Recipe = ({ recipeId }) => {
     useDeleteRecipeMutation();
 
   const handleSuppr = async () => {
-    console.log("-------------- handleSuppr DEBUT --------------");
-    console.log("props recipeId: " + recipeId);
+    // console.log("-------------- handleSuppr DEBUT --------------");
+    // console.log("props recipeId: " + recipeId);
 
     try {
       const result = await deleteRecipe({
@@ -40,7 +40,7 @@ const Recipe = ({ recipeId }) => {
     refetch();
     navigate("/PrivateRoute/homebase");
 
-    console.log("-------------- handleSuppr FIN --------------");
+    // console.log("-------------- handleSuppr FIN --------------");
   };
 
   if (recipe) {

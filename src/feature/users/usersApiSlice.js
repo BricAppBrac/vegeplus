@@ -10,11 +10,15 @@ const initialState = usersAdapter.getInitialState();
 export const usersApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
-      query: () => "/user",
-      validateStatus: (response, result) => {
-        return response.status === 200 && !result.isError;
-      },
-      keepUnusedDataFor: 60, // Sans subscription dans UsersList dans ce temps imparti, on repart sur Loading - 60 secondes par défaut
+      query: () => ({
+        url: "/user",
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+      // Sans subscription dans UsersList dans ce temps imparti, on repart sur Loading - 60 secondes par défaut
+      // keepUnusedDataFor: 60,
+
       transformResponse: (responseData) => {
         const loadedUsers = responseData.map((user) => {
           user.id = user._id;
@@ -62,6 +66,27 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       // Forcer le cache à se mettre à jour:
       invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
     }),
+    // Nouvelle mutation pour vérifier le pseudo en double
+    checkDuplicateUsername: builder.query({
+      query: (username) => ({
+        url: `/user/check-username/${username}`,
+        method: "GET",
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+    }),
+
+    // Nouvelle mutation pour vérifier l'email en double
+    checkDuplicateEmail: builder.query({
+      query: (email) => ({
+        url: `/user/check-email/${email}`,
+        method: "GET",
+        validateStatus: (response, result) => {
+          return response.status === 200 && !result.isError;
+        },
+      }),
+    }),
   }),
 });
 
@@ -70,6 +95,8 @@ export const {
   useAddNewUserMutation,
   useUpdateUserMutation,
   useDeleteUserMutation,
+  useCheckDuplicateUsernameQuery,
+  useCheckDuplicateEmailQuery,
 } = usersApiSlice;
 
 // returns the query result object

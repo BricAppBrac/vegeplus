@@ -49,7 +49,7 @@ const MenuPrefNavbarProtect = (props) => {
   //// Consulter les menus validés
   /////////////////////////////////////
   const handleConsultMenus = (dayOne) => {
-    console.log("handleConsultMenus");
+    // console.log("handleConsultMenus");
     // Pour consulter les menus, on ne sélectionne aucun menu => reset dans le store
     dispatch(resetPref());
     dispatch(resetCompo());

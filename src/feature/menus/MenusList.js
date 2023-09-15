@@ -31,10 +31,6 @@ const MenusList = () => {
     },
   ] = useSendLogoutMutation();
 
-  let content;
-
-  if (isLoading) content = <p>Loading...</p>;
-
   const handleLogout = async () => {
     console.log("handleLogout");
     try {
@@ -54,6 +50,10 @@ const MenusList = () => {
       navigate("/");
     }
   };
+
+  let content;
+
+  if (isLoading) content = <p>Loading...</p>;
 
   if (isError) {
     content = (
@@ -77,25 +77,26 @@ const MenusList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = menus;
-    // const { ids, entities } = menus;
+    // const { ids } = menus;
+    const { ids, entities } = menus;
 
-    // let filteredIds;
-    // if (isAdmin) {
-    //   filteredIds = [...ids];
-    // } else {
-    //   filteredIds = ids.filter(
-    //     (menuId) => entities[menuId].username === username
-    //   );
-    // }
+    // Inutile car accès à cette page qu'en tant qu'Admin
+    let filteredIds;
+    if (isAdmin) {
+      filteredIds = [...ids];
+    } else {
+      filteredIds = ids.filter(
+        (menuId) => entities[menuId].username === username
+      );
+    }
 
-    const tableContent = ids?.length
-      ? ids.map((menuId) => <Menu key={menuId} menuId={menuId} />)
-      : null;
+    // const tableContent = ids?.length
+    //   ? ids.map((menuId) => <Menu key={menuId} menuId={menuId} />)
+    //   : null;
 
-    // const tableContent =
-    //   ids?.length &&
-    //   filteredIds.map((menuId) => <Menu key={menuId} menuId={menuId} />);
+    const tableContent =
+      ids?.length &&
+      filteredIds.map((menuId) => <Menu key={menuId} menuId={menuId} />);
 
     content = (
       <div className="gestion-admin">

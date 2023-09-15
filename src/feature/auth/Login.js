@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSignIn, setCloseIn } from "../../feature/signInUp.slice";
 
 import { setCredentials } from "./auth.slice";
-import { useLoginMutation } from "./authApiSlice";
+import { useLoginMutation, useSendEmailMutation } from "./authApiSlice";
 
 // usePersist incorporé au composant car erreur
 // import usePersist from "../../hooks/usePersist";
@@ -37,6 +37,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [sendEmail] = useSendEmailMutation();
+
   // Récupération de la demande d'ouverture du formulaire
   const displaySignIn = useSelector(
     (state) => state.displaySignIn.displaySignIn
@@ -49,6 +51,115 @@ const Login = () => {
   );
 
   const errClass = errMsg ? "errmsg" : "offscreen";
+
+  const handleForgottenPwd = async (userEmail) => {
+    console.log("handleForgottenPwd début");
+
+    if (!userEmail) {
+      setErrMsg("Veuillez saisir votre email");
+    } else {
+      // Envoyer un email à l'adresse bricappbrac-contact@yahoo.com pour demande de nouveau mot de passe
+
+      try {
+        console.log("***** process.env ********");
+        console.log(process.env.REACT_APP_EMAIL_USERNAME);
+
+        const emailData = {
+          to: process.env.REACT_APP_EMAIL_USERNAME,
+          subject: "VG+ Demande de mot de passe",
+          text: `Réinitialiser mot de passe de ${userEmail}`,
+        };
+
+        console.log("***** emailData ********");
+        console.log(emailData);
+
+        const response = await sendEmail(emailData);
+        console.log("response");
+        console.log(response);
+
+        if (
+          !response.error &&
+          response.data.message &&
+          response.data.message === "E-mail envoyé avec succès"
+        ) {
+          // L'envoi de l'email a réussi
+          console.log("envoi de l'email reinit mdp OK");
+          setErrMsg(
+            "Demande envoyée, vous serez informé de son traitement par mail"
+          );
+        } else {
+          // L'envoi de l'email n'a pas abouti
+          setErrMsg("Pb lors de l'envoi du mail de reinitialisation mdp");
+          console.log("response");
+          console.log(response);
+          console.log("response.error");
+          console.log(response.error);
+        }
+
+        // refetch();
+      } catch (error) {
+        // Gérer l'erreur ici si nécessaire
+        console.log("Une erreur s'est produite reinit mdp");
+        console.log(error);
+      }
+    }
+    console.log("handleForgottenPwd fin");
+  };
+
+  const handleUnsubscription = async (userEmail) => {
+    console.log("handleUnsubscription début");
+
+    if (!userEmail) {
+      setErrMsg("Veuillez saisir votre email");
+    } else {
+      // Envoyer un email à l'adresse bricappbrac-contact@yahoo.com pour demande de nouveau mot de passe
+
+      try {
+        // A compléter
+        console.log("***** process.env ********");
+        console.log(process.env.REACT_APP_EMAIL_USERNAME);
+
+        const emailData = {
+          to: process.env.REACT_APP_EMAIL_USERNAME,
+          subject: "VG+ Demande de desinscription",
+          text: `Supprimer compte de ${userEmail}`,
+        };
+
+        console.log("***** emailData ********");
+        console.log(emailData);
+
+        const response = await sendEmail(emailData);
+        console.log("response");
+        console.log(response);
+
+        if (
+          !response.error &&
+          response.data.message &&
+          response.data.message === "E-mail envoyé avec succès"
+        ) {
+          // L'envoi de l'email a réussi
+          console.log("envoi de l'email de désinscription OK");
+          setErrMsg(
+            "Demande envoyée, vous serez informé de la suppression de votre compte par mail"
+          );
+        } else {
+          // L'envoi de l'email n'a pas abouti
+          setErrMsg("Pb lors de l'envoi du mail de désinscription");
+          console.log("response");
+          console.log(response);
+          console.log("response.error");
+          console.log(response.error);
+        }
+
+        // refetch();
+      } catch (error) {
+        // Gérer l'erreur ici si nécessaire
+        console.log("Une erreur s'est produite email de desinscription");
+        console.log(error);
+      }
+    }
+    console.log("handleUnsubscription fin");
+  };
 
   // useEffect(() => {
   //   userRef.current.focus();
@@ -169,6 +280,18 @@ const Login = () => {
                   </div>
                 </form>
               )}
+              <div className="sign-link1">
+                <h6>Mot de passe oublié</h6>
+                <button onClick={() => handleForgottenPwd(userEmail)}>
+                  <i className="fa-solid fa-key"></i>
+                </button>
+              </div>
+              <div className="sign-link2">
+                <h6>Se désinscrire</h6>
+                <button onClick={() => handleUnsubscription(userEmail)}>
+                  <i className="fa-solid fa-heart-crack"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -24,8 +24,10 @@ import {
   useAddNewMenuMutation,
   useGetMenusQuery,
 } from "../feature/menus/menusApiSlice";
+import useAuth from "../hooks/useAuth";
 
 const HomeMenu = () => {
+  const { username } = useAuth();
   const liste = useSelector((state) => state.listeRecipes.listeData);
   const listeMenus = useSelector((state) => state.listeMenus.menusData);
   const prefSelected = useSelector((state) => state.prefSelect.prefSelected);
@@ -59,6 +61,7 @@ const HomeMenu = () => {
   const [addNewMenuMutation] = useAddNewMenuMutation();
 
   const handleDeleteMenu = async (menuId) => {
+    console.log("handleDeleteMenu Début ------------");
     try {
       const response = await deleteMenuMutation({ id: menuId });
 
@@ -71,6 +74,7 @@ const HomeMenu = () => {
     } catch (error) {
       console.error("An error occurred while deleting menu:", error);
     }
+    console.log("handleDeleteMenu Fin ------------");
   };
 
   const handleAddNewMenu = async (menuData) => {
@@ -140,34 +144,24 @@ const HomeMenu = () => {
     // Si 1 menu existe déja avec ce dayOne, suppression dans le store et la BDD avant création du nouveau menu
     for (let x = 0; x < listeMenus.length && x < 9000; x++) {
       const menuliste = listeMenus.find(
-        (menuliste) => menuliste.prefDayOne === prefSelected[2]
+        (menuliste) =>
+          menuliste.prefDayOne === prefSelected[2] &&
+          menuliste.user === username
       );
       if (menuliste) {
         // Cas où un Menu existe déjà avec ce dayOne
         console.log(
-          "1 MENU EXISTE DEJA AVEC CE DAYONE : SUPPRESSION AVANT CREATION"
+          "1 MENU EXISTE DEJA AVEC CE DAYONE pour ce user : SUPPRESSION AVANT CREATION"
         );
-        // try {
-        //   await axios.delete("http://localhost:5000/menu/" + menuliste._id);
-        //   console.log("DELETE MENU BDD");
-        //   dispatch(deleteListeMenu(menuliste._id));
-        //   break;
-        // } catch (error) {
-        //   console.error(
-        //     "Une erreur s'est produite lors de la suppression du menu :",
-        //     error
-        //   );
-        //   console.log("erreur DELETE BDD: ");
-        //   console.log(error);
-        // }
+
         handleDeleteMenu(menuliste._id);
         // Après une mise à jour réussie, appeler refetch() pour actualiser la liste des utilisateurs
         refetch();
-        break;
+        // break;
       } else {
         // Cas où aucun Menu n'existe avec ce dayOne
         console.log(
-          "AUCUN MENU N'EXISTE AVEC CE DAYONE : PAS DE SUPPRESSION AVANT CREATION"
+          "AUCUN MENU N'EXISTE AVEC CE DAYONE pour ce user: PAS DE SUPPRESSION AVANT CREATION"
         );
       }
     }
@@ -204,26 +198,13 @@ const HomeMenu = () => {
 
     // Prepare menuData for the API call
     const menuData = {
+      user: username, // Auteur du Menu (réservé aux Rôles Abonné et Administrateur)
       prefNbJ: prefSelected[0], // Number of days
       prefNbMeal: prefSelected[1], // Number of meals per day
       prefDayOne: prefSelected[2], // The selected dayOne
       menuJ: arrayW,
     };
 
-    // try {
-    //   await axios.post("http://localhost:5000/menu", {
-    //     prefNbJ: prefSelected[0],
-    //     prefNbMeal: prefSelected[1],
-    //     prefDayOne: prefSelected[2],
-    //     menuJ: arrayW,
-    //   });
-    //   navigate("/menusvalides");
-    // } catch (error) {
-    //   console.error(
-    //     "Une erreur s'est produite lors de l'envoi de la requête POST :",
-    //     error
-    //   );
-    // }
     try {
       await handleAddNewMenu(menuData);
     } catch (error) {

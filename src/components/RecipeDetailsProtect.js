@@ -33,7 +33,7 @@ const RecipeDetailsProtect = () => {
       navigate("/PrivateRoute/HomeListeRecettesProtect", { replace: true });
     } else {
       dispatch(setConfirmDelete("détails-0"));
-      console.log("après dispatch setConfirmDelete");
+      // console.log("après dispatch setConfirmDelete");
     }
   }, [checkedRecipe, navigate]);
 

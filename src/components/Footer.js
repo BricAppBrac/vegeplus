@@ -5,8 +5,8 @@ import useAuth from "../hooks/useAuth";
 const Footer = () => {
   const { username, userStatus } = useAuth();
 
-  console.log("username : " + username);
-  console.log("userStatus : " + userStatus);
+  // console.log("username : " + username);
+  // console.log("userStatus : " + userStatus);
 
   return (
     <footer>

@@ -38,23 +38,23 @@ export const menucompoSlice = createSlice({
     },
     editCompoDate: (state, { payload }) => {
       state.compoListe = state.compoListe.map((compo) => {
-        console.log("EDITCOMPODATE compo.index");
-        console.log(compo.index);
-        console.log("EDITCOMPODATE payload");
-        console.log(payload);
-        console.log("EDITCOMPODATE payload[0]");
-        console.log(payload[0]);
-        console.log("EDITCOMPODATE payload[1]");
-        console.log(payload[1]);
+        // console.log("EDITCOMPODATE compo.index");
+        // console.log(compo.index);
+        // console.log("EDITCOMPODATE payload");
+        // console.log(payload);
+        // console.log("EDITCOMPODATE payload[0]");
+        // console.log(payload[0]);
+        // console.log("EDITCOMPODATE payload[1]");
+        // console.log(payload[1]);
         if (compo.index === payload[0]) {
-          console.log("EDITCOMPODATE index à MAJ");
+          // console.log("EDITCOMPODATE index à MAJ");
 
           return {
             ...compo,
             date: payload[1],
           };
         } else {
-          console.log("EDITCOMPODATE index non maj");
+          // console.log("EDITCOMPODATE index non maj");
           return compo;
         }
       });

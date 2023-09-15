@@ -4,9 +4,9 @@ import { selectUserById } from "./usersApiSlice";
 import EditUserForm from "./EditUserForm";
 
 const EditUser = () => {
-  console.log("EditForm");
+  // console.log("EditForm");
   const { id } = useParams();
-  console.log("id : " + id);
+  // console.log("id : " + id);
 
   const user = useSelector((state) => selectUserById(state, id));
 

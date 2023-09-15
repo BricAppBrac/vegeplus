@@ -19,14 +19,14 @@ const SortNavbarMenus = () => {
   /////////////////
 
   const handleTriDay = (day, dayRef) => {
-    console.log("Tri sur le jour : ");
-    console.log(day);
-    console.log("dayRef");
-    console.log(dayRef);
+    // console.log("Tri sur le jour : ");
+    // console.log(day);
+    // console.log("dayRef");
+    // console.log(dayRef);
     arrayNew = [...sortmenu];
     arrayNew[1] = day;
-    console.log("arrayNew avant choix Jour : ");
-    console.log(arrayNew);
+    // console.log("arrayNew avant choix Jour : ");
+    // console.log(arrayNew);
     if (day === null || day.length === 0 || day === undefined) {
       dayRef.current.className = "";
     } else {
@@ -34,40 +34,40 @@ const SortNavbarMenus = () => {
     }
 
     dispatch(setSortMenus(arrayNew));
-    console.log("sortSelectedMenu après choix Jour : ");
-    console.log(arrayNew);
+    // console.log("sortSelectedMenu après choix Jour : ");
+    // console.log(arrayNew);
     arrayNew = [];
   };
 
   const handleTriCroissantMenu = (croissantRefMenu) => {
-    console.log("Tri croissant Menu");
-    console.log("croissantRefMenu");
-    console.log(croissantRefMenu);
+    // console.log("Tri croissant Menu");
+    // console.log("croissantRefMenu");
+    // console.log(croissantRefMenu);
     arrayNew = [...sortmenu];
     arrayNew[0] = "Croissant";
-    console.log("arrayNew avant choix Croissant : ");
-    console.log(arrayNew);
+    // console.log("arrayNew avant choix Croissant : ");
+    // console.log(arrayNew);
     croissantRefMenu.current.className = "sortnav-menus-active";
     decroissantRefMenu.current.className = "";
     dispatch(setSortMenus(arrayNew));
-    console.log("sortSelectedMenu après choix Croissant : ");
-    console.log(arrayNew);
+    // console.log("sortSelectedMenu après choix Croissant : ");
+    // console.log(arrayNew);
     arrayNew = [];
   };
 
   const handleTriDecroissantMenu = (decroissantRefMenu) => {
-    console.log("Tri décroissant Menu");
-    console.log("decroissantRefMenu");
-    console.log(decroissantRefMenu);
+    // console.log("Tri décroissant Menu");
+    // console.log("decroissantRefMenu");
+    // console.log(decroissantRefMenu);
     arrayNew = [...sortmenu];
     arrayNew[0] = "Decroissant";
-    console.log("arrayNew avant choix Décroissant : ");
-    console.log(arrayNew);
+    // console.log("arrayNew avant choix Décroissant : ");
+    // console.log(arrayNew);
     decroissantRefMenu.current.className = "sortnav-menus-active";
     croissantRefMenu.current.className = "";
     dispatch(setSortMenus(arrayNew));
-    console.log("sortSelectedMenu après choix Décroissant : ");
-    console.log(arrayNew);
+    // console.log("sortSelectedMenu après choix Décroissant : ");
+    // console.log(arrayNew);
     arrayNew = [];
   };
 

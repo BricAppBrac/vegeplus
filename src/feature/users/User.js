@@ -6,15 +6,15 @@ import { useSelector } from "react-redux";
 import { selectUserById } from "./usersApiSlice";
 
 const User = ({ userId }) => {
-  console.log("User.js");
-  console.log("userId : " + userId);
+  // console.log("User.js");
+  // console.log("userId : " + userId);
   const user = useSelector((state) => selectUserById(state, userId));
   const navigate = useNavigate();
 
   if (user) {
     const handleEdit = () => {
-      console.log("Users handleEdit");
-      console.log("id : " + `${userId}`);
+      // console.log("Users handleEdit");
+      // console.log("id : " + `${userId}`);
       navigate(`/users/${userId}`);
     };
     const cellStatus = user.active ? "" : "table__cell--inactive";

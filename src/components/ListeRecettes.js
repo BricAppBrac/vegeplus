@@ -44,8 +44,8 @@ const ListeRecettes = () => {
       })
     : [];
 
-  console.log("liste après constitution à partir de data ****************");
-  console.log(liste);
+  // console.log("liste après constitution à partir de data ****************");
+  // console.log(liste);
 
   useEffect(() => {
     if (isSuccess) {
@@ -71,7 +71,7 @@ const ListeRecettes = () => {
           .filter((recipe) => {
             if (sortSelected[1]) {
               if (recipe.seasons.includes(sortSelected[1])) {
-                console.log("Tri Saison filter : " + sortSelected[1]);
+                // console.log("Tri Saison filter : " + sortSelected[1]);
                 return recipe;
               }
             } else return recipe;
@@ -89,9 +89,9 @@ const ListeRecettes = () => {
                   ingr.toLowerCase().includes(sortSelected[2].toLowerCase())
                 )
               ) {
-                console.log(
-                  "Tri Mot-Clé  filter titre et ingrédients: " + sortSelected[2]
-                );
+                // console.log(
+                //   "Tri Mot-Clé  filter titre et ingrédients: " + sortSelected[2]
+                // );
                 return recipe;
               }
             } else {

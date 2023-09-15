@@ -20,7 +20,7 @@ const PersistLogin = () => {
     // React 18 StrictMode , en développement, le composant monte, démonte et remonte, effectRan === true la seconde fois seulement
     if (effectRan.current === true || process.env.NODE_ENV !== "development") {
       const verifyRefreshToken = async () => {
-        console.log("useEFFECT verifying refresh token");
+        // console.log("useEFFECT verifying refresh token");
         try {
           // const response =
           await refresh();
@@ -42,15 +42,15 @@ const PersistLogin = () => {
 
   if (!persistState) {
     // persist: no, on ne veut pas prolonger le login
-    console.log("No persist");
+    // console.log("No persist");
     content = <Outlet />;
   } else if (isLoading) {
     // persist: yes, token: no
-    console.log("loading...");
+    // console.log("loading...");
     content = <p>Loading...</p>;
   } else if (isError) {
     //persist: yes, token: no
-    console.log("error");
+    // console.log("error");
     content = (
       <p className="errmsg">
         {`${error?.data?.message} - `}
@@ -59,12 +59,12 @@ const PersistLogin = () => {
     );
   } else if (isSuccess && trueSuccess) {
     // persist: yes, token: yes
-    console.log("success");
+    // console.log("success");
     content = <Outlet />;
   } else if (token && isUninitialized) {
     // persist: yes, token: yes
-    console.log("token and uninit");
-    console.log(isUninitialized);
+    // console.log("token and uninit");
+    // console.log(isUninitialized);
     content = <Outlet />;
   }
 

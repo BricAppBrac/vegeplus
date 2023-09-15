@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   const handleSignIn = async () => {
-    console.log("handleSignIn");
+    // console.log("handleSignIn");
     dispatch(setSignIn(true));
     dispatch(setCloseIn(false));
     dispatch(setSignUp(false));

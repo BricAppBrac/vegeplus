@@ -22,7 +22,7 @@ const NavbarProtect = () => {
   };
 
   const handleLogout = async () => {
-    console.log("handleLogout");
+    // console.log("handleLogout");
     try {
       await sendLogout();
     } catch (err) {
@@ -31,8 +31,8 @@ const NavbarProtect = () => {
       } else {
         setErrMsg(err.data?.message);
       }
-      console.log("err : ");
-      console.log(err);
+      // console.log("err : ");
+      // console.log(err);
       // errRef.current.focus();
     }
   };
