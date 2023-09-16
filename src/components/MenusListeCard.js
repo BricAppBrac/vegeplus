@@ -42,13 +42,8 @@ const MenusListeCard = ({ menu }) => {
   // prefSelect / prefSelected
   // ***********************************************
   const handlePhasePref = (menu) => {
-    console.log("*******************************************");
-    console.log("Alimentation des préférences");
-    console.log("*******************************************");
     arrayNew = [menu.prefNbJ, menu.prefNbMeal, menu.prefDayOne];
     dispatch(setPref(arrayNew));
-    console.log(arrayNew);
-    console.log("*******************************************");
   };
 
   // Choix d'un menu => mise en phase des de la compo du Menu
@@ -56,15 +51,15 @@ const MenusListeCard = ({ menu }) => {
   // Choix d'un menu => mise en phase des recettes du Menu
   // dans le store : menuRecipes / menuRecipesData
   const handlePhaseMenuCompo = (menu) => {
-    console.log("*******************************************");
-    console.log("Alimentation de compoListe et de menuRecipesData");
-    console.log("*******************************************");
+    // console.log("*******************************************");
+    // console.log("Alimentation de compoListe et de menuRecipesData");
+    // console.log("*******************************************");
 
     // Alimentation de arrayW avec la liste des id des recettes du Menu
 
     let arrayW = [];
-    console.log("Nbre de jours du Menu : ");
-    console.log(menu.prefNbJ);
+    // console.log("Nbre de jours du Menu : ");
+    // console.log(menu.prefNbJ);
 
     menu.menuJ.forEach((dayMenu) => {
       if (menu.prefNbMeal === 2) {
@@ -74,8 +69,8 @@ const MenusListeCard = ({ menu }) => {
       }
     });
 
-    console.log("liste des ids du Menu");
-    console.log(arrayW);
+    // console.log("liste des ids du Menu");
+    // console.log(arrayW);
 
     // Récupération des recettes complètes à partir des id, pour alimentation de menuRecipes
 
@@ -93,8 +88,8 @@ const MenusListeCard = ({ menu }) => {
       }
     }
 
-    console.log("liste des recettes du Menu");
-    console.log(arrayRecipes);
+    // console.log("liste des recettes du Menu");
+    // console.log(arrayRecipes);
 
     // Alimentation de menuCompo
 
@@ -112,10 +107,10 @@ const MenusListeCard = ({ menu }) => {
       if (j !== 0) {
         nextday.setDate(nextday.getDate() + 1);
       }
-      console.log("*** calcul des jours *** index : " + j);
+      // console.log("*** calcul des jours *** index : " + j);
 
       nextdayFormat = nextday.toLocaleDateString("fr-FR");
-      console.log("nextdayFormat : " + nextdayFormat);
+      // console.log("nextdayFormat : " + nextdayFormat);
 
       // Alimentation de menuCompo lorsqu'il n'y a qu'un repas/jour
       if (menu.prefNbMeal === 1) {
@@ -129,17 +124,17 @@ const MenusListeCard = ({ menu }) => {
           meal2: null,
         };
         arrayCompo = [...arrayCompo, newCompo];
-        console.log("arrayCompo");
-        console.log(arrayCompo);
+        // console.log("arrayCompo");
+        // console.log(arrayCompo);
 
         dispatch(setCompo(arrayCompo));
       } else {
         // Alimentation de menuCompo lorsqu'il y a 2 repas/jour
         jMeal = j * 2;
         const meal1 = arrayRecipes[jMeal].title;
-        console.log("meal1 : " + meal1);
+        // console.log("meal1 : " + meal1);
         const meal2 = arrayRecipes[jMeal + 1].title;
-        console.log("meal2 : " + meal2);
+        // console.log("meal2 : " + meal2);
 
         newCompo = {
           index: j,
@@ -151,8 +146,8 @@ const MenusListeCard = ({ menu }) => {
           meal2: meal2,
         };
         arrayCompo = [...arrayCompo, newCompo];
-        console.log("arrayCompo");
-        console.log(arrayCompo);
+        // console.log("arrayCompo");
+        // console.log(arrayCompo);
         dispatch(setCompo(arrayCompo));
       }
     }
@@ -163,7 +158,7 @@ const MenusListeCard = ({ menu }) => {
   // ***********************************************************
 
   const handleListeCourses = (menu) => {
-    console.log("handleListeCourses : " + menu.prefDayOne);
+    // console.log("handleListeCourses : " + menu.prefDayOne);
     handlePhasePref(menu);
     handlePhaseMenuCompo(menu);
     navigate("/listecourses");
@@ -204,7 +199,7 @@ const MenusListeCard = ({ menu }) => {
   // Clic sur le bouton Récupérer un ancien Menu Validé
   // ***********************************************************
   const handleRecupMenu = (menu) => {
-    console.log("handleRecupMenu : " + menu.prefDayOne);
+    // console.log("handleRecupMenu : " + menu.prefDayOne);
     // on indique qu'il ne faut pas changer la date des préférences
     // on indique qu'il ne faut pas recharger un menu aléatoire
     dispatch(setStopResetDate(true));

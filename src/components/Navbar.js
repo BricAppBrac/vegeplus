@@ -13,7 +13,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleSignUp = async () => {
-    console.log("handleSignUp");
+    // console.log("handleSignUp");
     dispatch(setSignUp(true));
     dispatch(setCloseUp(false));
     dispatch(setSignIn(false));

@@ -66,27 +66,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       // Forcer le cache à se mettre à jour:
       invalidatesTags: (result, error, arg) => [{ type: "User", id: arg.id }],
     }),
-    // Nouvelle mutation pour vérifier le pseudo en double
-    checkDuplicateUsername: builder.query({
-      query: (username) => ({
-        url: `/user/check-username/${username}`,
-        method: "GET",
-        validateStatus: (response, result) => {
-          return response.status === 200 && !result.isError;
-        },
-      }),
-    }),
-
-    // Nouvelle mutation pour vérifier l'email en double
-    checkDuplicateEmail: builder.query({
-      query: (email) => ({
-        url: `/user/check-email/${email}`,
-        method: "GET",
-        validateStatus: (response, result) => {
-          return response.status === 200 && !result.isError;
-        },
-      }),
-    }),
   }),
 });
 
@@ -95,8 +74,6 @@ export const {
   useAddNewUserMutation,
   useUpdateUserMutation,
   useDeleteUserMutation,
-  useCheckDuplicateUsernameQuery,
-  useCheckDuplicateEmailQuery,
 } = usersApiSlice;
 
 // returns the query result object

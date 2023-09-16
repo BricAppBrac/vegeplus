@@ -61,20 +61,20 @@ const HomeMenu = () => {
   const [addNewMenuMutation] = useAddNewMenuMutation();
 
   const handleDeleteMenu = async (menuId) => {
-    console.log("handleDeleteMenu Début ------------");
+    // console.log("handleDeleteMenu Début ------------");
     try {
       const response = await deleteMenuMutation({ id: menuId });
 
       if (response.error) {
         console.error("Failed to delete menu:", response.error);
       } else {
-        console.log("DELETE MENU BDD");
+        // console.log("DELETE MENU BDD");
         dispatch(deleteListeMenu(menuId));
       }
     } catch (error) {
       console.error("An error occurred while deleting menu:", error);
     }
-    console.log("handleDeleteMenu Fin ------------");
+    // console.log("handleDeleteMenu Fin ------------");
   };
 
   const handleAddNewMenu = async (menuData) => {
@@ -84,7 +84,7 @@ const HomeMenu = () => {
       if (response.error) {
         console.error("Failed to add new menu:", response.error);
       } else {
-        console.log("Successfully added new menu");
+        // console.log("Successfully added new menu");
         // Après une mise à jour réussie, appeler refetch()
         refetch();
         navigate("/menusvalides");
@@ -97,13 +97,13 @@ const HomeMenu = () => {
   //////////////////////////////////////////
   // Initialisation de la date du jour et mémorisation dans la valeur par défaut de dayOne
   const handleDayOne = () => {
-    console.log(
-      " //////////////   HANDLE DAY ONE     ////////////////////////"
-    );
+    // console.log(
+    //   " //////////////   HANDLE DAY ONE     ////////////////////////"
+    // );
     if (!prefSelected[2]) {
-      console.log("*******************************************");
-      console.log("Initialisation de la date de début");
-      console.log("*******************************************");
+      // console.log("*******************************************");
+      // console.log("Initialisation de la date de début");
+      // console.log("*******************************************");
       arrayNew = ["7", "2", dateDefault];
       dispatch(setPref(arrayNew));
     } else {
@@ -111,18 +111,18 @@ const HomeMenu = () => {
       console.log("Préférences prises en compte");
       console.log("*******************************************");
     }
-    console.log("prefSelected nb de jours : " + prefSelected[0]);
-    console.log("prefSelected nb repas/j : " + prefSelected[1]);
-    console.log("prefSelected dayOne : " + prefSelected[2]);
-    console.log("*******************************************");
+    // console.log("prefSelected nb de jours : " + prefSelected[0]);
+    // console.log("prefSelected nb repas/j : " + prefSelected[1]);
+    // console.log("prefSelected dayOne : " + prefSelected[2]);
+    // console.log("*******************************************");
   };
   /////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////
 
   const handleChangeMenu = () => {
-    console.log("*******************************************");
-    console.log("handleChangeMenu / relance des PREFERENCES");
-    console.log("*******************************************");
+    // console.log("*******************************************");
+    // console.log("handleChangeMenu / relance des PREFERENCES");
+    // console.log("*******************************************");
 
     dispatch(resetMenuRecipes());
     dispatch(resetCompo());
@@ -133,13 +133,13 @@ const HomeMenu = () => {
 
   //////////////////////////////////////////
   const handleValideMenu = async () => {
-    console.log("*******************************************");
-    console.log("handleValideMenu ");
-    console.log("*******************************************");
+    // console.log("*******************************************");
+    // console.log("handleValideMenu ");
+    // console.log("*******************************************");
 
     // Création d'un nouveau Menu préparé dans compoListeMenu:
-    console.log("compoListeMenu");
-    console.log(compoListeMenu);
+    // console.log("compoListeMenu");
+    // console.log(compoListeMenu);
 
     // Si 1 menu existe déja avec ce dayOne, suppression dans le store et la BDD avant création du nouveau menu
     for (let x = 0; x < listeMenus.length && x < 9000; x++) {
@@ -192,9 +192,9 @@ const HomeMenu = () => {
       console.log("boucle infinie");
     }
 
-    console.log("arrayW");
-    console.log(arrayW);
-    console.log("POST dans BDD table MENU");
+    // console.log("arrayW");
+    // console.log(arrayW);
+    // console.log("POST dans BDD table MENU");
 
     // Prepare menuData for the API call
     const menuData = {
@@ -219,7 +219,7 @@ const HomeMenu = () => {
   //******************************************************************
   ////////////////////////////////////////////////////////////////////
   const handlePrefRecup = (prefSelected) => {
-    console.log("handlePrefRecup");
+    // console.log("handlePrefRecup");
 
     ///////////////////////////////////////////////////////
     // Constitution du tableau des jours et des recettes
@@ -239,10 +239,10 @@ const HomeMenu = () => {
       if (j !== 0) {
         nextday.setDate(nextday.getDate() + 1);
       }
-      console.log("*** calcul des jours *** index : " + j);
+      // console.log("*** calcul des jours *** index : " + j);
 
       nextdayFormat = nextday.toLocaleDateString("fr-FR");
-      console.log("nextdayFormat : " + nextdayFormat);
+      // console.log("nextdayFormat : " + nextdayFormat);
 
       dispatch(editCompoDate([j, nextdayFormat]));
     }
@@ -257,17 +257,17 @@ const HomeMenu = () => {
   //******************************************************************
   ////////////////////////////////////////////////////////////////////
   const handlePref = (prefSelected) => {
-    console.log("handlePref");
-    console.log("liste");
-    console.log(liste);
+    // console.log("handlePref");
+    // console.log("liste");
+    // console.log(liste);
     /////////////////////////////////////////////////////////////////////////////
     // Calcul du nombre de recettes à sélectionner : nb de jours * nb de repas/j
     /////////////////////////////////////////////////////////////////////////////
     const numRecipes = prefSelected[0] * prefSelected[1];
     arrayW = [];
-    console.log("numRecipes : " + numRecipes);
-    console.log("prefSelected");
-    console.log(prefSelected);
+    // console.log("numRecipes : " + numRecipes);
+    // console.log("prefSelected");
+    // console.log(prefSelected);
 
     ///////////////////////////////////////////////////////////////////////////
     // Contrôle du nombre de recettes avant constitution de la liste aléatoire
@@ -284,7 +284,7 @@ const HomeMenu = () => {
       );
       console.log("Nbre de Recettes total : " + liste.length);
     } else {
-      console.log("Nbre de Recettes total : " + liste.length);
+      // console.log("Nbre de Recettes total : " + liste.length);
 
       /////////////////////////////////////////////////////
       // Constitution de la liste de recettes aléatoires
@@ -294,17 +294,18 @@ const HomeMenu = () => {
         const randomIndex = Math.floor(Math.random() * liste.length);
         const randomRecipe = liste[randomIndex];
         if (!selectedRecipesId.includes(randomRecipe._id)) {
-          console.log("Id à sélectionner : " + i + " / " + randomRecipe._id);
+          // console.log("Id à sélectionner : " + i + " / " + randomRecipe._id);
           arrayW.push(randomRecipe);
           dispatch(createMenuRecipe(randomRecipe));
           selectedRecipesId.push(randomRecipe._id);
-        } else {
-          console.log("Id déja inclus : " + i + " / " + randomRecipe._id);
         }
+        // else {
+        //   console.log("Id déja inclus : " + i + " / " + randomRecipe._id);
+        // }
         i++;
       }
-      console.log("arrayW");
-      console.log(arrayW);
+      // console.log("arrayW");
+      // console.log(arrayW);
       if (i === 9000) {
         console.log("boucle infinie");
       }
@@ -324,10 +325,10 @@ const HomeMenu = () => {
         if (j !== 0) {
           nextday.setDate(nextday.getDate() + 1);
         }
-        console.log("*** calcul des jours *** index : " + j);
+        // console.log("*** calcul des jours *** index : " + j);
 
         nextdayFormat = nextday.toLocaleDateString("fr-FR");
-        console.log("nextdayFormat : " + nextdayFormat);
+        // console.log("nextdayFormat : " + nextdayFormat);
 
         if (prefSelected[1] === "1") {
           newCompo = {
@@ -340,16 +341,16 @@ const HomeMenu = () => {
             meal2: null,
           };
           arrayCompo = [...arrayCompo, newCompo];
-          console.log("arrayCompo");
-          console.log(arrayCompo);
+          // console.log("arrayCompo");
+          // console.log(arrayCompo);
 
           dispatch(setCompo(arrayCompo));
         } else {
           jMeal = j * 2;
           const meal1 = arrayW[jMeal].title;
-          console.log("meal1 : " + meal1);
+          // console.log("meal1 : " + meal1);
           const meal2 = arrayW[jMeal + 1].title;
-          console.log("meal2 : " + meal2);
+          // console.log("meal2 : " + meal2);
 
           newCompo = {
             index: j,
@@ -361,8 +362,8 @@ const HomeMenu = () => {
             meal2: meal2,
           };
           arrayCompo = [...arrayCompo, newCompo];
-          console.log("arrayCompo");
-          console.log(arrayCompo);
+          // console.log("arrayCompo");
+          // console.log(arrayCompo);
           dispatch(setCompo(arrayCompo));
         }
       }
@@ -386,63 +387,64 @@ const HomeMenu = () => {
   }
 
   useEffect(() => {
-    console.log("*******************************************");
-    console.log("useEffect HOME MENU prise en compte PREFERENCES");
-    console.log("*******************************************");
+    // console.log("*******************************************");
+    // console.log("useEffect HOME MENU prise en compte PREFERENCES");
+    // console.log("*******************************************");
     //********** Gestion de dayOne */
-    console.log("Gestion de dayOne");
-    console.log(prefSelected[2]);
+    // console.log("Gestion de dayOne");
+    // console.log(prefSelected[2]);
     handleDayOne();
     //*********** */
-    console.log("indicStopReset :");
-    console.log(indicStopReset);
-    console.log("indicStopResetDate");
-    console.log(indicStopResetDate);
-    console.log("prevPrefSelected.current :");
-    console.log(prevPrefSelected.current);
-    console.log("prefSelected :");
-    console.log(prefSelected);
-    console.log("liste");
-    console.log(liste);
+    // console.log("indicStopReset :");
+    // console.log(indicStopReset);
+    // console.log("indicStopResetDate");
+    // console.log(indicStopResetDate);
+    // console.log("prevPrefSelected.current :");
+    // console.log(prevPrefSelected.current);
+    // console.log("prefSelected :");
+    // console.log(prefSelected);
+    // console.log("liste");
+    // console.log(liste);
 
     if (indicStopReset || indicStopResetDate) {
-      console.log(
-        "**************** indicStopReset ou indicStopResetDate true ******************"
-      );
-      console.log(
-        "********  on ne reset pas MenuRecipes et menuCompo*********"
-      );
+      // console.log(
+      //   "**************** indicStopReset ou indicStopResetDate true ******************"
+      // );
+      // console.log(
+      //   "********  on ne reset pas MenuRecipes et menuCompo*********"
+      // );
 
       if (indicStopResetDate) {
-        console.log(
-          "**************** indicStopResetDate true ******************"
-        );
-        console.log("**************** changement des dates ******************");
+        // console.log(
+        //   "**************** indicStopResetDate true ******************"
+        // );
+        // console.log("**************** changement des dates ******************");
         if (prefSelected !== prevPrefSelected.current) {
-          console.log(
-            "prevPrefSelected.current et prefSelected sont différents"
-          );
-          console.log("prevPrefSelected.current :");
-          console.log(prevPrefSelected.current);
-          console.log("prefSelected :");
-          console.log(prefSelected);
+          // console.log(
+          //   "prevPrefSelected.current et prefSelected sont différents"
+          // );
+          // console.log("prevPrefSelected.current :");
+          // console.log(prevPrefSelected.current);
+          // console.log("prefSelected :");
+          // console.log(prefSelected);
           // Ajout de la vérification du changement de prefSelected car le useEffect lance la fonction même si prefSelected n'a pas changé lorsque le composant monte la première fois
           handlePrefRecup(prefSelected);
           // Stocker la valeur de prefSelected pour la prochaine exécution
           prevPrefSelected.current = prefSelected;
-        } else {
-          console.log(
-            "prevPrefSelected.current et prefSelected sont égaux, composant monté pour la première fois, on ne fait rien"
-          );
-          console.log("prevPrefSelected.current :");
-          console.log(prevPrefSelected.current);
-          console.log("prefSelected :");
-          console.log(prefSelected);
         }
+        // else {
+        //   console.log(
+        //     "prevPrefSelected.current et prefSelected sont égaux, composant monté pour la première fois, on ne fait rien"
+        //   );
+        //   console.log("prevPrefSelected.current :");
+        //   console.log(prevPrefSelected.current);
+        //   console.log("prefSelected :");
+        //   console.log(prefSelected);
+        // }
       }
     } else {
-      console.log("**************** indicStopReset false ******************");
-      console.log("********  RESET de MenuRecipes et menuCompo*********");
+      // console.log("**************** indicStopReset false ******************");
+      // console.log("********  RESET de MenuRecipes et menuCompo*********");
       dispatch(resetMenuRecipes());
       dispatch(resetCompo());
       selectedRecipesId = [];

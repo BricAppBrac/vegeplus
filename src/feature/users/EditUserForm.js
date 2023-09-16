@@ -3,7 +3,6 @@ import {
   useUpdateUserMutation,
   useDeleteUserMutation,
   useGetUsersQuery,
-  // useGetUsersQuery,
 } from "./usersApiSlice";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

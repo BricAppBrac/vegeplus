@@ -19,8 +19,8 @@ const Menu = ({ menuId }) => {
     useDeleteMenuMutation();
 
   const handleSupprMenu = async () => {
-    console.log("-------------- handleSupprMenu DEBUT --------------");
-    console.log("props menuId: " + menuId);
+    // console.log("-------------- handleSupprMenu DEBUT --------------");
+    // console.log("props menuId: " + menuId);
 
     try {
       const result = await deleteMenu({
@@ -42,7 +42,7 @@ const Menu = ({ menuId }) => {
     refetch();
     navigate("/PrivateRoute/homebase");
 
-    console.log("-------------- handleSupprMenu FIN --------------");
+    // console.log("-------------- handleSupprMenu FIN --------------");
   };
 
   if (menu) {

@@ -50,7 +50,7 @@ export const menusApiSlice = apiSlice.injectEndpoints({
           prefDayOne: initialMenuData.prefDayOne,
           menuJ: initialMenuData.menuJ,
         };
-        console.log("Request body sent to the server:", requestBody);
+        // console.log("Request body sent to the server:", requestBody);
 
         return {
           url: "/menu",
@@ -58,16 +58,16 @@ export const menusApiSlice = apiSlice.injectEndpoints({
           body: requestBody,
         };
       },
-      onQueryStarted: () => {
-        console.log("Mutation started: addNewMenu");
-      },
-      onQuerySuccess: (response) => {
-        console.log("Mutation succeeded: addNewMenu");
-        console.log("Response from server:", response);
-      },
-      onQueryError: (error) => {
-        console.error("Mutation failed: addNewMenu", error);
-      },
+      // onQueryStarted: () => {
+      //   console.log("Mutation started: addNewMenu");
+      // },
+      // onQuerySuccess: (response) => {
+      //   console.log("Mutation succeeded: addNewMenu");
+      //   console.log("Response from server:", response);
+      // },
+      // onQueryError: (error) => {
+      //   console.error("Mutation failed: addNewMenu", error);
+      // },
       // Forcer le cache à se mettre à jour:
       invalidatesTags: [{ type: "Menu", id: "LIST" }],
       // query: (initialMenuData) => ({

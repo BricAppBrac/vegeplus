@@ -12,12 +12,12 @@ import { useLoginMutation, useSendEmailMutation } from "./authApiSlice";
 
 const usePersist = () => {
   const persistedValue = localStorage.getItem("persist");
-  console.log("Persisted Value:", persistedValue);
+  // console.log("Persisted Value:", persistedValue);
 
   const [persistState, setPersistState] = useState(
     persistedValue ? JSON.parse(persistedValue) : false
   );
-  console.log("Persist State inside usePersist:", persistState);
+  // console.log("Persist State inside usePersist:", persistState);
 
   useEffect(() => {
     localStorage.setItem("persist", JSON.stringify(persistState));
@@ -32,7 +32,7 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [persistState, setPersistState] = usePersist();
-  console.log("Persist State:", persistState);
+  // console.log("Persist State:", persistState);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ const Login = () => {
   const errClass = errMsg ? "errmsg" : "offscreen";
 
   const handleForgottenPwd = async (userEmail) => {
-    console.log("handleForgottenPwd début");
+    // console.log("handleForgottenPwd début");
 
     if (!userEmail) {
       setErrMsg("Veuillez saisir votre email");
@@ -61,8 +61,8 @@ const Login = () => {
       // Envoyer un email à l'adresse bricappbrac-contact@yahoo.com pour demande de nouveau mot de passe
 
       try {
-        console.log("***** process.env ********");
-        console.log(process.env.REACT_APP_EMAIL_USERNAME);
+        // console.log("***** process.env ********");
+        // console.log(process.env.REACT_APP_EMAIL_USERNAME);
 
         const emailData = {
           to: process.env.REACT_APP_EMAIL_USERNAME,
@@ -167,7 +167,7 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg("");
-    console.log("useEffect changement userEmail ou userPassword");
+    // console.log("useEffect changement userEmail ou userPassword");
   }, [userEmail, userPassword]);
 
   const handleFormIn = async (e) => {

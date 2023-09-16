@@ -32,7 +32,7 @@ const MenusList = () => {
   ] = useSendLogoutMutation();
 
   const handleLogout = async () => {
-    console.log("handleLogout");
+    // console.log("handleLogout");
     try {
       await sendLogout();
     } catch (err) {
@@ -43,7 +43,7 @@ const MenusList = () => {
   };
 
   const handleHome = async () => {
-    console.log("handleHome");
+    // console.log("handleHome");
     if (isAdmin || isAbo || isInscrit) {
       navigate("/PrivateRoute/HomeListeRecettesProtect");
     } else {

@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSignUp, setCloseUp } from "../feature/signInUp.slice";
 import {
   useAddNewUserMutation,
-  useCheckDuplicateEmailQuery,
-  useCheckDuplicateUsernameQuery,
+  useGetUsersQuery,
 } from "../feature/users/usersApiSlice";
 import { useSendEmailMutation } from "../feature/auth/authApiSlice";
 
 const SignUp = () => {
   const dispatch = useDispatch();
+
+  // Initialiser une variable pour suivre les erreurs de handleForm
+  let hasError = false;
 
   // Récupération de la demande d'ouverture du formulaire
   const displaySignUp = useSelector(
@@ -42,32 +44,19 @@ const SignUp = () => {
     },
   ] = useAddNewUserMutation();
 
-  const [
-    checkDuplicateUsername,
-    {
-      isLoading: checkUsernameLoading,
-      isSuccess: checkUsernameSuccess,
-      isError: isCheckUsernameError,
-      error: checkUsernameError,
-    },
-  ] = useCheckDuplicateUsernameQuery();
-
-  const [
-    checkDuplicateEmail,
-    {
-      isLoading: checkEmailLoading,
-      isSuccess: checkEmailSuccess,
-      isError: checkEmailError,
-      error: isCheckEmailError,
-    },
-  ] = useCheckDuplicateEmailQuery();
+  const {
+    data: users,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetUsersQuery("userslist", {
+    pollingIntervall: 60000,
+    refetchOnFocus: true,
+    refetchOnMountOrArgChange: true,
+  });
 
   const [sendEmail] = useSendEmailMutation();
-
-  // Initialiser une variable pour suivre les erreurs de handleForm
-  let hasError = false;
-
-  // const [formSubmitted, setFormSubmitted] = useState(false);
 
   // const { refetch } = useGetUsersQuery();
 
@@ -76,9 +65,6 @@ const SignUp = () => {
   }
 
   function checkEmail(userEmail) {
-    // let re =
-    //   /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    // return re.test(userEmail);
     return EMAIL_REGEX.test(userEmail);
   }
 
@@ -93,11 +79,10 @@ const SignUp = () => {
     )
       return true;
     else return false;
-    // return PWD_REGEX.test(userPassword);
   }
 
   const handleCreateUser = async () => {
-    console.log("handleCreateUser début");
+    // console.log("handleCreateUser début");
 
     const result = await addNewUser({
       username: userPseudo,
@@ -115,34 +100,33 @@ const SignUp = () => {
       setUserPseudo("");
       setUserPassword("");
       setUserRepeatPassword("");
-      console.log(
-        "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
-      );
+      // console.log(
+      //   "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
+      // );
       setMessageInfo(
         "Inscription effectuée, vous pouvez vous connecter à votre Espace perso"
       );
     }
 
-    console.log("handleCreateUser fin");
+    // console.log("handleCreateUser fin");
   };
 
   const handleSendEmail = async () => {
-    console.log("handleSendEmail début");
+    // console.log("handleSendEmail début");
     // Envoyer un email à l'adresse userEmail pour confirmer existence de cette adresse
 
-    // A compléter
     const emailData = {
       to: userEmail,
       subject: "Finalisation de votre inscription à l'application VG+",
       text: "Bienvenue! Votre inscription gratuite est validée. Vous pourrez-vous désinscrire dans votre espace perso",
     };
 
-    console.log("***** emailData ********");
-    console.log(emailData);
+    // console.log("***** emailData ********");
+    // console.log(emailData);
 
     const response = await sendEmail(emailData);
-    console.log("response");
-    console.log(response);
+    // console.log("response");
+    // console.log(response);
 
     if (
       response.data.message &&
@@ -153,119 +137,166 @@ const SignUp = () => {
     } else {
       // L'envoi de l'email n'a pas abouti
       setMessageInfo("Pb lors de la vérification de votre email");
-      console.log("Email inexistant ?");
-      console.log("response");
-      console.log(response);
-      console.log("response.error");
-      console.log(response.error);
+      // console.log("Email inexistant ?");
+      // console.log("response");
+      // console.log(response);
+      // console.log("response.error");
+      // console.log(response.error);
     }
 
-    console.log("handleSendEmail fin");
+    // console.log("handleSendEmail fin");
   };
 
   const handleCheckPseudo = async () => {
     // Contrôle de la structure du Pseudo
-    console.log("handleCheckPseudo");
+    // console.log("handleCheckPseudo");
     if (!checkPseudo(userPseudo)) {
-      setMessageInfo("Pseudo invalide");
-      console.log("Pseudo invalide: car 4-25 / AZaz09");
-      console.log(userPseudo);
+      setMessageInfo("Pseudo invalide: car 4-25 / AZaz09");
+      // console.log("Pseudo invalide: car 4-25 / AZaz09");
+      // console.log(userPseudo);
       hasError = true;
     }
   };
 
   const handleCheckEmail = async () => {
     // Contrôle de la structure de l'email
-    console.log("handleCheckEmail");
+    // console.log("handleCheckEmail");
     if (!checkEmail(userEmail)) {
       setMessageInfo("Email invalide");
-      console.log("Email invalide : ");
-      console.log(userEmail);
+      // console.log("Email invalide : ");
+      // console.log(userEmail);
       hasError = true;
     }
   };
 
-  const handleCheckDuplicateUsername = async () => {
-    console.log("handleCheckDuplicateUsername");
-    const dataUsername = await checkDuplicateUsername({
-      username: userPseudo,
-    });
+  const handleCheckDuplicateUsername = async (pseudo) => {
+    // console.log("handleCheckDuplicateUsername");
+    // console.log("pseudo à contrôler");
+    // console.log(pseudo);
+    //appel de useGetUsersQuery et filtrer le pseudo  pour voir si doublon
+    if (isLoading) {
+      setMessageInfo("Loading...");
+      hasError = true;
+    }
+    if (isError) {
+      error?.data?.message &&
+        setMessageInfo(
+          "Erreur rencontrée sur le contrôle des pseudos déjà utilisés"
+        );
+      // console.log("error");
+      // console.log(error);
+      hasError = true;
+    }
+    if (isSuccess) {
+      const { ids, entities } = users;
 
-    if (dataUsername.error) {
-      setMessageInfo(
-        "Une erreur s'est produite lors de la vérification du pseudo."
+      // Convertir le pseudo en minuscules avant la comparaison
+      const lowercasePseudo = pseudo.toLowerCase();
+
+      let filteredId = [];
+
+      filteredId = ids.filter(
+        (userId) => entities[userId].username.toLowerCase() === lowercasePseudo
       );
-      console.log("Error checking duplicate username:", dataUsername.error);
-      hasError = true;
-    } else if (dataUsername && dataUsername.exists) {
-      setMessageInfo("Pseudo déjà utilisé");
-      hasError = true;
+
+      if (filteredId.length === 0) {
+        // console.log("Pseudo ok");
+        hasError = false;
+      } else {
+        // console.log("Pseudo déjà utilisé");
+        setMessageInfo("Pseudo déjà utilisé");
+        hasError = true;
+      }
     }
   };
 
-  const handleCheckDuplicateEmail = async () => {
-    console.log("handleCheckDuplicateEmail");
-    const dataEmail = await checkDuplicateEmail({
-      email: userEmail,
-    });
+  const handleCheckDuplicateEmail = async (email) => {
+    // console.log("handleCheckDuplicateEmail");
+    // console.log("email à contrôler");
+    // console.log(email);
+    //appel de useGetUsersQuery et filtrer l'email pour voir si doublon
+    if (isLoading) {
+      setMessageInfo("Loading...");
+      hasError = true;
+    }
+    if (isError) {
+      error?.data?.message &&
+        setMessageInfo(
+          "Erreur rencontrée sur le contrôle des emails déjà utilisés"
+        );
+      // console.log("error");
+      // console.log(error);
+      hasError = true;
+    }
+    if (isSuccess) {
+      const { ids, entities } = users;
 
-    if (dataEmail.error) {
-      setMessageInfo(
-        "Une erreur s'est produite lors de la vérification de l' email."
+      // Convertir l'e-mail en minuscules avant la comparaison
+      const lowercaseEmail = email.toLowerCase();
+
+      let filteredId = [];
+
+      filteredId = ids.filter(
+        (userId) => entities[userId].email.toLowerCase() === lowercaseEmail
       );
-      console.log("Error checking duplicate email:", dataEmail.error);
-      hasError = true;
-    } else if (dataUsername && dataEmail.exists) {
-      setMessageInfo("Email déjà utilisé");
-      hasError = true;
+
+      if (filteredId.length === 0) {
+        // console.log("Email ok");
+        hasError = false;
+      } else {
+        // console.log("Email déjà utilisé");
+        setMessageInfo("Email déjà utilisé");
+        hasError = true;
+      }
     }
   };
 
   const handleCheckPassword = async () => {
-    console.log("handleCheckPassword");
+    // console.log("handleCheckPassword");
     // Contrôle du mot de passe
     if (!checkPassword(userPassword)) {
       setMessageInfo(
         "Mot de passe invalide: 1 MAJ / 1 min / 1 chiffre / !*#$% / car: 8-12"
       );
-      console.log("Mot de passe invalide");
+      // console.log("Mot de passe invalide");
       hasError = true;
     }
 
     // Comparaison des mots de passe saisis
     if (userPassword !== userRepeatPassword) {
       setMessageInfo("les mots de passe ne sont pas égaux");
-      console.log("Err mots de passe non égaux");
+      // console.log("Err mots de passe non égaux");
       hasError = true;
     }
   };
 
   const handleForm = async (e) => {
     e.preventDefault();
-    console.log("handleForm - début");
+    // console.log("handleForm - début");
+    hasError = false;
 
     // Contrôle de la structure du Pseudo
     await handleCheckPseudo();
 
     // Contrôle de la structure de l'email
-    await handleCheckEmail();
+    !hasError && (await handleCheckEmail());
 
     // Check for duplicate username
-    await handleCheckDuplicateUsername();
+    !hasError && (await handleCheckDuplicateUsername(userPseudo));
 
     // Check for duplicate email
-    await handleCheckDuplicateEmail();
+    !hasError && (await handleCheckDuplicateEmail(userEmail));
 
     // Contrôle du mot de passe
-    await handleCheckPassword();
+    !hasError && (await handleCheckPassword());
 
     if (!hasError) {
       // Si aucune erreur n'a été détectée, appeler handleSendEmail
-      console.log("Pas d'erreur, envoi de l'email");
-      handleSendEmail();
+      // console.log("Pas d'erreur, envoi de l'email");
+      await handleSendEmail();
     }
 
-    console.log("handleForm - fin");
+    // console.log("handleForm - fin");
   };
 
   const closeModal = async () => {
