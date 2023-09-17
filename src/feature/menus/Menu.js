@@ -1,16 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import {
-  useGetMenusQuery,
-  useDeleteMenuMutation,
-  selectMenuById,
-} from "./menusApiSlice";
-
-import { useSelector } from "react-redux";
+import { useGetMenusQuery, useDeleteMenuMutation } from "./menusApiSlice";
+import { memo } from "react";
 
 const Menu = ({ menuId }) => {
-  const menu = useSelector((state) => selectMenuById(state, menuId));
+  const { menu } = useGetMenusQuery("menuslist", {
+    selectFromResult: ({ data }) => ({
+      menu: data?.entities[menuId],
+    }),
+  });
+
   const navigate = useNavigate();
 
   const { refetch } = useGetMenusQuery();
@@ -57,7 +55,7 @@ const Menu = ({ menuId }) => {
             className="icon-button table__button"
             onClick={handleSupprMenu}
           >
-            <FontAwesomeIcon icon={faTrashCan} />
+            <i className="fa-solid fa-trash"></i>
           </button>
         </td>
       </tr>
@@ -65,4 +63,6 @@ const Menu = ({ menuId }) => {
   }
 };
 
-export default Menu;
+const memoizedMenu = memo(Menu);
+
+export default memoizedMenu; // rerender only if changes in the data

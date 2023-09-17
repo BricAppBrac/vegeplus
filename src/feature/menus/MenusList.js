@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import useAuth from "../../hooks/useAuth";
+import { PulseLoader } from "react-spinners";
 
 const MenusList = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
@@ -53,7 +54,13 @@ const MenusList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    // content = <p>Loading...</p>;
+    content = (
+      <div>
+        <PulseLoader color="#FFF" />
+      </div>
+    );
 
   if (isError) {
     content = (

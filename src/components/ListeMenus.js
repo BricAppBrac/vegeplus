@@ -6,6 +6,7 @@ import { getListeMenus } from "../feature/menusliste.slice";
 import { setSortMenus } from "../feature/sortmenus.slice";
 import { useGetMenusQuery } from "../feature/menus/menusApiSlice";
 import useAuth from "../hooks/useAuth";
+import { PulseLoader } from "react-spinners";
 
 const ListeMenus = () => {
   const dispatch = useDispatch();
@@ -66,7 +67,10 @@ const ListeMenus = () => {
   if (isLoading) {
     content = (
       <div className="menuscards-liste">
-        <div>Loading...</div>;
+        {/* <div>Loading...</div>; */}
+        <div>
+          <PulseLoader color="#FFF" />
+        </div>
       </div>
     );
   }

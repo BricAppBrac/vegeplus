@@ -27,24 +27,20 @@ const Footer = () => {
                 {username ? username : "recommandée"}
               </p>
             </li>
-            {/* <li>
-              <NavLink
-                to="/homemenu"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-              >
-                Menu de la semaine
-              </NavLink>
-            </li> */}
           </ul>
         </div>
         <div className="mentions-footer">
           <ul>
             <li>
+              <NavLink to="/mentions-legales">Mentions Légales</NavLink>
+            </li>
+            <li className="buy-me-a-coffee">
               <NavLink
-                to="/mentions-legales"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
+                to="https://www.buymeacoffee.com/bricappbrac"
+                id="buy-me-a-coffee"
               >
-                Mentions Légales
+                <i className="fa-solid fa-mug-saucer"></i> Pour me soutenir: buy
+                me a coffee! Merci!
               </NavLink>
             </li>
             {/* <li>
@@ -69,7 +65,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-container2">
-        <div className="lgs">
+        <div className="bab">
           <h3>BricAppBrac </h3>
         </div>
         <div className="copyright">

@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAddNewUserMutation, useGetUsersQuery } from "./usersApiSlice";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { ROLES } from "../../config/roles";
 
 const USER_REGEX = /^[A-Za-z0-9]{3,20}$/;
-const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
+const PWD_REGEX = /^[A-z0-9!*#$%]{4,12}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const NewUserForm = () => {
@@ -237,7 +235,7 @@ const NewUserForm = () => {
             <div>
               <h3>Enregistrer</h3>
               <button className="icon-button" title="Save" disabled={!canSave}>
-                <FontAwesomeIcon icon={faSave} />
+                <i className="fa-solid fa-floppy-disk"></i>
               </button>
             </div>
             <div>
@@ -266,7 +264,7 @@ const NewUserForm = () => {
           />
           {/* // MOT DE PASSE */}
           <label className="form__label" htmlFor="password">
-            Mot de passe: <span className="nowrap">[4-12 car avec !@#$%]</span>
+            Mot de passe: <span className="nowrap">[4-12 car avec !*#$%]</span>
           </label>
           <input
             className={`form__input ${validPwdClass}`}

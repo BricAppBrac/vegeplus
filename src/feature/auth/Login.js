@@ -1,11 +1,12 @@
 import { useRef, useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setSignIn, setCloseIn } from "../../feature/signInUp.slice";
 
 import { setCredentials } from "./auth.slice";
 import { useLoginMutation, useSendEmailMutation } from "./authApiSlice";
+import { PulseLoader } from "react-spinners";
 
 // usePersist incorporé au composant car erreur
 // import usePersist from "../../hooks/usePersist";
@@ -172,18 +173,17 @@ const Login = () => {
 
   const handleFormIn = async (e) => {
     e.preventDefault();
-    console.log("handleFormIn");
 
     try {
       const { accessToken } = await login({
         email: userEmail,
         password: userPassword,
       }).unwrap();
-      console.log("Access Token:", accessToken); // Afficher le token d'accès renvoyé
+      // console.log("Access Token:", accessToken); // Afficher le token d'accès renvoyé
       dispatch(setCredentials({ accessToken }));
       setUserEmail("");
       setUserPassword("");
-      console.log("Login OK");
+      // console.log("Login OK");
       closeModal();
       navigate("/PrivateRoute/HomeListeRecettesProtect");
     } catch (err) {
@@ -206,7 +206,7 @@ const Login = () => {
   };
 
   const closeModal = async () => {
-    console.log("closeModal");
+    // console.log("closeModal");
     await dispatch(setCloseIn(true));
     dispatch(setSignIn(false));
     setUserEmail("");
@@ -227,7 +227,9 @@ const Login = () => {
                 <button onClick={() => closeModal()}>x</button>
               </div>
               {isLoading ? (
-                <p>Loading...</p>
+                <div>
+                  <PulseLoader color="#FFF" />
+                </div>
               ) : (
                 <form onSubmit={handleFormIn} className="signin-form">
                   <div className="signin-input">

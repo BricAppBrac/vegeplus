@@ -3,11 +3,12 @@ footer {
   color: whitesmoke;
   padding: 20px 0 10px 0;
   padding: 5px;
+  letter-spacing: 1.2px;
 
   a {
     color: wheat;
   }
-
+ 
   .footer-container1 {
     display: flex;
     justify-content: space-between;
@@ -15,7 +16,39 @@ footer {
 
     li {
       padding-bottom: 5px ;
+
+      
     }
+
+
+    .mentions-footer {
+    li #buy-me-a-coffee {
+      color: $code;
+      font-size: 1.3rem;
+      background: $green;
+      border-radius: 20px;
+      padding: 3px 5px;
+      display: block;
+      font-weight: 900;
+    
+     
+
+      @media screen and (max-width: 865px) {
+        font-size: 1.2rem;
+      }
+      @media screen and (max-width: 805px) {
+        font-size: 1rem;
+      }
+      @media screen and (max-width: 405px) {
+        font-size: 0.8rem;
+      }
+    }
+    
+    }
+
+  
+
+    
   }
 
 
@@ -24,9 +57,13 @@ footer {
     margin: 0 auto;
     justify-content:space-around;
 
+    a {
+      color: wheat;
+  
     
+    }
     
-    .lgs {
+    .bab {
       font-family: $font1;
       font-size: 2rem;
       letter-spacing: 1.2px;
@@ -47,6 +84,10 @@ footer {
       }
       
        }
+
+       
+
+
     .copyright {
       display: flex;
       font-family: $font2;

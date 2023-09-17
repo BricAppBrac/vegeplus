@@ -2,6 +2,7 @@ import { useGetUsersQuery } from "./usersApiSlice";
 import User from "./User";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
+import { PulseLoader } from "react-spinners";
 
 const UsersList = () => {
   // console.log("UsersList");
@@ -32,7 +33,12 @@ const UsersList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    content = (
+      <p>
+        <PulseLoader color="#FFF" />
+      </p>
+    );
 
   const handleLogout = async () => {
     // console.log("handleLogout");

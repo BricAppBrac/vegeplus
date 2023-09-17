@@ -1,14 +1,15 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useDeleteRecipeMutation } from "./recipesApiSlice";
-
-import { useSelector } from "react-redux";
-import { selectRecipeById } from "./recipesApiSlice";
 import { useGetRecipesQuery } from "../recipes/recipesApiSlice";
+import { memo } from "react";
 
 const Recipe = ({ recipeId }) => {
-  const recipe = useSelector((state) => selectRecipeById(state, recipeId));
+  const { recipe } = useGetRecipesQuery("recipeslist", {
+    selectFromResult: ({ data }) => ({
+      recipe: data?.entities[recipeId],
+    }),
+  });
+
   const navigate = useNavigate();
 
   const { refetch } = useGetRecipesQuery();
@@ -52,7 +53,7 @@ const Recipe = ({ recipeId }) => {
         <td className={`table__cell ${cellStatus}`}>{recipe.id}</td>
         <td className={`table__cell ${cellStatus}`}>
           <button className="icon-button table__button" onClick={handleSuppr}>
-            <FontAwesomeIcon icon={faTrashCan} />
+            <i className="fa-solid fa-trash"></i>
           </button>
         </td>
       </tr>
@@ -60,4 +61,6 @@ const Recipe = ({ recipeId }) => {
   }
 };
 
-export default Recipe;
+const memoizedRecipe = memo(Recipe);
+
+export default memoizedRecipe; // rerender only if changes in the data

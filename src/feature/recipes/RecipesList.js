@@ -3,6 +3,7 @@ import Recipe from "./Recipe";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import useAuth from "../../hooks/useAuth";
+import { PulseLoader } from "react-spinners";
 
 const RecipesList = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
@@ -33,7 +34,13 @@ const RecipesList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    // content = <p>Loading...</p>;
+    content = (
+      <div>
+        <PulseLoader color="#FFF" />
+      </div>
+    );
 
   const handleLogout = async () => {
     // console.log("handleLogout");

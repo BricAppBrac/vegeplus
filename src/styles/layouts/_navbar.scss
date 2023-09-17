@@ -58,18 +58,7 @@ nav {
         max-width: calc(650px - 4vw);
         margin: 0 auto;
       }
-      // @media screen and (max-width: 480px) {
-      //   grid-template-columns: 40% 60%;
-      //   padding-left: 10px;
-      //   max-width: calc(560px - 4vw);
-      // }
-      // @media screen and (max-width: 600px) {
-      //   max-width: calc(560px - 4vw);
-      // }
-      // @media screen and (max-width: 500px) {
-      //   width: 80%;
-      //   max-height: 120px;
-      // }
+     
       @media screen and (max-width: 450px) {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -88,6 +77,13 @@ nav {
         background: url(../../assets/img/logovg.png) center/cover;
         padding: 3px;
         width: 65%;
+        
+
+        &:hover {
+          
+          cursor: pointer;
+          
+        }
 
         @media screen and (max-width: 1050px) {
          width: 50%;
@@ -174,18 +170,23 @@ nav {
           //   font-size: 0.8rem;
            
           // }
-          /* couleur du lien après la visite de l'utilisateur */
-          a.nav-active {
-            background: $green;
-            @media screen and (max-width: 1185px) {
-              padding: 1px;
-            }
-          }
+        
+
+         
           a {
             text-decoration: none;
             color: whitesmoke;
             padding: 5px;
             border-radius: 10px;
+           
+             
+            
+              &.nav-active {
+                background: $green;
+                @media screen and (max-width: 1185px) {
+                  padding: 1px;
+                }
+              }
             /* liens cliquables non-soulignés*/
             
             &:visited {

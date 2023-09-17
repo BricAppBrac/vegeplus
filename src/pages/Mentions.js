@@ -19,7 +19,6 @@ const Mentions = () => {
           <div>
             <h2>Propriétaire du site et de l'application:</h2>
             <p>Sandrine STEIGER</p>
-            <p>contact : bricappbrac@gmail.com</p>
             <h2>Hébergeur</h2>
             <p>Render.com</p>
             <h2>Responsabilités</h2>
@@ -102,9 +101,8 @@ const Mentions = () => {
             <h2>Conformité avec la CNIL</h2>
             <p>
               L’utilisateur a la possibilité de se désinscrire de l'application
-              en envoyant un email à bricappbrac@gmail.com. Son compte sera
-              alors désactivé (s'il souhaite voir son compte réactivé
-              ultérieurement) ou supprimé définitement, selon sa demande.
+              en utilisant le lien de désiscription sur le formulaire d'accès à
+              l'Espace perso. Son compte sera alors supprimé définitement.
             </p>
             {/* <h2>Newsletter</h2> */}
             {/* <p>
@@ -127,8 +125,8 @@ const Mentions = () => {
               concernant ».
             </p>
             <p>
-              Pour cela, l’utilisateur peut en faire la demande en écrivant à
-              bricappbrac@gmail.com.
+              Pour cela, l’utilisateur peut en faire la demande en utilisant le
+              formulaire de contact de la page Contact.
             </p>
             <p>
               {" "}

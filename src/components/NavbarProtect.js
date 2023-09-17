@@ -16,9 +16,11 @@ const NavbarProtect = () => {
 
   const handleInit = () => {
     dispatch(setSort(["Croissant", null, null]));
-    // decroissantRef.current.className = "";
-    // saisonRef.current.className = "";
-    // motcleRef.current.className = "";
+  };
+
+  const handleLogoClick = () => {
+    handleInit();
+    navigate("/PrivateRoute/HomeListeRecettesProtect");
   };
 
   const handleLogout = async () => {
@@ -31,9 +33,6 @@ const NavbarProtect = () => {
       } else {
         setErrMsg(err.data?.message);
       }
-      // console.log("err : ");
-      // console.log(err);
-      // errRef.current.focus();
     }
   };
 
@@ -45,7 +44,7 @@ const NavbarProtect = () => {
     <nav>
       <div className="nav-container">
         <div className="logo">
-          <div className="imglogo"></div>
+          <div className="imglogo" onClick={() => handleLogoClick()}></div>
 
           <ul>
             <li>

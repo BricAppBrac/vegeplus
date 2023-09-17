@@ -333,11 +333,6 @@ const SignUp = () => {
                     onChange={(e) => {
                       setUserPseudo(e.target.value);
                     }}
-                    // onChange={(e) => {
-                    //   if (!formSubmitted) {
-                    //     setUserPseudo(e.target.value);
-                    //   }
-                    // }}
                   />
                 </div>
                 <div className="signup-input">

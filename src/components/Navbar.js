@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   setSignUp,
   setCloseUp,
@@ -11,6 +11,7 @@ import { setSort } from "../feature/sort.slice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignUp = async () => {
     // console.log("handleSignUp");
@@ -30,16 +31,18 @@ const Navbar = () => {
 
   const handleInit = () => {
     dispatch(setSort(["Croissant", null, null]));
-    // decroissantRef.current.className = "";
-    // saisonRef.current.className = "";
-    // motcleRef.current.className = "";
+  };
+
+  const handleLogoClick = () => {
+    handleInit();
+    navigate("/");
   };
 
   return (
     <nav>
       <div className="nav-container">
         <div className="logo">
-          <div className="imglogo"></div>
+          <div className="imglogo" onClick={() => handleLogoClick()}></div>
 
           <ul>
             <li>
@@ -52,12 +55,6 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              {/* <NavLink
-                to="/homemenu"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-              >
-                Menu de la semaine
-              </NavLink> */}
               <NavLink
                 to="/"
                 className={(nav) => (nav.isActive ? "nav-active" : "")}
@@ -72,9 +69,6 @@ const Navbar = () => {
           <div className="nav-buttons">
             <button onClick={() => handleSignUp()}>Inscription gratuite</button>
             <button onClick={() => handleSignIn()}>Espace perso</button>
-            {/* <button onClick={() => console.log("fonction logout")}>
-              <i className="fa-solid fa-arrow-right-from-bracket"></i>
-            </button> */}
           </div>
           <h3>Une application BricAppBrac</h3>
         </div>

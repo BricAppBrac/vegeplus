@@ -7,18 +7,30 @@ import { Outlet } from "react-router-dom";
 
 const Prefetch = () => {
   useEffect(() => {
-    // console.log("subscribing");
-    const menus = store.dispatch(menusApiSlice.endpoints.getMenus.initiate());
-    const recipes = store.dispatch(
-      recipesApiSlice.endpoints.getRecipes.initiate()
+    // const menus = store.dispatch(menusApiSlice.endpoints.getMenus.initiate());
+    // const recipes = store.dispatch(
+    //   recipesApiSlice.endpoints.getRecipes.initiate()
+    // );
+    // const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
+
+    store.dispatch(
+      menusApiSlice.util.prefetch("getMenus", "menuslist", { force: true })
     );
-    const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
-    return () => {
-      // console.log("unsubscribing");
-      menus.unsubscribe();
-      recipes.unsubscribe();
-      users.unsubscribe();
-    };
+    store.dispatch(
+      recipesApiSlice.util.prefetch("getRecipes", "recipeslist", {
+        force: true,
+      })
+    );
+    store.dispatch(
+      usersApiSlice.util.prefetch("getUsers", "userslist", { force: true })
+    );
+
+    //   return () => {
+    //     // console.log("unsubscribing");
+    //     menus.unsubscribe();
+    //     recipes.unsubscribe();
+    //     users.unsubscribe();
+    //   };
   }, []);
   return <Outlet />;
 };

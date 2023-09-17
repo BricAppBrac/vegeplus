@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListe } from "../feature/liste.slice";
 import { setSort } from "../feature/sort.slice";
 import { useGetRecipesQuery } from "../feature/recipes/recipesApiSlice";
+import { PulseLoader } from "react-spinners";
 
 const ListeRecettes = () => {
   const dispatch = useDispatch();
@@ -59,7 +60,11 @@ const ListeRecettes = () => {
 
   return (
     <div className="recipescards-liste">
-      {isLoading && <div>Loading...</div>}{" "}
+      {isLoading && (
+        <div>
+          <PulseLoader color="#FFF" />
+        </div>
+      )}
       {/* Display a loading indicator while fetching data */}
       {isSuccess &&
         liste &&

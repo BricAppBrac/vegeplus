@@ -2,11 +2,103 @@
   min-height: 100vh;
     height: 100%;
     width: 100vw;
-
+   
     display: grid;
     grid-template-rows: 15% 85%;
-  background: $parchemin;
+  
 
+  h2, h4 {
+    font-family: $font2;
+    margin: 15px;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+
+  .contact-form {
+    min-width: 340px;
+    width: 60%;
+    background: $green;
+    margin: 10px auto;
+    height: fit-content;
+    padding: 3px;
+    font-family: $font3;
+    border-radius: 20px;
+
+    .form-group
+     {
+      color: $brown1;
+      max-width: 300px;
+      padding-bottom: 5px;
+      font-weight: 700;
+      label {
+        font-size: 1.5rem;
+      padding: 0 3px;
+      margin: 5px;
+      }
+     input, textarea {
+      font-size: 1.5rem;
+      padding: 0 3px;
+      margin: 5px 15px;
+      border-radius: 5px;
+
+      @media screen and (max-width: 600px) {
+        font-size: 1.2rem;
+        max-width: 290px;
+      }
+
+     }
+
+    
+    }
+    .form-button {
+      margin: 10px;
+    button {
+      font-weight: 700;
+      padding: 3px;
+      font-size: 1.4rem;
+    }
+  }
+
+  .form-message {
+    margin: 10px;
+ 
+    font-weight: 700;
+    padding: 3px;
+    font-size: 1.6rem;
+    font-family: $font2;
+    color: $code;
+  
+}
+a {
+  color: $code;
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: $green;
+  border-radius: 20px;
+  padding: 3px 5px;
+  display: block;
+
+ 
+
+  @media screen and (max-width: 865px) {
+    font-size: 1.2rem;
+  }
+  @media screen and (max-width: 805px) {
+    font-size: 1rem;
+  }
+  @media screen and (max-width: 405px) {
+    font-size: 0.8rem;
+  }
+}
+
+  }
+
+  
+  
+  
 
   .contact-footer {
     text-align: center;
@@ -14,27 +106,6 @@
     user-select: text;
     /*pour autoriser la sélection de l'email*/
 
-    button {
-      padding: 10px;
-      margin: 50px auto;
-      border-radius: 15px;
-      outline: none;
-      border: 6px solid $green;
-      transition: 0.3s;
-      text-align: center;
-      align-items: center;
-
-      min-width: 280px;
-      width: 75%;
-      max-width: 800px;
-
-      color: $brown1;
-      font-size: 1.1rem;
-      font-family: $font2;
-
-      @media screen and (max-width: 1300px) {
-        font-size: 1rem;
-      }
-  }
+  
   }  
 }

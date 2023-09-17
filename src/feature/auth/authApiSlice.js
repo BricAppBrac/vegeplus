@@ -10,9 +10,9 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        console.log("Starting login query...");
-      },
+      // async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      //   console.log("Starting login query...");
+      // },
     }),
     // Logout endpoint
     sendLogout: builder.mutation({

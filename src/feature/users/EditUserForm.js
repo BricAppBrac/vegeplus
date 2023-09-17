@@ -5,8 +5,6 @@ import {
   useGetUsersQuery,
 } from "./usersApiSlice";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { ROLES } from "../../config/roles";
 
 const USER_REGEX = /^[A-Za-z0-9]{4,25}$/;
@@ -346,7 +344,7 @@ const EditUserForm = ({ user }) => {
                 onClick={onSaveUserClicked}
                 disabled={!canSave}
               >
-                <FontAwesomeIcon icon={faSave} />
+                <i className="fa-solid fa-floppy-disk"></i>
               </button>
             </div>
             <div>
@@ -356,7 +354,7 @@ const EditUserForm = ({ user }) => {
                 title="Delete"
                 onClick={onDeleteUserClicked}
               >
-                <FontAwesomeIcon icon={faTrashCan} />
+                <i className="fa-solid fa-trash"></i>
               </button>
             </div>
             <div>

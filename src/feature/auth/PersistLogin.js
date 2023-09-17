@@ -4,6 +4,7 @@ import { useRefreshMutation } from "./authApiSlice";
 import { useSelector } from "react-redux";
 import { selectCurrentToken } from "./auth.slice";
 import { Link, Outlet } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 
 const PersistLogin = () => {
   const persistedValue = localStorage.getItem("persist"); // Intégrer la logique de persist directement
@@ -47,7 +48,12 @@ const PersistLogin = () => {
   } else if (isLoading) {
     // persist: yes, token: no
     // console.log("loading...");
-    content = <p>Loading...</p>;
+    // content = <p>Loading...</p>;
+    content = (
+      <div>
+        <PulseLoader color="#FFF" />
+      </div>
+    );
   } else if (isError) {
     //persist: yes, token: no
     // console.log("error");

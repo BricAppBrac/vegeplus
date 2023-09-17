@@ -1,14 +1,14 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-
-import { useSelector } from "react-redux";
-import { selectUserById } from "./usersApiSlice";
+import { useGetUsersQuery } from "./usersApiSlice";
+import { memo } from "react";
 
 const User = ({ userId }) => {
-  // console.log("User.js");
-  // console.log("userId : " + userId);
-  const user = useSelector((state) => selectUserById(state, userId));
+  const { user } = useGetUsersQuery("userslist", {
+    selectFromResult: ({ data }) => ({
+      user: data?.entities[userId],
+    }),
+  });
+
   const navigate = useNavigate();
 
   if (user) {
@@ -29,7 +29,7 @@ const User = ({ userId }) => {
         <td className={`table__cell ${cellStatus}`}>{user.id}</td>
         <td className={`table__cell ${cellStatus}`}>
           <button className="icon-button table__button" onClick={handleEdit}>
-            <FontAwesomeIcon icon={faPenToSquare} />
+            <i className="fa-solid fa-pen-to-square"></i>
           </button>
         </td>
       </tr>
@@ -37,4 +37,6 @@ const User = ({ userId }) => {
   }
 };
 
-export default User;
+const memoizedUser = memo(User);
+
+export default memoizedUser; // rerender only if changes in the data
