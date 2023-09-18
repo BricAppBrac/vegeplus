@@ -7,7 +7,6 @@ import sortmenusReducer from "../feature/sortmenus.slice";
 import checkedReducer from "../feature/checked.slice";
 import indicReducer from "../feature/indic.slice";
 import prefReducer from "../feature/pref.slice";
-import menuReducer from "../feature/menu.slice";
 import menusReducer from "../feature/menusliste.slice";
 import menurecipesReducer from "../feature/menurecipes.slice";
 import menucompoReducer from "../feature/menucompo.slice";
@@ -28,7 +27,6 @@ const store = configureStore({
     checkedRec: checkedReducer,
     confDelete: indicReducer,
     prefSelect: prefReducer,
-    menuPref: menuReducer,
     menuRecipes: menurecipesReducer,
     menuCompo: menucompoReducer,
     indicStopReset: indicstopresetReducer,
