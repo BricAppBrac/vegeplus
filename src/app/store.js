@@ -39,7 +39,8 @@ const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware),
-  devTools: false,
+  devTools: false, //PRODUCTION
+  // devTools: true, //DEVELOPPEMENT
 });
 
 setupListeners(store.dispatch);

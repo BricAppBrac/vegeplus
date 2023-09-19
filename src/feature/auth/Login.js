@@ -59,8 +59,6 @@ const Login = () => {
     if (!userEmail) {
       setErrMsg("Veuillez saisir votre email");
     } else {
-      // Envoyer un email à l'adresse bricappbrac-contact@yahoo.com pour demande de nouveau mot de passe
-
       try {
         // console.log("***** process.env ********");
         // console.log(process.env.REACT_APP_EMAIL_USERNAME);
@@ -113,8 +111,6 @@ const Login = () => {
     if (!userEmail) {
       setErrMsg("Veuillez saisir votre email");
     } else {
-      // Envoyer un email à l'adresse bricappbrac-contact@yahoo.com pour demande de nouveau mot de passe
-
       try {
         // A compléter
         console.log("***** process.env ********");

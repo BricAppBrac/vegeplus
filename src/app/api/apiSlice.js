@@ -3,7 +3,7 @@ import { setCredentials } from "../../feature/auth/auth.slice";
 
 const baseQuery = fetchBaseQuery({
   // baseUrl: "http://localhost:5000", // DEVELOPPEMENT
-  baseUrl: "https://vegeplusback.onrender.com",
+  baseUrl: "https://vegeplusback.onrender.com", // PRODUCTION
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
