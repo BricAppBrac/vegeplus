@@ -18,6 +18,7 @@ const User = ({ userId }) => {
       navigate(`/users/${userId}`);
     };
     const cellStatus = user.active ? "" : "table__cell--inactive";
+
     return (
       <tr className="table__tr">
         <td className={`table__cell ${cellStatus}`}>{user.username}</td>
@@ -27,6 +28,11 @@ const User = ({ userId }) => {
         </td>
         <td className={`table__cell ${cellStatus}`}>{user.email}</td>
         <td className={`table__cell ${cellStatus}`}>{user.id}</td>
+        <td className={`table__cell ${cellStatus}`}>
+          {user.createdAt
+            ? new Date(user.createdAt).toLocaleDateString("fr")
+            : null}
+        </td>
         <td className={`table__cell ${cellStatus}`}>
           <button className="icon-button table__button" onClick={handleEdit}>
             <i className="fa-solid fa-pen-to-square"></i>

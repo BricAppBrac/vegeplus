@@ -188,11 +188,6 @@ const MenusListeCard = ({ menu }) => {
     } catch (error) {
       console.error("An error occurred while deleting menu:", error);
     }
-
-    // axios.delete("http://localhost:5000/menu/" + menu._id);
-    // console.log("DELETE MENU BDD");
-
-    // dispatch(deleteListeMenu(menu._id));
   };
 
   // ***********************************************************

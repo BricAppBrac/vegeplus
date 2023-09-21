@@ -35,19 +35,9 @@ const ListeRecettesProtect = () => {
 
   // Récupération de la liste de recettes dans la BDD et dispatch dans le store
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:5000/recipe/")
-    //   .then((res) => dispatch(getListe(res.data)))
-    //   .then(() => dispatch(setSort(["Croissant", null, null])));
-
-    // Dispatch de l'action pour définir le tri des recettes
-
-    // Si la requête n'a pas renvoyé d'erreur, mettez à jour le store avec les données de la liste de menus
-
     if (isSuccess) {
       dispatch(getListe(liste));
     }
-    // Vous n'avez pas besoin de dispatcher manuellement ici, les données sont déjà stockées dans le store
     dispatch(setSort(["Croissant", null, null]));
   }, [dispatch]);
 

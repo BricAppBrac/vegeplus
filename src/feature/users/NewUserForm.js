@@ -27,7 +27,7 @@ const NewUserForm = () => {
   const [role, setRole] = useState("Inscrit");
   // const [validRole, setValidRole] = useState(false);
 
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
 
   const [canSave, setCanSave] = useState(false);
 
@@ -50,6 +50,17 @@ const NewUserForm = () => {
     // setValidEmail(EMAIL_REGEX.test(email));
     handleCanSave();
   }, [email]);
+
+  useEffect(() => {
+    // console.log("*************** UseEffect role ************");
+
+    handleCanSave();
+  }, [role]);
+
+  useEffect(() => {
+    console.log("*************** UseEffect active ************");
+    handleCanSave();
+  }, [active]);
 
   useEffect(() => {
     // console.log("*************** UseEffect canSave ************");
@@ -139,8 +150,6 @@ const NewUserForm = () => {
     // console.log("-------------- handleCanSave FIN --------------");
   };
 
-  // const onUsernameChanged = (e) => setUsername(e.target.value);
-
   const onUsernameChanged = (e) => {
     // console.log("-------------- onUsernameChanged DEBUT --------------");
     // console.log("e.target.value");
@@ -176,7 +185,7 @@ const NewUserForm = () => {
     // console.log("e.target.value");
     // console.log(e.target.value);
     setRole(e.target.value);
-    handleCanSave(); // rôle toujours OK car select
+    // rôle toujours OK car select
     // console.log("-------------- onRoleChanged FIN --------------");
   };
 
@@ -185,18 +194,27 @@ const NewUserForm = () => {
     // console.log("-------------- onActiveChanged DEBUT --------------");
 
     setActive((prev) => !prev);
-    handleCanSave(); // statut toujours OK car checkbox
+    // statut toujours OK car checkbox
     // console.log("-------------- onActiveChanged FIN --------------");
   };
 
   const onSaveUserClicked = async (e) => {
     e.preventDefault();
-    // console.log("-------------- onSaveUserClicked DEBUT --------------");
-
+    console.log("-------------- onSaveUserClicked DEBUT --------------");
+    console.log("active");
+    console.log(active);
     try {
       if (canSave) {
-        const result = await addNewUser({ username, password, email, role });
+        const result = await addNewUser({
+          username,
+          password,
+          email,
+          role,
+          active,
+        });
         if (result.error) {
+          console.log("result.error");
+          console.log(result.error);
           setMessageInfo(result.error.data.message);
         } else {
           setMessageInfo("");

@@ -14,12 +14,7 @@ const Footer = () => {
         <div className="liens-footer">
           <ul>
             <li>
-              <NavLink
-                to="/"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-              >
-                Accueil
-              </NavLink>
+              <NavLink to="/">Accueil</NavLink>
             </li>
             <li>
               <p>
@@ -43,24 +38,11 @@ const Footer = () => {
                 me a coffee! Merci!
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                to="/plan-du-site"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-              >
-                Plan du site
-              </NavLink>
-            </li> */}
           </ul>
         </div>
         <div className="contact-footer">
           <li>
-            <NavLink
-              to="/contact"
-              className={(nav) => (nav.isActive ? "nav-active" : "")}
-            >
-              Contact
-            </NavLink>
+            <NavLink to="/contact">Contact</NavLink>
           </li>
         </div>
       </div>

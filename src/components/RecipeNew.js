@@ -493,20 +493,6 @@ const RecipeNew = () => {
         steps: arrayNew,
       };
 
-      // axios.post("http://localhost:5000/recipe/complete", {
-      //   title: newTitle,
-      //   author: newAuthor,
-      //   seasons: newSeasons,
-      //   // ingredients: newIngredients,
-      //   // quantities: newQuantities,
-      //   // categories: newCategories,
-      //   ingredients: arrayNewIngredients,
-      //   quantities: arrayNewQuantities,
-      //   categories: arrayNewCategories,
-      //   // steps: newSteps,
-      //   steps: arrayNew,
-      // });
-
       try {
         // console.log("recipeData avant addNewRecipe");
         // console.log(recipeData);

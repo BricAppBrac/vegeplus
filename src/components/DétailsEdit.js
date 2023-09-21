@@ -1032,33 +1032,6 @@ const DétailsEdit = () => {
     // console.log("data submit");
     // console.log(data);
 
-    //---------------------------------------------
-    //Mise à jour d'une recette dans la BDD:
-    //---------------------------------------------
-    // axios
-    //   .put("http://localhost:5000/recipe/" + checkedRecipe._id, {
-    //     title: data.title,
-    //     author: data.author,
-    //     seasons: data.seasons,
-    //     // ingredients: data.ingredients,
-    //     // quantities: data.quantities,
-    //     // categories: data.categories,
-    //     ingredients: arrayNewIngredients,
-    //     quantities: arrayNewQuantities,
-    //     categories: arrayNewCategories,
-    //     // steps: data.steps,
-    //     steps: arrayNewSteps,
-    //   })
-    //   .then(() => {
-    //     // MISE A JOUR REUSSIE
-    //     // Envoi vers la page sans édition
-    //     navigate("/PrivateRoute/pagedetailsrecipeprotect");
-    //   })
-    //   .catch((error) => {
-    //     // ERREUR MISE A JOUR
-    //     console.error(error);
-    //   });
-
     try {
       await handleUpdateRecipe(data);
       // MISE A JOUR REUSSIE

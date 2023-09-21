@@ -102,6 +102,9 @@ const UsersList = () => {
               <th scope="col" className="table__th user__id ">
                 Id
               </th>
+              <th scope="col" className="table__th user__datein">
+                DateIn
+              </th>
               <th scope="col" className="table__th user__edit">
                 Edit
               </th>

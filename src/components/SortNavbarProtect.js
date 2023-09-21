@@ -126,10 +126,7 @@ const SortNavbarProtect = () => {
       </div>
       <div className="new-container">
         <p>
-          <NavLink
-            to="/PrivateRoute/pagenewrecipe"
-            className={(nav) => (nav.isActive ? "nav-active" : "")}
-          >
+          <NavLink to="/PrivateRoute/pagenewrecipe">
             <i className="fa-solid fa-chevron-right"></i>
             Nouvelle Recette{" "}
             <i id="plusicon" className="fa-solid fa-square-plus"></i>

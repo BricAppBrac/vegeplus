@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
@@ -38,6 +38,14 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const [isListeDesRecettesActive, setIsListeDesRecettesActive] =
+    useState(true);
+
+  const handleListeDesRecettesClick = () => {
+    // Activer "Liste des Recettes" et désactiver "Menu de la Semaine"
+    setIsListeDesRecettesActive(true);
+  };
+
   return (
     <nav>
       <div className="nav-container">
@@ -48,8 +56,8 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-                onClick={() => handleInit()}
+                className={isListeDesRecettesActive ? "nav-active" : ""}
+                onClick={() => handleListeDesRecettesClick()}
               >
                 Liste des Recettes
               </NavLink>
@@ -57,7 +65,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
+                className={!isListeDesRecettesActive ? "nav-active" : ""}
               >
                 Menu de la semaine
               </NavLink>

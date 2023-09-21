@@ -50,8 +50,7 @@ const NavbarProtect = () => {
             <li>
               <NavLink
                 to="/PrivateRoute/HomeListeRecettesProtect"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
-                onClick={() => handleInit()}
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
                 Liste des Recettes
               </NavLink>
@@ -59,7 +58,8 @@ const NavbarProtect = () => {
             <li>
               <NavLink
                 to="/homemenu"
-                className={(nav) => (nav.isActive ? "nav-active" : "")}
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+                onClick={() => handleInit()}
               >
                 Menu de la semaine
               </NavLink>

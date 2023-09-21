@@ -30,10 +30,6 @@ const DetailsDeleteRecipe = (props) => {
 
   ///////////////////////////////////////
   const handleDelete = async (recipeId) => {
-    // axios.delete("http://localhost:5000/recipe/" + props.recipeId);
-    // dispatch(deleteRecipe(props.recipeId));
-    // console.log("après dispatch deleteRecipe");
-
     try {
       // Call the deleteRecipe mutation with the recipe id
       const response = await deleteRecipeMutation({ id: recipeId });

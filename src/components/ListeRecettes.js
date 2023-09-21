@@ -16,19 +16,6 @@ const ListeRecettes = () => {
   // Execute the query and fetch data
   const { data, error, isLoading, isSuccess } = useGetRecipesQuery();
 
-  // Récupération de la liste de recettes dans la BDD et dispatch dans le store
-
-  // useEffect(() => {
-  //     axios
-  //       .get("http://localhost:5000/recipe/")
-  //       .then((res) => dispatch(getListe(res.data)))
-  //       .then(() => dispatch(setSort(["Croissant", null, null])));
-
-  //   dispatch(setSort(["Croissant", null, null]));
-  // }, []);
-
-  // Create 'liste' based on 'data'
-
   const liste = isSuccess
     ? data.ids.map((recipeId) => {
         const recipe = data.entities[recipeId];

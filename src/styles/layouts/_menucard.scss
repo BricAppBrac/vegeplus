@@ -84,6 +84,10 @@
             background: $brown1;
             color: wheat;
           }
+
+          @media screen and (max-width: 500px) {
+            font-size: 1.3rem;
+          }
         }
 
 
