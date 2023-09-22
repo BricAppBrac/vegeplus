@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// import axios from "axios";
 import NavbarProtect from "../components/NavbarProtect";
 import Footer from "../components/Footer";
 import MenuPref from "../components/MenuPref";

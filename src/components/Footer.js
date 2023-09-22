@@ -33,9 +33,11 @@ const Footer = () => {
               <NavLink
                 to="https://www.buymeacoffee.com/bricappbrac"
                 id="buy-me-a-coffee"
+                target="_blank"
               >
-                <i className="fa-solid fa-mug-saucer"></i> Pour me soutenir: buy
-                me a coffee! Merci!
+                <i className="fa-solid fa-mug-saucer"></i> Pour garder l'accès
+                Abonné (conserver vos menus et générer les listes de courses -
+                gratuit 30j): buy me a coffee! Merci!
               </NavLink>
             </li>
           </ul>

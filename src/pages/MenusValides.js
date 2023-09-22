@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import NavbarProtect from "../components/NavbarProtect";
 import ListeMenus from "../components/ListeMenus";
 import SortNavbarMenus from "../components/SortNavbarMenus";
 
 const MenusValides = () => {
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="menusvalides">
       <div className="nav-container">

@@ -46,7 +46,8 @@
         display: flex;
         justify-content: space-between;
          background: whitesmoke;
-         padding: 5px;
+         padding: 2px;
+        
         button {
           font-weight: 700;
           padding: 0 3px 3px 3px;
@@ -66,6 +67,7 @@
           padding: 0 3px 3px 3px;
           font-size: 1.5rem;
           line-height: 70%;
+          color: $green2;
           
         }
       }
@@ -80,7 +82,16 @@
           padding: 0 3px 3px 3px;
           font-size: 1.5rem;
           line-height: 70%;
+          color: $green2;
           
+        }
+      }
+
+      .sign-link3 {
+        color: $code;
+        font-size: 1.2rem;
+        button {
+          color: $coffee;
         }
       }
 
@@ -101,10 +112,12 @@
 
           @media screen and (max-width: 600px) {
             font-size: 1.2rem;
-            max-width: 290px;
+            max-width: 280px;
           }
 
          }
+
+        
         }
 
         .espace-message {
@@ -120,4 +133,10 @@
       }
     }
   }
+
+  .signin-persist {
+    margin: 7px 5px;
+
+    
+   }
 }

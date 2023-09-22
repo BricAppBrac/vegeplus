@@ -20,18 +20,19 @@
   @media screen and (max-width: 1200px) {
     margin: 5px auto;
   }
- 
+
   @media screen and (max-width: 500px) {
-    
+
     padding: 0 auto;
   }
+
   .sort-nav-container {
     display: flex;
     flex-direction: row;
-   
+
     @media screen and (max-width: 870px) {
-    
-      justify-content:space-between;
+
+      justify-content: space-between;
     }
 
     ul {
@@ -40,21 +41,22 @@
       align-items: center;
 
       @media screen and (max-width: 870px) {
-        
+
         flex-direction: column;
         align-items: normal;
       }
 
-     
+
       @media screen and (max-width: 500px) {
         margin-right: 7px;
       }
+
       @media screen and (max-width: 380px) {
         margin-right: 2px;
         justify-content: space-around;
       }
 
-     
+
       li {
         font-weight: 600;
         font-size: 1.2rem;
@@ -71,11 +73,6 @@
           cursor: pointer;
         }
 
-       
-
-        // &:active {
-        //   background: $parchemin;
-        // }
 
         &.sortnav-active {
           background: $parchemin;
@@ -83,14 +80,14 @@
 
         select,
         input {
-          color:$brown1;
+          color: $brown1;
           font-family: $font2;
           font-size: 1rem;
           font-weight: 700;
 
           @media screen and (max-width: 955px) {
             font-size: 0.8rem;
-            
+
           }
 
         }
@@ -100,17 +97,15 @@
           font-size: 1.1rem;
           padding: 2px 8px;
         }
+
         @media screen and (max-width: 955px) {
           font-size: 1rem;
-          // padding: 0 5px;
-          // letter-spacing: normal;
-
-          @media screen and (max-width: 870px) {
-         
-          
-            padding: 10px;
-          }
         }
+
+        @media screen and (max-width: 870px) {
+          padding: 10px;
+        }
+
         @media screen and (max-width: 380px) {
           font-size: 0.9rem;
           max-width: 40px;
@@ -118,6 +113,7 @@
       }
     }
   }
+
   .new-container {
     a {
       text-decoration: none;
@@ -129,19 +125,21 @@
       border-radius: 10px;
       width: fit-content;
       display: flex;
-   
 
-   
+
+
 
       /* liens cliquables non-soulignés*/
       &:visited {
         color: whitesmoke;
         text-decoration: none;
       }
+
       &:hover {
         letter-spacing: 2.5px;
         background: $brown1;
         color: $green;
+
         @media screen and (max-width: 600px) {
           letter-spacing: 1px;
         }
@@ -150,20 +148,19 @@
       i {
         width: 25px;
         height: 25px;
-      
-        }
 
-        #plusicon {
-          width: 30px;
-          height: 30px;
-          font-size: 2rem;
-          margin: 0 5px;
-          }
-    
       }
 
-    
+      #plusicon {
+        width: 30px;
+        height: 30px;
+        font-size: 2rem;
+        margin: 0 5px;
+      }
 
     }
-  }
 
+
+
+  }
+}

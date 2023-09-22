@@ -64,7 +64,7 @@
       // background: $parchemin3;
       background: $green;
       width: 98%;
-      height: 35px;
+      height: fit-content;
       border-radius: 20px;
     }
 
@@ -77,8 +77,10 @@
       // min-width: 150px;
       background: $parchemin3;
       width: 98%;
-      height: 30px;
+      
 
+      height: fit-content;
+     
       @media screen and (max-width: 1655px) {
         font-size: 1.2rem;
       }
@@ -306,13 +308,11 @@
     
 
           h6 {
-          @media screen and (max-width: 770px) {
-            height: 50px;
-          }
+         
           @media screen and (max-width: 520px) {
-            height: 40px;
+           
             font-size: 0.8rem;
-            // width: 145px;
+            
           }
          
           
@@ -443,20 +443,15 @@
 
     h6 {
     font-size: 1.2rem;
+    height: fit-content;
+    padding: 2px;
    
 
     @media screen and (max-width: 1655px) {
       font-size: 1rem;
     }
 
-    @media screen and (max-width: 1225px) {
-      height: 45px;
-    }
-
-    @media screen and (max-width: 520px) {
-      height: 90px;
     
-    }
 
     @media screen and (max-width: 350px) {
       font-size: 0.8rem;

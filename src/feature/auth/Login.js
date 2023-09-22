@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setSignIn, setCloseIn } from "../../feature/signInUp.slice";
@@ -69,12 +69,12 @@ const Login = () => {
           text: `Réinitialiser mot de passe de ${userEmail}`,
         };
 
-        console.log("***** emailData ********");
-        console.log(emailData);
+        // console.log("***** emailData ********");
+        // console.log(emailData);
 
         const response = await sendEmail(emailData);
-        console.log("response");
-        console.log(response);
+        // console.log("response");
+        // console.log(response);
 
         if (
           !response.error &&
@@ -82,7 +82,7 @@ const Login = () => {
           response.data.message === "E-mail envoyé avec succès"
         ) {
           // L'envoi de l'email a réussi
-          console.log("envoi de l'email reinit mdp OK");
+          // console.log("envoi de l'email reinit mdp OK");
           setErrMsg(
             "Demande envoyée, vous serez informé de son traitement par mail"
           );
@@ -102,19 +102,20 @@ const Login = () => {
         console.log(error);
       }
     }
-    console.log("handleForgottenPwd fin");
+    // console.log("handleForgottenPwd fin");
+  };
+
+  const handleBuyMeCoffee = async () => {
+    window.open("https://www.buymeacoffee.com/bricappbrac", "_blank");
   };
 
   const handleUnsubscription = async (userEmail) => {
-    console.log("handleUnsubscription début");
-
     if (!userEmail) {
       setErrMsg("Veuillez saisir votre email");
     } else {
       try {
-        // A compléter
-        console.log("***** process.env ********");
-        console.log(process.env.REACT_APP_EMAIL_USERNAME);
+        // console.log("***** process.env ********");
+        // console.log(process.env.REACT_APP_EMAIL_USERNAME);
 
         const emailData = {
           to: process.env.REACT_APP_EMAIL_USERNAME,
@@ -122,12 +123,12 @@ const Login = () => {
           text: `Supprimer compte de ${userEmail}`,
         };
 
-        console.log("***** emailData ********");
-        console.log(emailData);
+        // console.log("***** emailData ********");
+        // console.log(emailData);
 
         const response = await sendEmail(emailData);
-        console.log("response");
-        console.log(response);
+        // console.log("response");
+        // console.log(response);
 
         if (
           !response.error &&
@@ -135,7 +136,7 @@ const Login = () => {
           response.data.message === "E-mail envoyé avec succès"
         ) {
           // L'envoi de l'email a réussi
-          console.log("envoi de l'email de désinscription OK");
+          // console.log("envoi de l'email de désinscription OK");
           setErrMsg(
             "Demande envoyée, vous serez informé de la suppression de votre compte par mail"
           );
@@ -155,7 +156,7 @@ const Login = () => {
         console.log(error);
       }
     }
-    console.log("handleUnsubscription fin");
+    // console.log("handleUnsubscription fin");
   };
 
   // useEffect(() => {
@@ -288,6 +289,16 @@ const Login = () => {
                 <h6>Se désinscrire</h6>
                 <button onClick={() => handleUnsubscription(userEmail)}>
                   <i className="fa-solid fa-heart-crack"></i>
+                </button>
+              </div>
+              <div className="sign-link1 sign-link3">
+                <h6>
+                  Gratuit 30j : Accès Abonné (stocker les menus et générer les
+                  listes de courses) - Prolonger par votre soutien sur
+                  buymeacoffe.com
+                </h6>
+                <button onClick={() => handleBuyMeCoffee()}>
+                  <i className="fa-solid fa-mug-saucer"></i>
                 </button>
               </div>
             </div>

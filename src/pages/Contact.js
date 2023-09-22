@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NavbarProtect from "../components/NavbarProtect";
@@ -78,6 +78,11 @@ const Contact = () => {
     }
   };
 
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="contact-container">
       {isAdmin || isAbo || isInscrit ? <NavbarProtect /> : <Navbar />}
@@ -126,9 +131,11 @@ const Contact = () => {
           <NavLink
             to="https://www.buymeacoffee.com/bricappbrac"
             id="buy-me-a-coffee"
+            target="_blank"
           >
-            <i className="fa-solid fa-mug-saucer"></i> Pour me soutenir: buy me
-            a coffee! Merci!
+            <i className="fa-solid fa-mug-saucer"></i> Pour garder l'accès
+            Abonné (conserver vos menus et générer les listes de courses -
+            gratuit 30j): buy me a coffee! Merci!
           </NavLink>
         </div>
       </div>

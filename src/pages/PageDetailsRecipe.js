@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NavbarProtect from "../components/NavbarProtect";
@@ -9,6 +9,11 @@ import useAuth from "../hooks/useAuth";
 
 const PageDetailsRecipe = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
+
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="pagedetailsrecipe">

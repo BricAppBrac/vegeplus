@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import NavbarProtect from "../components/NavbarProtect";
@@ -8,6 +8,11 @@ import useAuth from "../hooks/useAuth";
 
 const Mentions = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
+
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="mentions">
@@ -48,23 +53,33 @@ const Mentions = () => {
               marques, logos ou contenus appartenant à d’autres sociétés
               partenaires ou auteurs.
             </p>
-            <h2>Contenus payants :</h2>
+            <h2>Contenus:</h2>
             <p>
-              Il est interdit de copier, reproduire ou redistribuer les contenus
-              payants sous quelque forme que ce soit, à moins d’une autorisation
-              préalable.
-            </p>
-            <h2>Contenus gratuits :</h2>
-            <p>
-              Il est autorisé de copier les contenus gratuits et de les
-              republier à condition de ne pas les modifier, de citer bricappbrac
-              et de mettre un lien vers le site ou l'application.
+              Il est autorisé de copier les contenus et de les republier à
+              condition de ne pas les modifier sans l'indiquer expressément, de
+              citer bricappbrac et de mettre un lien vers le site ou
+              l'application.
             </p>
             <p>
               Diffusion de correspondances privées : un courriel ne peut être
               diffusé publiquement sans l’autorisation écrite de son auteur. Il
               est donc illégal de publier des extraits d’emails reçus et
               envoyés.
+            </p>
+            <h2>Accès Abonné</h2>
+            <p>
+              L'application est lancée sur Render.com depuis septembre 2023 avec
+              un accès Abonné gratuit pendant 30 jours. Pour prolonger cet accès
+              Abonné qui permet de stocker des Menus et de générer des listes de
+              courses, il est demandé un soutien sur BuyMeACoffee.com (lien dans
+              l'application). Ce soutien n'est pas un achat, mais un soutien
+              pour le travail fourni à la conception et création de
+              l'application. L'application restera sur Render.com au moins tant
+              que l'hébergement sur Render.com restera gratuit (en fonction du
+              volume stocké sur le serveur). Selon l'utilisation de
+              l'application et les coûts générés par cette utilisation, les
+              conditions pourront être revues et l'utilisateur en sera informé,
+              sur l'application et/ou par mail.
             </p>
             {/* <h2> Affiliation</h2>
             <p>

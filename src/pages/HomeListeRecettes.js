@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import ListeRecettes from "../components/ListeRecettes";
@@ -7,6 +7,11 @@ import Login from "../feature/auth/Login";
 import SortNavbar from "../components/SortNavbar";
 
 const HomeListeRecettes = () => {
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="homelisterecettes">
       <div className="nav-container">

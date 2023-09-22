@@ -1,10 +1,8 @@
 .menusliste-card {
   border-radius: 20px;
-  width: 70%;
   max-width: 700px;
-  // margin: 10px;
-  margin: 5px auto;
-  padding: 10px;
+  margin: 10px;
+  padding: 5px;
 
   box-shadow: 13px 11px 18px 3px rgb(37 21 11);
   background: url(../../assets/img/champetre.jpg) center/cover;
@@ -18,10 +16,7 @@
     border-radius: 20px;
     padding: 3px;
     position: relative;
-    // display: grid;
-    // grid-template-columns: 1fr;
-
-
+   
     h3 {
       padding: 3px 10px 0px 10px;
       font-size: 1.2rem;

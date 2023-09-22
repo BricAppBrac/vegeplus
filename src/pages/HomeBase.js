@@ -1,10 +1,12 @@
-import React from "react";
-import UsersList from "../feature/users/UsersList";
-import RecipesList from "../feature/recipes/RecipesList";
-import MenusList from "../feature/menus/MenusList";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const HomeBase = () => {
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="homebase">
       <div className="homebase-title">
@@ -15,6 +17,7 @@ const HomeBase = () => {
           </NavLink>
         </h3>
       </div>
+
       <div className="homebase-users">
         <h2>Gestion de la table utilisateurs</h2>
         <div className="title_plus">
@@ -55,7 +58,6 @@ const HomeBase = () => {
             </NavLink>
           </h3>
         </div>
-        {/* <MenusList /> */}
       </div>
     </div>
   );

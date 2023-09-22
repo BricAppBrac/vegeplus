@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import useAuth from "../../hooks/useAuth";
 import { PulseLoader } from "react-spinners";
+import { useEffect } from "react";
 
 const MenusList = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
@@ -97,9 +98,10 @@ const MenusList = () => {
       );
     }
 
-    // const tableContent = ids?.length
-    //   ? ids.map((menuId) => <Menu key={menuId} menuId={menuId} />)
-    //   : null;
+    useEffect(() => {
+      // Défilement vers le haut de la page au chargement
+      window.scrollTo(0, 0);
+    }, []);
 
     const tableContent =
       ids?.length &&

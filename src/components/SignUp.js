@@ -22,7 +22,7 @@ const SignUp = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPseudo, setUserPseudo] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [userRole, setUserRole] = useState("Inscrit");
+  const [userRole, setUserRole] = useState("Abonné");
   const [userActive, setUserActive] = useState(true);
   const [userRepeatPassword, setUserRepeatPassword] = useState("");
 

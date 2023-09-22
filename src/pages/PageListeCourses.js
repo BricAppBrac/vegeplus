@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../components/Footer";
 import NavbarProtect from "../components/NavbarProtect";
 import ShoppingCardsList from "../components/ShoppingCardsList";
 
 const PageListeCourses = () => {
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="pagelistecourses">
       <div className="nav-container">

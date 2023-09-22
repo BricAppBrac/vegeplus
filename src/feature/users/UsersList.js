@@ -3,6 +3,7 @@ import User from "./User";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import { PulseLoader } from "react-spinners";
+import { useEffect } from "react";
 
 const UsersList = () => {
   // console.log("UsersList");
@@ -30,6 +31,11 @@ const UsersList = () => {
       error: logoutError,
     },
   ] = useSendLogoutMutation();
+
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
 
   let content;
 
@@ -104,6 +110,9 @@ const UsersList = () => {
               </th>
               <th scope="col" className="table__th user__datein">
                 DateIn
+              </th>
+              <th scope="col" className="table__th user__dateup">
+                DateUp
               </th>
               <th scope="col" className="table__th user__edit">
                 Edit

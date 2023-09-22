@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useSendLogoutMutation } from "../auth/authApiSlice";
 import useAuth from "../../hooks/useAuth";
 import { PulseLoader } from "react-spinners";
+import { useEffect } from "react";
 
 const RecipesList = () => {
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
@@ -62,6 +63,11 @@ const RecipesList = () => {
     }
   };
 
+  useEffect(() => {
+    // Défilement vers le haut de la page au chargement
+    window.scrollTo(0, 0);
+  }, []);
+
   if (isError) {
     content = (
       <div>
@@ -91,7 +97,7 @@ const RecipesList = () => {
       : null;
 
     content = (
-      <div className="gestion-admin">
+      <div className="gestion-admin-recipes">
         <div className="title-admin">
           <h1>Gestion des Recettes</h1>
           <h3>
