@@ -54,6 +54,11 @@ body h1 {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 430px) {
+  body h1 {
+    font-size: 1.9rem;
+  }
+}
 body h2 {
   padding: 10px 15px;
   font-size: 2.4rem;
@@ -76,20 +81,194 @@ body h2 {
     font-size: 1.9rem;
   }
 }
-body .table .table__thead,
-body .table .table__tr {
+@media screen and (max-width: 500px) {
+  body h2 {
+    font-size: 1.7rem;
+  }
+}
+@media screen and (max-width: 430px) {
+  body h2 {
+    font-size: 1.6rem;
+  }
+}
+body .errmsg {
+  background: whitesmoke;
+  margin: 10px;
+  padding: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 20px;
+  color: rgb(214, 86, 48);
+  font-size: 1.3rem;
+}
+body .errmsg-link {
+  background: rgb(206, 228, 187);
+  margin: 10px;
+  padding: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 5px;
+  color: rgb(37, 21, 11);
+  font-size: 1.3rem;
+}
+body .title-errmsg {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+body .title-errmsg h1 {
+  background: rgb(206, 228, 187);
+  border-radius: 20px;
+}
+@media screen and (max-width: 910px) {
+  body .gestion-admin,
+  body .gestion-admin-recipes {
+    max-width: 895px;
+    overflow-x: auto;
+  }
+}
+body .gestion-admin button,
+body .gestion-admin-recipes button {
+  width: 30px;
+  margin: 10px auto 10px 35%;
+  color: rgb(214, 86, 48);
+  font-size: 1.2rem;
+  background: rgb(206, 228, 187);
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgb(136, 184, 96);
+}
+body .gestion-admin .title-admin,
+body .gestion-admin-recipes .title-admin {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+body .gestion-admin .title-admin h1,
+body .gestion-admin .title-admin a,
+body .gestion-admin-recipes .title-admin h1,
+body .gestion-admin-recipes .title-admin a {
+  background: rgb(206, 228, 187);
+  border-radius: 20px;
+}
+body .gestion-admin .title-admin a,
+body .gestion-admin-recipes .title-admin a {
+  width: 50px;
+  padding: 10px;
+  font-size: 1.4rem;
+  margin: auto 20px;
+}
+body .gestion-admin .table,
+body .gestion-admin-recipes .table {
+  margin: 30px 20px;
+  padding: 10px;
+  background: url(../assets/img/champetre.jpg) center/cover;
+}
+@media screen and (max-width: 1100px) {
+  body .gestion-admin .table,
+  body .gestion-admin-recipes .table {
+    margin: 10px 5px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  body .gestion-admin .table,
+  body .gestion-admin-recipes .table {
+    margin: 2px auto;
+  }
+}
+body .gestion-admin .table .table__thead,
+body .gestion-admin .table .table__tr,
+body .gestion-admin-recipes .table .table__thead,
+body .gestion-admin-recipes .table .table__tr {
   background: rgba(209, 205, 199, 0.822);
   margin: 10px;
   padding: 20px;
 }
-body .table .table__thead .table__th,
-body .table .table__thead .table__cell,
-body .table .table__tr .table__th,
-body .table .table__tr .table__cell {
+body .gestion-admin .table .table__thead .red-date,
+body .gestion-admin .table .table__tr .red-date,
+body .gestion-admin-recipes .table .table__thead .red-date,
+body .gestion-admin-recipes .table .table__tr .red-date {
+  color: red;
+}
+body .gestion-admin .table .table__thead .table__cell--active,
+body .gestion-admin .table .table__tr .table__cell--active,
+body .gestion-admin-recipes .table .table__thead .table__cell--active,
+body .gestion-admin-recipes .table .table__tr .table__cell--active {
   background: whitesmoke;
-  width: 200px;
+}
+body .gestion-admin .table .table__thead .table__cell--inactive,
+body .gestion-admin .table .table__tr .table__cell--inactive,
+body .gestion-admin-recipes .table .table__thead .table__cell--inactive,
+body .gestion-admin-recipes .table .table__tr .table__cell--inactive {
+  background: rgba(209, 205, 199, 0.822);
+}
+body .gestion-admin .table .table__thead .table__th,
+body .gestion-admin .table .table__thead .table__cell,
+body .gestion-admin .table .table__thead .table__cell--inactive,
+body .gestion-admin .table .table__thead .table__cell--active,
+body .gestion-admin .table .table__tr .table__th,
+body .gestion-admin .table .table__tr .table__cell,
+body .gestion-admin .table .table__tr .table__cell--inactive,
+body .gestion-admin .table .table__tr .table__cell--active,
+body .gestion-admin-recipes .table .table__thead .table__th,
+body .gestion-admin-recipes .table .table__thead .table__cell,
+body .gestion-admin-recipes .table .table__thead .table__cell--inactive,
+body .gestion-admin-recipes .table .table__thead .table__cell--active,
+body .gestion-admin-recipes .table .table__tr .table__th,
+body .gestion-admin-recipes .table .table__tr .table__cell,
+body .gestion-admin-recipes .table .table__tr .table__cell--inactive,
+body .gestion-admin-recipes .table .table__tr .table__cell--active {
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 50px;
   margin: 5px auto;
   padding: 2px;
+}
+@media screen and (max-width: 1100px) {
+  body .gestion-admin .table .table__thead .table__th,
+  body .gestion-admin .table .table__thead .table__cell,
+  body .gestion-admin .table .table__thead .table__cell--inactive,
+  body .gestion-admin .table .table__thead .table__cell--active,
+  body .gestion-admin .table .table__tr .table__th,
+  body .gestion-admin .table .table__tr .table__cell,
+  body .gestion-admin .table .table__tr .table__cell--inactive,
+  body .gestion-admin .table .table__tr .table__cell--active,
+  body .gestion-admin-recipes .table .table__thead .table__th,
+  body .gestion-admin-recipes .table .table__thead .table__cell,
+  body .gestion-admin-recipes .table .table__thead .table__cell--inactive,
+  body .gestion-admin-recipes .table .table__thead .table__cell--active,
+  body .gestion-admin-recipes .table .table__tr .table__th,
+  body .gestion-admin-recipes .table .table__tr .table__cell,
+  body .gestion-admin-recipes .table .table__tr .table__cell--inactive,
+  body .gestion-admin-recipes .table .table__tr .table__cell--active {
+    margin: 10px 5px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  body .gestion-admin .table .table__thead .table__th,
+  body .gestion-admin .table .table__thead .table__cell,
+  body .gestion-admin .table .table__thead .table__cell--inactive,
+  body .gestion-admin .table .table__thead .table__cell--active,
+  body .gestion-admin .table .table__tr .table__th,
+  body .gestion-admin .table .table__tr .table__cell,
+  body .gestion-admin .table .table__tr .table__cell--inactive,
+  body .gestion-admin .table .table__tr .table__cell--active,
+  body .gestion-admin-recipes .table .table__thead .table__th,
+  body .gestion-admin-recipes .table .table__thead .table__cell,
+  body .gestion-admin-recipes .table .table__thead .table__cell--inactive,
+  body .gestion-admin-recipes .table .table__thead .table__cell--active,
+  body .gestion-admin-recipes .table .table__tr .table__th,
+  body .gestion-admin-recipes .table .table__tr .table__cell,
+  body .gestion-admin-recipes .table .table__tr .table__cell--inactive,
+  body .gestion-admin-recipes .table .table__tr .table__cell--active {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 700px) {
+  body .gestion-admin-recipes {
+    max-width: 680px;
+    overflow: auto;
+  }
 }
 
 nav {
@@ -112,7 +291,7 @@ nav .nav-container {
 @media screen and (max-width: 500px) {
   nav .nav-container {
     margin: 5px auto;
-    padding: 0 auto;
+    padding: 2px auto;
   }
 }
 nav .nav-container .logo {
@@ -123,7 +302,7 @@ nav .nav-container .logo {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   max-width: 1100px;
-  max-height: 110px;
+  max-height: 120px;
   margin: 3px auto;
   display: grid;
   height: 100%;
@@ -167,6 +346,9 @@ nav .nav-container .logo .imglogo {
   padding: 3px;
   width: 65%;
 }
+nav .nav-container .logo .imglogo:hover {
+  cursor: pointer;
+}
 @media screen and (max-width: 1050px) {
   nav .nav-container .logo .imglogo {
     width: 50%;
@@ -175,7 +357,7 @@ nav .nav-container .logo .imglogo {
 }
 @media screen and (max-width: 450px) {
   nav .nav-container .logo .imglogo {
-    width: 30%;
+    width: 35%;
     padding: 5px;
   }
 }
@@ -214,7 +396,7 @@ nav .nav-container .logo h2 {
 @media screen and (max-width: 420px) {
   nav .nav-container .logo h2 {
     padding-left: 3px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }
 nav .nav-container .logo ul {
@@ -244,7 +426,6 @@ nav .nav-container .logo ul li {
   font-size: 1.2rem;
   color: whitesmoke;
   letter-spacing: 2px;
-  /* couleur du lien après la visite de l'utilisateur */
 }
 @media screen and (max-width: 1050px) {
   nav .nav-container .logo ul li {
@@ -255,7 +436,7 @@ nav .nav-container .logo ul li {
 @media screen and (max-width: 600px) {
   nav .nav-container .logo ul li {
     font-size: 1rem;
-    padding: 0 5px;
+    padding: 0px 5px;
     letter-spacing: normal;
   }
 }
@@ -264,20 +445,15 @@ nav .nav-container .logo ul li {
     font-size: 0.9rem;
   }
 }
-nav .nav-container .logo ul li a.nav-active {
-  background: rgb(136, 184, 96);
-}
-@media screen and (max-width: 1185px) {
-  nav .nav-container .logo ul li a.nav-active {
-    padding: 1px;
-  }
-}
 nav .nav-container .logo ul li a {
   text-decoration: none;
   color: whitesmoke;
-  padding: 5px;
+  padding: 2px;
   border-radius: 10px;
   /* liens cliquables non-soulignés*/
+}
+nav .nav-container .logo ul li a.nav-active {
+  background: rgb(136, 184, 96);
 }
 nav .nav-container .logo ul li a:visited {
   color: whitesmoke;
@@ -300,7 +476,7 @@ nav .nav-container .logo ul:hover span {
   background: rgb(136, 184, 96);
   transition: all 0.5s; /* la transition à appliquer */
   border-radius: 20px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-family: Comic, sans-serif;
 }
 @media screen and (max-width: 1050px) {
@@ -313,6 +489,12 @@ nav .nav-container .logo ul:hover span {
 @media screen and (max-width: 880px) {
   nav .nav-container .logo ul:hover span {
     font-size: 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  nav .nav-container .logo ul:hover span {
+    font-size: 0.8rem;
+    top: 6%;
   }
 }
 nav .nav-container .logo ul span {
@@ -523,7 +705,7 @@ nav .nav-container .logo h3 {
     font-size: 1rem;
   }
 }
-@media screen and (max-width: 955px) and (max-width: 870px) {
+@media screen and (max-width: 870px) {
   .sort-nav .sort-nav-container ul li {
     padding: 10px;
   }
@@ -595,7 +777,6 @@ nav .nav-container .logo h3 {
 }
 @media screen and (max-width: 500px) {
   .sort-nav-menus {
-    margin: 5px auto;
     padding: 0 auto;
   }
 }
@@ -603,14 +784,20 @@ nav .nav-container .logo h3 {
   display: flex;
   flex-direction: row;
 }
+@media screen and (max-width: 870px) {
+  .sort-nav-menus .sort-nav-menus-container {
+    justify-content: space-between;
+  }
+}
 .sort-nav-menus .sort-nav-menus-container ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 870px) {
   .sort-nav-menus .sort-nav-menus-container ul {
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: normal;
   }
 }
 @media screen and (max-width: 500px) {
@@ -649,17 +836,20 @@ nav .nav-container .logo h3 {
   font-size: 1rem;
   font-weight: 700;
 }
-@media screen and (max-width: 1050px) {
-  .sort-nav-menus .sort-nav-menus-container ul li {
-    font-size: 1.1rem;
-    padding: 2px 8px;
+@media screen and (max-width: 955px) {
+  .sort-nav-menus .sort-nav-menus-container ul li select,
+  .sort-nav-menus .sort-nav-menus-container ul li input {
+    font-size: 0.8rem;
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 955px) {
   .sort-nav-menus .sort-nav-menus-container ul li {
     font-size: 1rem;
-    padding: 0 5px;
-    letter-spacing: normal;
+  }
+}
+@media screen and (max-width: 870px) {
+  .sort-nav-menus .sort-nav-menus-container ul li {
+    padding: 10px;
   }
 }
 @media screen and (max-width: 380px) {
@@ -909,6 +1099,26 @@ nav .nav-container .logo h3 {
   background: rgb(37, 21, 11);
   color: wheat;
 }
+@media screen and (max-width: 500px) {
+  .menu-nav .menu-nav-container .box-options-menu .box-change-menu button,
+  .menu-nav .menu-nav-container .box-options-menu .box-valide-menu button,
+  .menu-nav .menu-nav-container .box-options-menu .box-consult-menu button {
+    font-size: 1.8rem;
+  }
+}
+.menu-nav .menu-nav-container .box-options-menu .box-change-menu .button-off,
+.menu-nav .menu-nav-container .box-options-menu .box-valide-menu .button-off,
+.menu-nav .menu-nav-container .box-options-menu .box-consult-menu .button-off {
+  color: grey;
+  background-color: black;
+}
+.menu-nav .menu-nav-container .box-options-menu .box-change-menu .button-off:hover,
+.menu-nav .menu-nav-container .box-options-menu .box-valide-menu .button-off:hover,
+.menu-nav .menu-nav-container .box-options-menu .box-consult-menu .button-off:hover {
+  letter-spacing: 2.5px;
+  background: grey;
+  color: black;
+}
 .menu-nav .menu-nav-container ul {
   display: flex;
   justify-content: space-around;
@@ -968,43 +1178,6 @@ nav .nav-container .logo h3 {
     letter-spacing: normal;
   }
 }
-.menu-nav .valid-container a {
-  text-decoration: none;
-  font-weight: 500;
-  letter-spacing: 2px;
-  font-size: 1.3rem;
-  color: whitesmoke;
-  padding: 2px;
-  border-radius: 10px;
-  width: -moz-fit-content;
-  width: fit-content;
-  display: flex;
-  /* liens cliquables non-soulignés*/
-}
-.menu-nav .valid-container a:visited {
-  color: whitesmoke;
-  text-decoration: none;
-}
-.menu-nav .valid-container a:hover {
-  letter-spacing: 2.5px;
-  background: rgb(37, 21, 11);
-  color: rgb(136, 184, 96);
-}
-@media screen and (max-width: 600px) {
-  .menu-nav .valid-container a:hover {
-    letter-spacing: 1px;
-  }
-}
-.menu-nav .valid-container a i {
-  width: 25px;
-  height: 25px;
-}
-.menu-nav .valid-container a #validicon {
-  width: 25px;
-  height: 25px;
-  font-size: 2rem;
-  margin: 2px 10px;
-}
 
 .signin-and-up {
   position: fixed;
@@ -1021,9 +1194,8 @@ nav .nav-container .logo h3 {
 .signin-and-up .sign-overlay .sign-absolute {
   position: absolute;
   background: url(../../assets/img/champetre.jpg) center/cover;
-  top: 23%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   min-width: 340px;
   width: 40%;
   padding: 15px;
@@ -1044,7 +1216,7 @@ nav .nav-container .logo h3 {
   display: flex;
   justify-content: space-between;
   background: whitesmoke;
-  padding: 5px;
+  padding: 2px;
 }
 .signin-and-up .sign-overlay .sign-absolute .sign-title button {
   font-weight: 700;
@@ -1052,34 +1224,82 @@ nav .nav-container .logo h3 {
   font-size: 1.5rem;
   line-height: 70%;
 }
-.signin-and-up .sign-overlay .sign-absolute .signup-form {
+.signin-and-up .sign-overlay .sign-absolute .sign-link1 {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(206, 228, 187);
+  padding: 5px;
+}
+.signin-and-up .sign-overlay .sign-absolute .sign-link1 button {
+  font-weight: 700;
+  padding: 0 3px 3px 3px;
+  font-size: 1.5rem;
+  line-height: 70%;
+  color: rgb(40, 75, 35);
+}
+.signin-and-up .sign-overlay .sign-absolute .sign-link2 {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(136, 184, 96);
+  padding: 5px;
+}
+.signin-and-up .sign-overlay .sign-absolute .sign-link2 button {
+  font-weight: 700;
+  padding: 0 3px 3px 3px;
+  font-size: 1.5rem;
+  line-height: 70%;
+  color: rgb(40, 75, 35);
+}
+.signin-and-up .sign-overlay .sign-absolute .sign-link3 {
+  color: rgb(214, 86, 48);
+  font-size: 1.2rem;
+}
+.signin-and-up .sign-overlay .sign-absolute .sign-link3 button {
+  color: rgb(110, 15, 50);
+}
+.signin-and-up .sign-overlay .sign-absolute .signup-form,
+.signin-and-up .sign-overlay .sign-absolute .signin-form {
   background: rgba(187, 176, 159, 0.822);
   padding: 7px;
 }
-.signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input {
+.signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input,
+.signin-and-up .sign-overlay .sign-absolute .signup-form .signin-input,
+.signin-and-up .sign-overlay .sign-absolute .signin-form .signup-input,
+.signin-and-up .sign-overlay .sign-absolute .signin-form .signin-input {
   color: rgb(37, 21, 11);
   max-width: 300px;
   padding-bottom: 5px;
   font-weight: 700;
 }
-.signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input input {
+.signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input input,
+.signin-and-up .sign-overlay .sign-absolute .signup-form .signin-input input,
+.signin-and-up .sign-overlay .sign-absolute .signin-form .signup-input input,
+.signin-and-up .sign-overlay .sign-absolute .signin-form .signin-input input {
   font-size: 1.5rem;
   padding: 0 3px;
 }
 @media screen and (max-width: 600px) {
-  .signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input input {
+  .signin-and-up .sign-overlay .sign-absolute .signup-form .signup-input input,
+  .signin-and-up .sign-overlay .sign-absolute .signup-form .signin-input input,
+  .signin-and-up .sign-overlay .sign-absolute .signin-form .signup-input input,
+  .signin-and-up .sign-overlay .sign-absolute .signin-form .signin-input input {
     font-size: 1.2rem;
-    max-width: 290px;
+    max-width: 280px;
   }
 }
-.signin-and-up .sign-overlay .sign-absolute .signup-form .espace-message {
-  font-size: 1.2rem;
+.signin-and-up .sign-overlay .sign-absolute .signup-form .espace-message,
+.signin-and-up .sign-overlay .sign-absolute .signin-form .espace-message {
+  font-size: 1rem;
   color: red;
 }
-.signin-and-up .sign-overlay .sign-absolute .signup-form button {
+.signin-and-up .sign-overlay .sign-absolute .signup-form button,
+.signin-and-up .sign-overlay .sign-absolute .signin-form button {
   font-weight: 700;
   padding: 3px;
   font-size: 1.2rem;
+}
+.signin-and-up .signin-persist {
+  margin: 7px 5px;
 }
 
 .homelisterecettes {
@@ -1299,7 +1519,6 @@ nav .nav-container .logo h3 {
 }
 @media screen and (max-width: 600px) and (max-width: 800px) {
   .homemenu .homemenu-content .homemenu-text h1 {
-    font-size: 1.7rem;
     padding: 10px auto;
     margin: 0 auto;
   }
@@ -1400,13 +1619,31 @@ nav .nav-container .logo h3 {
 .homebase i {
   color: rgb(206, 228, 187);
 }
-.homebase .homebase-users .title_plus {
+.homebase .errmsg {
+  background: whitesmoke;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.homebase .homebase-users,
+.homebase .homebase-recipes,
+.homebase .homebase-menus {
+  padding: 10px;
+}
+.homebase .homebase-users .title_plus,
+.homebase .homebase-recipes .title_plus,
+.homebase .homebase-menus .title_plus {
   display: flex;
   flex-direction: column;
 }
-.homebase .homebase-users .title_plus h3 {
+.homebase .homebase-users .title_plus h3,
+.homebase .homebase-recipes .title_plus h3,
+.homebase .homebase-menus .title_plus h3 {
   width: -moz-fit-content;
   width: fit-content;
+}
+.homebase .homebase-title {
+  display: flex;
 }
 
 .edituserform {
@@ -1420,7 +1657,18 @@ nav .nav-container .logo h3 {
 .edituserform .form__action-buttons {
   background: rgb(206, 228, 187);
   margin: 10px auto;
-  width: 30%;
+  border-radius: 20px;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (max-width: 650px) {
+  .edituserform .form__action-buttons {
+    flex-direction: column;
+    width: 40%;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }
 .edituserform .form__content {
   background: rgb(206, 228, 187);
@@ -1446,12 +1694,27 @@ nav .nav-container .logo h3 {
   background: rgb(206, 228, 187);
   margin: 30px;
 }
+.edituserform h3 {
+  margin: 0 30px;
+}
+.edituserform h4,
+.edituserform a,
 .edituserform button {
-  width: 30px;
+  text-align: center;
   margin: 10px auto 10px 35%;
+}
+.edituserform button {
+  width: 50px;
+  font-size: 1.1rem;
+  border: none;
 }
 .edituserform label {
   font-size: 1.3rem;
+}
+@media screen and (max-width: 660px) {
+  .edituserform label {
+    font-size: 1.1rem;
+  }
 }
 .edituserform input {
   width: 60%;
@@ -1468,7 +1731,10 @@ nav .nav-container .logo h3 {
 .newuserform .form__action-buttons {
   background: rgb(206, 228, 187);
   margin: 10px auto;
-  width: 30%;
+  border-radius: 20px;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
 }
 .newuserform .form__content {
   background: rgb(206, 228, 187);
@@ -1494,9 +1760,19 @@ nav .nav-container .logo h3 {
   background: rgb(206, 228, 187);
   margin: 30px;
 }
+.newuserform h3 {
+  margin: 0 30px;
+}
+.newuserform h4,
+.newuserform a,
 .newuserform button {
-  width: 30px;
+  text-align: center;
   margin: 10px auto 10px 35%;
+}
+.newuserform button {
+  width: 50px;
+  font-size: 1.1rem;
+  border: none;
 }
 .newuserform label {
   font-size: 1.3rem;
@@ -1907,6 +2183,11 @@ nav .nav-container .logo h3 {
   background: rgb(37, 21, 11);
   color: wheat;
 }
+@media screen and (max-width: 500px) {
+  .compo-card .compo-card-content .meal-content .box-options button {
+    font-size: 1.3rem;
+  }
+}
 .compo-card .compo-card-content .meal-content .box-options #detailsicon {
   padding: 3px 3px;
 }
@@ -2000,7 +2281,7 @@ nav .nav-container .logo h3 {
 }
 @media screen and (max-width: 780px) and (max-width: 800px) {
   .pagenewrecipe .new-content .new-text h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     padding: 10px auto;
     margin: 0 auto;
   }
@@ -2103,7 +2384,6 @@ nav .nav-container .logo h3 {
 }
 @media screen and (max-width: 810px) and (max-width: 800px) {
   .pagedetailsrecipe .details-content .details-text h1 {
-    font-size: 1.7rem;
     padding: 10px auto;
     margin: 0 auto;
   }
@@ -2159,7 +2439,7 @@ nav .nav-container .logo h3 {
   box-shadow: 13px 11px 18px 3px rgb(37, 21, 11);
   background: url(../../assets/img/champetre.jpg) center/cover;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 750px) {
   .recipe-new {
     max-width: 95%;
   }
@@ -2189,7 +2469,11 @@ nav .nav-container .logo h3 {
   font-size: 1.6rem;
   font-family: Comic, sans-serif;
   text-align: left;
-  min-width: 180px;
+}
+@media screen and (max-width: 730px) {
+  .recipe-new .new-form h4 {
+    font-size: 1.4rem;
+  }
 }
 .recipe-new .new-form p {
   padding: 0 3px 0 3px;
@@ -2214,12 +2498,22 @@ nav .nav-container .logo h3 {
   margin-bottom: 20px;
   position: relative;
 }
+@media screen and (max-width: 730px) {
+  .recipe-new .new-form .seasons-container {
+    width: 80%;
+  }
+}
 .recipe-new .new-form .seasons-container .new-input {
   display: flex;
   flex-direction: column;
 }
 .recipe-new .new-form .seasons-container .new-input label {
   margin-left: 10px;
+}
+@media screen and (max-width: 440px) {
+  .recipe-new .new-form .seasons-container .new-input label {
+    font-size: 1.2rem;
+  }
 }
 .recipe-new .new-form .seasons-container .new-input input[type=checkbox] {
   position: absolute;
@@ -2277,12 +2571,35 @@ nav .nav-container .logo h3 {
 .recipe-new .new-form .ingredients-label {
   margin: 10px 5px;
   display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 550px) {
+  .recipe-new .new-form .ingredients-label {
+    width: 80%; /* Réduire la largeur à 80% en dessous de 550px */
+  }
+}
+@media screen and (max-width: 640px) {
+  .recipe-new .new-form .ingredients-label h4 {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    width: 150px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .recipe-new .new-form .ingredients-label h4 {
+    font-size: 1.1rem;
+  }
 }
 .recipe-new .new-form .ingredients-container {
   border: 4px solid rgb(40, 75, 35);
   border-radius: 10px;
   max-height: 200px;
   overflow: auto;
+}
+@media screen and (max-width: 730px) {
+  .recipe-new .new-form .ingredients-container {
+    width: 95%;
+  }
 }
 .recipe-new .new-form .ingredients-container .ingredient-bloc {
   margin: 5px 5px;
@@ -2297,6 +2614,11 @@ nav .nav-container .logo h3 {
 .recipe-new .new-form .steps-container .new-input {
   padding-left: 5px;
   margin: 4px auto;
+}
+@media screen and (max-width: 730px) {
+  .recipe-new .new-form .steps-container {
+    width: 95%;
+  }
 }
 .recipe-new .new-form .button-container {
   display: flex;
@@ -2594,7 +2916,8 @@ nav .nav-container .logo h3 {
   min-width: 180px;
   background: rgb(136, 184, 96);
   width: 98%;
-  height: 35px;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 20px;
 }
 .recipe-details .details-input h6,
@@ -2607,7 +2930,8 @@ nav .nav-container .logo h3 {
   text-align: left;
   background: rgba(209, 205, 199, 0.822);
   width: 98%;
-  height: 30px;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 @media screen and (max-width: 1655px) {
   .recipe-details .details-input h6,
@@ -2913,16 +3237,6 @@ nav .nav-container .logo h3 {
     justify-content: space-around;
   }
 }
-@media screen and (max-width: 770px) {
-  .recipe-details .details-input .ingredients-container-details .ingredient-bloc-details .details-input h6,
-  .recipe-details .details-input .ingredients-container-details .ingredient-bloc-details .select-category h6,
-  .recipe-details .details-input-stp .ingredients-container-details .ingredient-bloc-details .details-input h6,
-  .recipe-details .details-input-stp .ingredients-container-details .ingredient-bloc-details .select-category h6,
-  .recipe-details .select-category .ingredients-container-details .ingredient-bloc-details .details-input h6,
-  .recipe-details .select-category .ingredients-container-details .ingredient-bloc-details .select-category h6 {
-    height: 50px;
-  }
-}
 @media screen and (max-width: 520px) {
   .recipe-details .details-input .ingredients-container-details .ingredient-bloc-details .details-input h6,
   .recipe-details .details-input .ingredients-container-details .ingredient-bloc-details .select-category h6,
@@ -2930,7 +3244,6 @@ nav .nav-container .logo h3 {
   .recipe-details .details-input-stp .ingredients-container-details .ingredient-bloc-details .select-category h6,
   .recipe-details .select-category .ingredients-container-details .ingredient-bloc-details .details-input h6,
   .recipe-details .select-category .ingredients-container-details .ingredient-bloc-details .select-category h6 {
-    height: 40px;
     font-size: 0.8rem;
   }
 }
@@ -3107,20 +3420,13 @@ nav .nav-container .logo h3 {
 }
 .recipe-details .details-input-stp h6 {
   font-size: 1.2rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 2px;
 }
 @media screen and (max-width: 1655px) {
   .recipe-details .details-input-stp h6 {
     font-size: 1rem;
-  }
-}
-@media screen and (max-width: 1225px) {
-  .recipe-details .details-input-stp h6 {
-    height: 45px;
-  }
-}
-@media screen and (max-width: 520px) {
-  .recipe-details .details-input-stp h6 {
-    height: 90px;
   }
 }
 @media screen and (max-width: 350px) {
@@ -3142,11 +3448,9 @@ nav .nav-container .logo h3 {
     grid-template-rows: 1fr 1fr 1fr;
   }
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 700px) {
   .recipescards-liste {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3161,10 +3465,9 @@ nav .nav-container .logo h3 {
 
 .menusliste-card {
   border-radius: 20px;
-  width: 70%;
   max-width: 700px;
-  margin: 5px auto;
-  padding: 10px;
+  margin: 10px;
+  padding: 5px;
   box-shadow: 13px 11px 18px 3px rgb(37, 21, 11);
   background: url(../../assets/img/champetre.jpg) center/cover;
 }
@@ -3213,15 +3516,26 @@ nav .nav-container .logo h3 {
 .menusliste-card .menusliste-card-content .button-container,
 .menusliste-card .menusliste-card-content .day-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin: 2px auto;
   padding: 0;
 }
-.menusliste-card .menusliste-card-content .button-container .box-copy a, .menusliste-card .menusliste-card-content .button-container .box-copy i, .menusliste-card .menusliste-card-content .button-container .box-copy button,
+.menusliste-card .menusliste-card-content .button-container .box-copy a,
+.menusliste-card .menusliste-card-content .button-container .box-copy i,
+.menusliste-card .menusliste-card-content .button-container .box-copy button,
 .menusliste-card .menusliste-card-content .button-container .box-basket a,
 .menusliste-card .menusliste-card-content .button-container .box-basket i,
 .menusliste-card .menusliste-card-content .button-container .box-basket button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste button,
 .menusliste-card .menusliste-card-content .button-container .box-delete a,
 .menusliste-card .menusliste-card-content .button-container .box-delete i,
 .menusliste-card .menusliste-card-content .button-container .box-delete button,
@@ -3231,6 +3545,15 @@ nav .nav-container .logo h3 {
 .menusliste-card .menusliste-card-content .day-container .box-basket a,
 .menusliste-card .menusliste-card-content .day-container .box-basket i,
 .menusliste-card .menusliste-card-content .day-container .box-basket button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste button,
 .menusliste-card .menusliste-card-content .day-container .box-delete a,
 .menusliste-card .menusliste-card-content .day-container .box-delete i,
 .menusliste-card .menusliste-card-content .day-container .box-delete button {
@@ -3245,10 +3568,21 @@ nav .nav-container .logo h3 {
   margin: 0 5px 5px 0;
   display: block;
 }
-.menusliste-card .menusliste-card-content .button-container .box-copy a:hover, .menusliste-card .menusliste-card-content .button-container .box-copy i:hover, .menusliste-card .menusliste-card-content .button-container .box-copy button:hover,
+.menusliste-card .menusliste-card-content .button-container .box-copy a:hover,
+.menusliste-card .menusliste-card-content .button-container .box-copy i:hover,
+.menusliste-card .menusliste-card-content .button-container .box-copy button:hover,
 .menusliste-card .menusliste-card-content .button-container .box-basket a:hover,
 .menusliste-card .menusliste-card-content .button-container .box-basket i:hover,
 .menusliste-card .menusliste-card-content .button-container .box-basket button:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu a:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu i:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu button:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes a:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes i:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes button:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste a:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste i:hover,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste button:hover,
 .menusliste-card .menusliste-card-content .button-container .box-delete a:hover,
 .menusliste-card .menusliste-card-content .button-container .box-delete i:hover,
 .menusliste-card .menusliste-card-content .button-container .box-delete button:hover,
@@ -3258,6 +3592,15 @@ nav .nav-container .logo h3 {
 .menusliste-card .menusliste-card-content .day-container .box-basket a:hover,
 .menusliste-card .menusliste-card-content .day-container .box-basket i:hover,
 .menusliste-card .menusliste-card-content .day-container .box-basket button:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu a:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu i:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu button:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes a:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes i:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes button:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste a:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste i:hover,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste button:hover,
 .menusliste-card .menusliste-card-content .day-container .box-delete a:hover,
 .menusliste-card .menusliste-card-content .day-container .box-delete i:hover,
 .menusliste-card .menusliste-card-content .day-container .box-delete button:hover {
@@ -3267,30 +3610,55 @@ nav .nav-container .logo h3 {
 }
 .menusliste-card .menusliste-card-content .button-container .box-copy a,
 .menusliste-card .menusliste-card-content .button-container .box-basket a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes a,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste a,
 .menusliste-card .menusliste-card-content .button-container .box-delete a,
 .menusliste-card .menusliste-card-content .day-container .box-copy a,
 .menusliste-card .menusliste-card-content .day-container .box-basket a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes a,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste a,
 .menusliste-card .menusliste-card-content .day-container .box-delete a {
   padding: 3px 6px;
 }
 .menusliste-card .menusliste-card-content .button-container .box-copy a:before,
 .menusliste-card .menusliste-card-content .button-container .box-basket a:before,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu a:before,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes a:before,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste a:before,
 .menusliste-card .menusliste-card-content .button-container .box-delete a:before,
 .menusliste-card .menusliste-card-content .day-container .box-copy a:before,
 .menusliste-card .menusliste-card-content .day-container .box-basket a:before,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu a:before,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes a:before,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste a:before,
 .menusliste-card .menusliste-card-content .day-container .box-delete a:before {
   content: "";
   color: rgb(40, 75, 35);
 }
-.menusliste-card .menusliste-card-content .button-container .box-copy button, .menusliste-card .menusliste-card-content .button-container .box-copy i,
+.menusliste-card .menusliste-card-content .button-container .box-copy button,
+.menusliste-card .menusliste-card-content .button-container .box-copy i,
 .menusliste-card .menusliste-card-content .button-container .box-basket button,
 .menusliste-card .menusliste-card-content .button-container .box-basket i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-menu i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-recipes i,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste button,
+.menusliste-card .menusliste-card-content .button-container .box-pdf-liste i,
 .menusliste-card .menusliste-card-content .button-container .box-delete button,
 .menusliste-card .menusliste-card-content .button-container .box-delete i,
 .menusliste-card .menusliste-card-content .day-container .box-copy button,
 .menusliste-card .menusliste-card-content .day-container .box-copy i,
 .menusliste-card .menusliste-card-content .day-container .box-basket button,
 .menusliste-card .menusliste-card-content .day-container .box-basket i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-menu i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-recipes i,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste button,
+.menusliste-card .menusliste-card-content .day-container .box-pdf-liste i,
 .menusliste-card .menusliste-card-content .day-container .box-delete button,
 .menusliste-card .menusliste-card-content .day-container .box-delete i {
   padding: 5px 9px;
@@ -3314,12 +3682,19 @@ nav .nav-container .logo h3 {
   background: rgb(37, 21, 11);
   color: wheat;
 }
+.menusliste-card .menusliste-card-content .button-container {
+  flex-direction: row;
+}
+.menusliste-card .menusliste-card-content .day-container {
+  flex-direction: column;
+}
 
 footer {
   background: rgb(40, 75, 35);
   color: whitesmoke;
   padding: 20px 0 10px 0;
   padding: 5px;
+  letter-spacing: 1.2px;
 }
 footer a {
   color: wheat;
@@ -3332,38 +3707,70 @@ footer .footer-container1 {
 footer .footer-container1 li {
   padding-bottom: 5px;
 }
+footer .footer-container1 .mentions-footer li #buy-me-a-coffee {
+  color: rgb(214, 86, 48);
+  font-size: 1.1rem;
+  background: rgb(136, 184, 96);
+  border-radius: 20px;
+  padding: 3px 5px;
+  display: block;
+  font-weight: 900;
+}
+@media screen and (max-width: 1440px) {
+  footer .footer-container1 .mentions-footer li #buy-me-a-coffee {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 865px) {
+  footer .footer-container1 .mentions-footer li #buy-me-a-coffee {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 805px) {
+  footer .footer-container1 .mentions-footer li #buy-me-a-coffee {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  footer .footer-container1 .mentions-footer li #buy-me-a-coffee {
+    font-size: 0.7rem;
+  }
+}
 footer .footer-container2 {
   display: flex;
   margin: 0 auto;
   justify-content: space-around;
 }
-footer .footer-container2 .lgs {
+footer .footer-container2 a {
+  color: wheat;
+}
+footer .footer-container2 .bab {
   font-family: DancingScript, sans-serif;
   font-size: 2rem;
   letter-spacing: 1.2px;
 }
 @media screen and (max-width: 1220px) {
-  footer .footer-container2 .lgs {
+  footer .footer-container2 .bab {
     font-size: 1.6rem;
   }
 }
 @media screen and (max-width: 1000px) {
-  footer .footer-container2 .lgs {
+  footer .footer-container2 .bab {
     font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 800px) {
-  footer .footer-container2 .lgs {
+  footer .footer-container2 .bab {
     font-size: 1.4rem;
   }
 }
 @media screen and (max-width: 613px) {
-  footer .footer-container2 .lgs {
+  footer .footer-container2 .bab {
     font-size: 1.3rem;
   }
 }
 @media screen and (max-width: 500px) {
-  footer .footer-container2 .lgs {
+  footer .footer-container2 .bab {
     font-size: 1.1rem;
   }
 }
@@ -3394,39 +3801,99 @@ footer .footer-container2 .copyright {
 }
 
 .contact-container {
-  min-height: 100vh;
+  max-height: 100vh;
   height: 100%;
   width: 100vw;
   display: grid;
   grid-template-rows: 15% 85%;
 }
+.contact-container h2, .contact-container h4 {
+  font-family: Comic, sans-serif;
+  margin: 15px;
+}
+.contact-container h4 {
+  font-size: 1.2rem;
+}
+.contact-container .contact-form {
+  min-width: 340px;
+  width: 60%;
+  background: rgb(136, 184, 96);
+  margin: 10px auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 3px;
+  font-family: Inconsolata, "Courrier New";
+  border-radius: 20px;
+}
+.contact-container .contact-form .form-group {
+  color: rgb(37, 21, 11);
+  max-width: 300px;
+  padding-bottom: 5px;
+  font-weight: 700;
+}
+.contact-container .contact-form .form-group label {
+  font-size: 1.5rem;
+  padding: 0 3px;
+  margin: 5px;
+}
+.contact-container .contact-form .form-group input, .contact-container .contact-form .form-group textarea {
+  font-size: 1.5rem;
+  padding: 0 3px;
+  margin: 5px 15px;
+  border-radius: 5px;
+}
+@media screen and (max-width: 600px) {
+  .contact-container .contact-form .form-group input, .contact-container .contact-form .form-group textarea {
+    font-size: 1.2rem;
+    max-width: 290px;
+  }
+}
+.contact-container .contact-form .form-button {
+  margin: 10px;
+}
+.contact-container .contact-form .form-button button {
+  font-weight: 700;
+  padding: 3px;
+  font-size: 1.4rem;
+}
+.contact-container .contact-form .form-message {
+  margin: 10px;
+  font-weight: 700;
+  padding: 3px;
+  font-size: 1.6rem;
+  font-family: Comic, sans-serif;
+  color: rgb(214, 86, 48);
+}
+.contact-container .contact-form a {
+  color: rgb(214, 86, 48);
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: rgb(136, 184, 96);
+  border-radius: 20px;
+  padding: 3px 5px;
+  display: block;
+}
+@media screen and (max-width: 865px) {
+  .contact-container .contact-form a {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 805px) {
+  .contact-container .contact-form a {
+    font-size: 1.1rem;
+  }
+}
+@media screen and (max-width: 405px) {
+  .contact-container .contact-form a {
+    font-size: 1rem;
+  }
+}
 .contact-container .contact-footer {
   text-align: center;
-  margin: 50px auto;
   -webkit-user-select: text;
      -moz-user-select: text;
           user-select: text;
   /*pour autoriser la sélection de l'email*/
-}
-.contact-container .contact-footer button {
-  padding: 10px;
-  border-radius: 15px;
-  outline: none;
-  border: 6px solid rgb(136, 184, 96);
-  transition: 0.3s;
-  text-align: center;
-  align-items: center;
-  min-width: 280px;
-  width: 75%;
-  max-width: 800px;
-  color: rgb(37, 21, 11);
-  font-size: 1.1rem;
-  font-family: Comic, sans-serif;
-}
-@media screen and (max-width: 1300px) {
-  .contact-container .contact-footer button {
-    font-size: 1rem;
-  }
 }
 
 .mentions {

@@ -18,6 +18,13 @@ import { deleteListeMenu } from "../feature/menusliste.slice";
 // import axios from "axios";
 import { setStopReset } from "../feature/indicstopreset.slice";
 import { setStopResetDate } from "../feature/indicstopresetdate.slice";
+import CheeseburgerFont from "../assets/fonts/Cheeseburger.otf"; // Importer la police
+import * as fontkit from "fontkit";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+// import jsPDF from "jspdf"; // Importer jsPDF
+// import JSZip from "jszip";
+import { saveAs } from "file-saver";
+import pdfMenu from "../assets/img/FondMenu.pdf"; // Importer l'image
 
 const MenusListeCard = ({ menu }) => {
   const dispatch = useDispatch();
@@ -163,6 +170,119 @@ const MenusListeCard = ({ menu }) => {
     handlePhaseMenuCompo(menu);
     navigate("/listecourses");
   };
+
+  // ***********************************************************
+  // Clic sur le bouton Générer le Menu en PDF
+  // ***********************************************************
+
+  const handlePDFMenu = async (menu) => {
+    console.log("handlePDFMenu : ");
+    // Créez une instance de JSZip pour créer le fichier ZIP
+    // const zip = new JSZip();
+
+    // URL du fichier Menu en PDF
+
+    const existingPdfBytesMenu = await fetch(pdfMenu).then((res) =>
+      res.arrayBuffer()
+    );
+    const pdfDocMenu = await PDFDocument.load(existingPdfBytesMenu);
+    // Enregistrer fontkit
+    pdfDocMenu.registerFontkit(fontkit);
+
+    const cheeseburgerFontBytes = await fetch(CheeseburgerFont).then((res) =>
+      res.arrayBuffer()
+    );
+    const customFont = await pdfDocMenu.embedFont(cheeseburgerFontBytes);
+    const helveticaFont = await pdfDocMenu.embedFont(StandardFonts.Helvetica);
+
+    // **************************
+    // Sélectionnez la première page du PDF (index 0)
+    const pages = pdfDocMenu.getPages();
+    let firstPage = pages[0];
+
+    // Position (x, y) pour le texte à tamponner
+
+    const addText = (text, x, y, size = 22) => {
+      firstPage.drawText(text, {
+        x,
+        y,
+        size,
+        font: customFont,
+        color: rgb(0, 0, 0),
+      });
+    };
+
+    const pageWidth = 595.28; // Standard A4 page width in points
+    let containsAsterisk = false;
+
+    for (let index = 0; index < menu.menuJ.length; index++) {
+      const dayMenu = menu.menuJ[index];
+      const day = new Date(menu.prefDayOne);
+      // day.setDate(day.getDate() + index);
+      // const dayFormat = day.toLocaleDateString("fr-FR");
+
+      // let mealDetails = `Jour ${index + 1} (${dayFormat}): `;
+      // let mealDetails = `Jour ${index + 1} : `;
+      let mealDetails = ``;
+      let symbolWidth = null;
+      let symbolX = null;
+      if (menu.prefNbMeal === 1) {
+        mealDetails = `${menu.menuJ[index][2] ? menu.menuJ[index][2] : ""}`;
+        // centrer le texte
+        symbolWidth = customFont.widthOfTextAtSize(mealDetails, 22);
+        symbolX = (pageWidth - symbolWidth) / 2;
+        // addText(mealDetails, 75, 650 + index * -60);
+        addText(mealDetails, symbolX, 650 + index * -60);
+        mealDetails = "< < < > > >";
+        // centrer le texte
+        symbolWidth = customFont.widthOfTextAtSize(mealDetails, 22);
+        symbolX = (pageWidth - symbolWidth) / 2;
+        // addText(mealDetails, 245, 620 + index * -60);
+        addText(mealDetails, symbolX, 620 + index * -60, 18);
+        if (menu.menuJ[index][2] || menu.menuJ[index][2].includes("*")) {
+          containsAsterisk = true;
+        }
+      } else {
+        mealDetails = `${menu.menuJ[index][2] ? menu.menuJ[index][2] : ""}`;
+        // centrer le texte
+        symbolWidth = customFont.widthOfTextAtSize(mealDetails, 22);
+        symbolX = (pageWidth - symbolWidth) / 2;
+        // addText(mealDetails, 75, 650 + index * -60);
+        addText(mealDetails, symbolX, 650 + index * -80);
+        mealDetails = `${menu.menuJ[index][4] ? menu.menuJ[index][4] : ""}`;
+        // centrer le texte
+        symbolWidth = customFont.widthOfTextAtSize(mealDetails, 22);
+        symbolX = (pageWidth - symbolWidth) / 2;
+        // addText(mealDetails, 75, 650 + (index * -60 - 30));
+        addText(mealDetails, symbolX, 620 + index * -80);
+        mealDetails = "< < < > > >";
+        // centrer le texte
+        symbolWidth = customFont.widthOfTextAtSize(mealDetails, 22);
+        symbolX = (pageWidth - symbolWidth) / 2;
+        // addText(mealDetails, 245, 610 + index * -60);
+        addText(mealDetails, symbolX, 595 + index * -80, 18);
+        // Check for asterisk in meal details
+        if (menu.menuJ[index][2] || menu.menuJ[index][2].includes("*")) {
+          containsAsterisk = true;
+        }
+        if (menu.menuJ[index][4] || menu.menuJ[index][4].includes("*")) {
+          containsAsterisk = true;
+        }
+      }
+      // doc.text(mealDetails, 10, 20 + index * 10);
+    }
+
+    // Add a line at the bottom if any meal contains "*"
+    if (containsAsterisk) {
+      addText("* Demande un temps de trempage depuis la veille", 65, 60, 18);
+    }
+    // Générez le fichier PDF modifié
+    const modifiedPdfBytesMenu = await pdfDocMenu.save();
+    const blob = new Blob([modifiedPdfBytesMenu], { type: "application/pdf" });
+    saveAs(blob, "MenuSemaine.pdf");
+    // doc.save("MenuSemaine.pdf");
+  };
+
   // ***********************************************************
   // Clic sur le bouton Supprimer le Menu Validé
   // ***********************************************************
@@ -225,6 +345,9 @@ const MenusListeCard = ({ menu }) => {
           </div>
           <div className="box-basket" onClick={() => handleListeCourses(menu)}>
             <i className="fa-solid fa-basket-shopping"></i>
+          </div>
+          <div className="box-pdf-menu" onClick={() => handlePDFMenu(menu)}>
+            <i className="fa-solid fa-file-pdf"></i>
           </div>
           <div
             className="box-delete"

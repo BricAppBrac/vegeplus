@@ -7,6 +7,7 @@ import { PulseLoader } from "react-spinners";
 import { useEffect } from "react";
 
 const RecipesList = () => {
+  // Gestion des Recettes - ADMIN
   const { username, isAdmin, isAbo, isInscrit } = useAuth();
 
   const {

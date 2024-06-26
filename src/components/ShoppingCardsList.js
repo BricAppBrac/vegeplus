@@ -13,6 +13,7 @@ const ShoppingCardsList = () => {
   let arrayW = [];
   let arrayW2 = [];
   let newIng = [];
+  let newIngQtt = null;
   let arrayFruitsLeg = [];
   let arrayFrais = [];
   let arrayEpicerie = [];
@@ -110,7 +111,7 @@ const ShoppingCardsList = () => {
 
           arrayFruitsLeg = [
             ...arrayFruitsLeg,
-            [arrayIngQttCat[i][0], arrayIngQttCat[i][1]],
+            [arrayIngQttCat[i][0], parseFloat(arrayIngQttCat[i][1])],
           ];
           break;
         case "Frais":
@@ -120,7 +121,7 @@ const ShoppingCardsList = () => {
           // Alimenter arrayFrais avec arrayIngQttCat[i][0] et arrayIngQttCat[i][1]
           arrayFrais = [
             ...arrayFrais,
-            [arrayIngQttCat[i][0], arrayIngQttCat[i][1]],
+            [arrayIngQttCat[i][0], parseFloat(arrayIngQttCat[i][1])],
           ];
           break;
         case "Epicerie":
@@ -130,7 +131,7 @@ const ShoppingCardsList = () => {
           // Alimenter arrayEpicerie avec arrayIngQttCat[i][0] et arrayIngQttCat[i][1]
           arrayEpicerie = [
             ...arrayEpicerie,
-            [arrayIngQttCat[i][0], arrayIngQttCat[i][1]],
+            [arrayIngQttCat[i][0], parseFloat(arrayIngQttCat[i][1])],
           ];
           break;
         case "Sauvages":
@@ -140,7 +141,7 @@ const ShoppingCardsList = () => {
           // Alimenter arraySauvages avec arrayIngQttCat[i][0] et arrayIngQttCat[i][1]
           arraySauvages = [
             ...arraySauvages,
-            [arrayIngQttCat[i][0], arrayIngQttCat[i][1]],
+            [arrayIngQttCat[i][0], parseFloat(arrayIngQttCat[i][1])],
           ];
           break;
         default:
@@ -189,7 +190,8 @@ const ShoppingCardsList = () => {
         if (ligne) {
           // console.log("ligne avec ingrédient existant dans arrayW");
           // console.log(ligne);
-          newIng = [ligne[0], ligne[1] + " + " + arrayFruitsLeg[k][1]];
+          newIngQtt = ligne[1] + parseFloat(arrayFruitsLeg[k][1]);
+          newIng = [ligne[0], newIngQtt];
           // On enlève l'élément existant dans arrayW pour ajouter l'ingrédient avec la nouvelle quantité cumulée
 
           arrayW2 = arrayW.filter((ligne) => ligne[0] !== arrayFruitsLeg[k][0]);
@@ -234,7 +236,8 @@ const ShoppingCardsList = () => {
         if (ligne) {
           // console.log("ligne avec ingrédient existant dans arrayW");
           // console.log(ligne);
-          newIng = [ligne[0], ligne[1] + " + " + arrayFrais[k][1]];
+          newIngQtt = ligne[1] + parseFloat(arrayFrais[k][1]);
+          newIng = [ligne[0], newIngQtt];
           // On enlève l'élément existant dans arrayW pour ajouter l'ingrédient avec la nouvelle quantité cumulée
 
           arrayW2 = arrayW.filter((ligne) => ligne[0] !== arrayFrais[k][0]);
@@ -278,7 +281,8 @@ const ShoppingCardsList = () => {
         if (ligne) {
           // console.log("ligne avec ingrédient existant dans arrayW");
           // console.log(ligne);
-          newIng = [ligne[0], ligne[1] + " + " + arrayEpicerie[k][1]];
+          newIngQtt = ligne[1] + parseFloat(arrayEpicerie[k][1]);
+          newIng = [ligne[0], newIngQtt];
           // On enlève l'élément existant dans arrayW pour ajouter l'ingrédient avec la nouvelle quantité cumulée
 
           arrayW2 = arrayW.filter((ligne) => ligne[0] !== arrayEpicerie[k][0]);
@@ -323,7 +327,8 @@ const ShoppingCardsList = () => {
         if (ligne) {
           // console.log("ligne avec ingrédient existant dans arrayW");
           // console.log(ligne);
-          newIng = [ligne[0], ligne[1] + " + " + arraySauvages[k][1]];
+          newIngQtt = ligne[1] + parseFloat(arraySauvages[k][1]);
+          newIng = [ligne[0], newIngQtt];
           // On enlève l'élément existant dans arrayW pour ajouter l'ingrédient avec la nouvelle quantité cumulée
 
           arrayW2 = arrayW.filter((ligne) => ligne[0] !== arraySauvages[k][0]);

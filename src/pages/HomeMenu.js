@@ -253,12 +253,40 @@ const HomeMenu = () => {
   ////////////////////////////////////////////////////////////////////
   //******************************************************************
   // Sélection d'une liste aléatoire de recettes selon les préférences nb de jours prefSelected[0] et nb de repas/jour prefSelected[1]
+  // MODIF 20240625 : choisir des recettes dont la saison
+  // contient prefSelected[2]
+  // sachant que
+  // si    01/05 <= prefSelected[2] <= 30/06  alors season = printemps
+  // si    01/07 <= prefSelected[2] <= 31/10  alors season = été
+  // si    01/11 <= prefSelected[2] <= 31/12  alors season = automne
+  // si    01/01 <= prefSelected[2] <= 30/04  alors season = hiver
+
+  // Function to determine the season based on a given date
+  // MODIF 20240625
+  const getSeason = (date) => {
+    const month = date.getMonth() + 1; // getMonth() is zero-based
+    const day = date.getDate();
+
+    if ((month === 5 && day >= 1) || (month === 6 && day <= 30)) {
+      return "printemps";
+    } else if ((month === 7 && day >= 1) || (month >= 8 && month <= 10)) {
+      return "été";
+    } else if ((month === 11 && day >= 1) || (month === 12 && day <= 31)) {
+      return "automne";
+    } else {
+      return "hiver";
+    }
+  };
+
   //******************************************************************
   ////////////////////////////////////////////////////////////////////
   const handlePref = (prefSelected) => {
     // console.log("handlePref");
     // console.log("liste");
     // console.log(liste);
+    // Si la date n'est pas définie, utiliser la date du jour
+    const recipeDate = prefSelected[2] ? new Date(prefSelected[2]) : new Date();
+
     /////////////////////////////////////////////////////////////////////////////
     // Calcul du nombre de recettes à sélectionner : nb de jours * nb de repas/j
     /////////////////////////////////////////////////////////////////////////////
@@ -285,85 +313,112 @@ const HomeMenu = () => {
     } else {
       // console.log("Nbre de Recettes total : " + liste.length);
 
+      // MODIF 20240625
+
+      const season = getSeason(recipeDate);
+      console.log("saison correspondant à la date du Menu");
+      console.log(prefSelected[2]);
+      console.log(recipeDate);
+      console.log(season);
+      console.log("LISTE AVANT FILTRE SAISON");
+      console.log(liste);
+
+      const filteredRecipes = liste.filter((recipe) => {
+        return recipe.seasons.includes(season);
+      });
+
+      console.log("LISTE APRES FILTRE SAISON");
+      console.log(filteredRecipes);
+
       /////////////////////////////////////////////////////
       // Constitution de la liste de recettes aléatoires
       /////////////////////////////////////////////////////
-      let i = 0;
-      while (arrayW.length < numRecipes && i < 9000) {
-        const randomIndex = Math.floor(Math.random() * liste.length);
-        const randomRecipe = liste[randomIndex];
-        if (!selectedRecipesId.includes(randomRecipe._id)) {
-          // console.log("Id à sélectionner : " + i + " / " + randomRecipe._id);
-          arrayW.push(randomRecipe);
-          dispatch(createMenuRecipe(randomRecipe));
-          selectedRecipesId.push(randomRecipe._id);
+      if (filteredRecipes.length < numRecipes) {
+        console.log("Pas assez de recettes pour la saison sélectionnée");
+      } else {
+        let i = 0;
+        while (arrayW.length < numRecipes && i < 9000) {
+          // MODIF 20240625
+          // const randomIndex = Math.floor(Math.random() * liste.length);
+          const randomIndex = Math.floor(
+            Math.random() * filteredRecipes.length
+          );
+          // MODIF 20240625
+          // const randomRecipe = liste[randomIndex];
+          const randomRecipe = filteredRecipes[randomIndex];
+          if (!selectedRecipesId.includes(randomRecipe._id)) {
+            // console.log("Id à sélectionner : " + i + " / " + randomRecipe._id);
+            arrayW.push(randomRecipe);
+            dispatch(createMenuRecipe(randomRecipe));
+            selectedRecipesId.push(randomRecipe._id);
+          }
+          // else {
+          //   console.log("Id déja inclus : " + i + " / " + randomRecipe._id);
+          // }
+          i++;
         }
-        // else {
-        //   console.log("Id déja inclus : " + i + " / " + randomRecipe._id);
-        // }
-        i++;
-      }
-      // console.log("arrayW");
-      // console.log(arrayW);
-      if (i === 9000) {
-        console.log("boucle infinie");
-      }
-
-      ///////////////////////////////////////////////////////
-      // Constitution du tableau des jours et des recettes
-      //////////////////////////////////////////////////////
-      let firstday = new Date(prefSelected[2]);
-      let nextday = new Date(firstday);
-      let jMeal = 0;
-
-      arrayCompo = [];
-      let newCompo = {};
-
-      for (let j = 0; j < prefSelected[0] && j < 9000; j++) {
-        // nextday.setDate(firstday.getDate() + j);
-        if (j !== 0) {
-          nextday.setDate(nextday.getDate() + 1);
+        // console.log("arrayW");
+        // console.log(arrayW);
+        if (i === 9000) {
+          console.log("boucle infinie");
         }
-        // console.log("*** calcul des jours *** index : " + j);
 
-        nextdayFormat = nextday.toLocaleDateString("fr-FR");
-        // console.log("nextdayFormat : " + nextdayFormat);
+        ///////////////////////////////////////////////////////
+        // Constitution du tableau des jours et des recettes
+        //////////////////////////////////////////////////////
+        let firstday = new Date(prefSelected[2]);
+        let nextday = new Date(firstday);
+        let jMeal = 0;
 
-        if (prefSelected[1] === "1") {
-          newCompo = {
-            index: j,
-            type: 1,
-            date: nextdayFormat,
-            meal1Complete: arrayW[j],
-            meal1: arrayW[j].title,
-            meal2Complete: null,
-            meal2: null,
-          };
-          arrayCompo = [...arrayCompo, newCompo];
-          // console.log("arrayCompo");
-          // console.log(arrayCompo);
+        arrayCompo = [];
+        let newCompo = {};
 
-          dispatch(setCompo(arrayCompo));
-        } else {
-          jMeal = j * 2;
-          const meal1 = arrayW[jMeal].title;
-          // console.log("meal1 : " + meal1);
-          const meal2 = arrayW[jMeal + 1].title;
-          // console.log("meal2 : " + meal2);
+        for (let j = 0; j < prefSelected[0] && j < 9000; j++) {
+          // nextday.setDate(firstday.getDate() + j);
+          if (j !== 0) {
+            nextday.setDate(nextday.getDate() + 1);
+          }
+          // console.log("*** calcul des jours *** index : " + j);
 
-          newCompo = {
-            index: j,
-            type: 2,
-            date: nextdayFormat,
-            meal1Complete: arrayW[jMeal],
-            meal1: meal1,
-            meal2Complete: arrayW[jMeal + 1],
-            meal2: meal2,
-          };
-          arrayCompo = [...arrayCompo, newCompo];
-          // console.log("arrayCompo");
-          // console.log(arrayCompo);
-          dispatch(setCompo(arrayCompo));
+          nextdayFormat = nextday.toLocaleDateString("fr-FR");
+          // console.log("nextdayFormat : " + nextdayFormat);
+
+          if (prefSelected[1] === 1) {
+            newCompo = {
+              index: j,
+              type: 1,
+              date: nextdayFormat,
+              meal1Complete: arrayW[j],
+              meal1: arrayW[j].title,
+              meal2Complete: null,
+              meal2: null,
+            };
+            arrayCompo = [...arrayCompo, newCompo];
+            // console.log("arrayCompo");
+            // console.log(arrayCompo);
+
+            dispatch(setCompo(arrayCompo));
+          } else {
+            jMeal = j * 2;
+            const meal1 = arrayW[jMeal].title;
+            // console.log("meal1 : " + meal1);
+            const meal2 = arrayW[jMeal + 1].title;
+            // console.log("meal2 : " + meal2);
+
+            newCompo = {
+              index: j,
+              type: 2,
+              date: nextdayFormat,
+              meal1Complete: arrayW[jMeal],
+              meal1: meal1,
+              meal2Complete: arrayW[jMeal + 1],
+              meal2: meal2,
+            };
+            arrayCompo = [...arrayCompo, newCompo];
+            // console.log("arrayCompo");
+            // console.log(arrayCompo);
+            dispatch(setCompo(arrayCompo));
+          }
         }
       }
     }
