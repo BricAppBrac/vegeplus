@@ -383,7 +383,7 @@ const HomeMenu = () => {
           nextdayFormat = nextday.toLocaleDateString("fr-FR");
           // console.log("nextdayFormat : " + nextdayFormat);
 
-          if (prefSelected[1] === 1) {
+          if (prefSelected[1] == 1) {
             newCompo = {
               index: j,
               type: 1,
