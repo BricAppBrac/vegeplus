@@ -173,6 +173,7 @@ const MenusListeCard = ({ menu }) => {
 
   // ***********************************************************
   // Clic sur le bouton Générer le Menu en PDF
+  // Et les Recettes détaillées en PDF, 1 par page
   // ***********************************************************
 
   const handlePDFMenu = async (menu) => {
@@ -341,7 +342,7 @@ const MenusListeCard = ({ menu }) => {
           <h3>Semaine du {dayFormat}</h3>
 
           <div className="box-copy" onClick={() => handleRecupMenu(menu)}>
-            <i className="fa-solid fa-folder-plus"></i>
+            <i className="fa-solid fa-copy"></i>
           </div>
           <div className="box-basket" onClick={() => handleListeCourses(menu)}>
             <i className="fa-solid fa-basket-shopping"></i>

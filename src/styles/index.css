@@ -2430,6 +2430,48 @@ nav .nav-container .logo h3 {
   height: fit-content;
   text-align: center;
 }
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu a,
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu i,
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu button {
+  border: 2px solid rgb(37, 21, 11);
+  background-color: rgb(206, 228, 187);
+  transition: all 0.2s linear;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  align-items: center;
+  color: rgb(40, 75, 35);
+  margin: 0 5px 5px 0;
+  display: block;
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu a:hover,
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu i:hover,
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu button:hover {
+  letter-spacing: 2.5px;
+  background: rgb(37, 21, 11);
+  color: wheat;
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu a {
+  padding: 3px 6px;
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu a:before {
+  content: "";
+  color: rgb(40, 75, 35);
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu button,
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu i {
+  padding: 5px 9px;
+  margin: 0 auto;
+  width: 45px;
+}
+.pagelistecourses .pagelistecourses-content .pagelistecourses-text .box-pdf-menu .box-button {
+  margin: 5px 20px;
+}
 
 .recipe-new {
   border-radius: 20px;

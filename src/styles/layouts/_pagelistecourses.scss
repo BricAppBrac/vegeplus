@@ -19,8 +19,59 @@
       height: fit-content;
       text-align: center;
 
-  
-       ////////////////////////////////////////////////////////
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      // margin: 2px auto;
+      // padding: 0;
+
+      .box-pdf-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        a,
+        i,
+        button {
+          border: 2px solid $brown1;
+          background-color: $green3;
+          transition: all 0.2s linear;
+          border-radius: 5px;
+          font-size: 1.8rem;
+          font-weight: 700;
+          align-items: center;
+          color: $green2;
+          margin: 0 5px 5px 0;
+          display: block;
+
+          &:hover {
+            letter-spacing: 2.5px;
+            background: $brown1;
+            color: wheat;
+          }
+        }
+
+        a {
+          padding: 3px 6px;
+
+          &:before {
+            content: "";
+            color: $green2;
+          }
+        }
+
+        button,
+        i {
+          padding: 5px 9px;
+          margin: 0 auto;
+          width: 45px;
+        }
+
+        .box-button {
+          margin: 5px 20px;
+        }
+      }
+      ////////////////////////////////////////////////////////
     }
   }
 }
