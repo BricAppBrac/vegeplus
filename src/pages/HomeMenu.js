@@ -316,19 +316,19 @@ const HomeMenu = () => {
       // MODIF 20240625
 
       const season = getSeason(recipeDate);
-      console.log("saison correspondant à la date du Menu");
-      console.log(prefSelected[2]);
-      console.log(recipeDate);
-      console.log(season);
-      console.log("LISTE AVANT FILTRE SAISON");
-      console.log(liste);
+      // console.log("saison correspondant à la date du Menu");
+      // console.log(prefSelected[2]);
+      // console.log(recipeDate);
+      // console.log(season);
+      // console.log("LISTE AVANT FILTRE SAISON");
+      // console.log(liste);
 
       const filteredRecipes = liste.filter((recipe) => {
         return recipe.seasons.includes(season);
       });
 
-      console.log("LISTE APRES FILTRE SAISON");
-      console.log(filteredRecipes);
+      // console.log("LISTE APRES FILTRE SAISON");
+      // console.log(filteredRecipes);
 
       /////////////////////////////////////////////////////
       // Constitution de la liste de recettes aléatoires

@@ -14,23 +14,59 @@ const MenuPref = () => {
   const navigate = useNavigate();
 
   const liste = useSelector((state) => state.listeRecipes.listeData);
+  const prefSelected = useSelector((state) => state.prefSelect.prefSelected);
   const selectedRecipes = useSelector(
     (state) => state.menuRecipes.menuRecipesData
   );
   let selectedRecipesId = selectedRecipes.map((recipe) => recipe._id);
+  /////////////////////////////
+  //******************************************************************
+  // Sélection d'un nouveau repas selon saison'
+  // MODIF 20240628 : choisir une recette dont la saison
+  // contient prefSelected[2]
+  // sachant que
+  // si    01/05 <= prefSelected[2] <= 30/06  alors season = printemps
+  // si    01/07 <= prefSelected[2] <= 31/10  alors season = été
+  // si    01/11 <= prefSelected[2] <= 31/12  alors season = automne
+  // si    01/01 <= prefSelected[2] <= 30/04  alors season = hiver
+
+  // Function to determine the season based on a given date
+  // MODIF 20240628
+  const getSeason = (date) => {
+    const month = date.getMonth() + 1; // getMonth() is zero-based
+    const day = date.getDate();
+
+    if ((month === 5 && day >= 1) || (month === 6 && day <= 30)) {
+      return "printemps";
+    } else if ((month === 7 && day >= 1) || (month >= 8 && month <= 10)) {
+      return "été";
+    } else if ((month === 11 && day >= 1) || (month === 12 && day <= 31)) {
+      return "automne";
+    } else {
+      return "hiver";
+    }
+  };
+
   /////////////////////////////////////////////////////
   const handleChangeMeal = (meal, index, mealnb) => {
     // console.log("handleChangeMeal");
     // console.log("recette : " + meal.title);
     // console.log("index dans compoListe : " + index);
     // console.log("meal : " + mealnb);
+    // MODIF 20240625
 
+    // Si la date n'est pas définie, utiliser la date du jour
+    const mealDate = prefSelected[2] ? new Date(prefSelected[2]) : new Date();
+    const season = getSeason(mealDate);
+    const filteredRecipes = liste.filter((recipe) => {
+      return recipe.seasons.includes(season);
+    });
     // sélection d'un nouveau repas aléatoire, différent de ceux déjà dans compoListe : newmeal
     let i = 0;
     let arrayW = [];
     while (arrayW.length < 1 && i < 900) {
-      const randomIndex = Math.floor(Math.random() * liste.length);
-      const randomRecipe = liste[randomIndex];
+      const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
+      const randomRecipe = filteredRecipes[randomIndex];
       // console.log("selectedRecipesId");
       // console.log(selectedRecipesId);
       if (!selectedRecipesId.includes(randomRecipe._id)) {
