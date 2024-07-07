@@ -16,7 +16,7 @@ const IngredientCard = (props) => {
             id={"newIngrédient" + props.index}
             autoComplete="off"
             placeholder={"Ingrédient " + (props.index + 1)}
-            maxLength={25} // Limite la saisie à 25 caractères
+            maxLength={30} // Limite la saisie à 28 caractères
             onChange={(e) => {
               props.handleIngredients(
                 e.target.value,

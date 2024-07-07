@@ -2165,7 +2165,8 @@ nav .nav-container .logo h3 {
   margin: 2px;
   justify-content: right;
 }
-.compo-card .compo-card-content .meal-content .box-options button {
+.compo-card .compo-card-content .meal-content .box-options button,
+.compo-card .compo-card-content .meal-content .box-options input {
   border: 2px solid rgb(37, 21, 11);
   background-color: rgb(206, 228, 187);
   transition: all 0.2s linear;
@@ -2178,13 +2179,15 @@ nav .nav-container .logo h3 {
   display: block;
   padding: 5px 7px;
 }
-.compo-card .compo-card-content .meal-content .box-options button:hover {
+.compo-card .compo-card-content .meal-content .box-options button:hover,
+.compo-card .compo-card-content .meal-content .box-options input:hover {
   letter-spacing: 2.5px;
   background: rgb(37, 21, 11);
   color: wheat;
 }
 @media screen and (max-width: 500px) {
-  .compo-card .compo-card-content .meal-content .box-options button {
+  .compo-card .compo-card-content .meal-content .box-options button,
+  .compo-card .compo-card-content .meal-content .box-options input {
     font-size: 1.3rem;
   }
 }
@@ -3323,23 +3326,29 @@ nav .nav-container .logo h3 {
 .recipe-details .details-input .private-button-container .delete-container .box-delete,
 .recipe-details .details-input .private-button-container .delete-container .box-details,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate,
 .recipe-details .select-category .private-button-container .delete-container .box-delete,
 .recipe-details .select-category .private-button-container .delete-container .box-details,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate {
   margin: 12px 2px;
 }
 .recipe-details .details-input .private-button-container .delete-container .box-delete button,
 .recipe-details .details-input .private-button-container .delete-container .box-details button,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button,
 .recipe-details .select-category .private-button-container .delete-container .box-details button,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button {
   font-weight: 700;
   margin: 6px;
   padding: 6px 6px;
@@ -3350,12 +3359,15 @@ nav .nav-container .logo h3 {
 .recipe-details .details-input .private-button-container .delete-container .box-delete button:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-details button:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button:hover,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button:hover,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-details button:hover,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button:hover {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button:hover,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button:hover {
   letter-spacing: 2.5px;
   background: rgb(37, 21, 11);
   color: wheat;
@@ -3366,18 +3378,24 @@ nav .nav-container .logo h3 {
 .recipe-details .details-input .private-button-container .delete-container .box-details button i,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button a,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button a,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button a,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button i,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button a,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button i,
 .recipe-details .select-category .private-button-container .delete-container .box-details button a,
 .recipe-details .select-category .private-button-container .delete-container .box-details button i,
 .recipe-details .select-category .private-button-container .delete-container .box-modif-back button a,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button a,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button i {
   text-decoration: none;
   transition: all 0.2s linear;
   font-weight: 700;
@@ -3391,18 +3409,24 @@ nav .nav-container .logo h3 {
 .recipe-details .details-input .private-button-container .delete-container .box-details button i:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button a:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button i:hover,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button a:hover,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button i:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button i:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button i:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button i:hover,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button a:hover,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button i:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button a:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button i:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-details button a:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-details button i:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-modif-back button a:hover,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i:hover {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i:hover,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button a:hover,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button i:hover {
   color: wheat;
   background: rgb(37, 21, 11);
 }
@@ -3412,52 +3436,67 @@ nav .nav-container .logo h3 {
 .recipe-details .details-input .private-button-container .delete-container .box-details button i:visited,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button a:visited,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button i:visited,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button a:visited,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button i:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button a:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button i:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button a:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button i:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button a:visited,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button i:visited,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button a:visited,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button i:visited,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button a:visited,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button i:visited,
 .recipe-details .select-category .private-button-container .delete-container .box-details button a:visited,
 .recipe-details .select-category .private-button-container .delete-container .box-details button i:visited,
 .recipe-details .select-category .private-button-container .delete-container .box-modif-back button a:visited,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i:visited {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i:visited,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button a:visited,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button i:visited {
   color: rgb(40, 75, 35);
 }
 .recipe-details .details-input .private-button-container .delete-container .box-delete button a,
 .recipe-details .details-input .private-button-container .delete-container .box-details button a,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button a,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button a,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button a,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button a,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button a,
 .recipe-details .select-category .private-button-container .delete-container .box-details button a,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button a {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button a,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button a {
   font-size: 1.3rem;
 }
 .recipe-details .details-input .private-button-container .delete-container .box-delete button a:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-details button a:hover,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button a:hover,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button a:hover,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button a:hover,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button a:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button a:hover,
 .recipe-details .select-category .private-button-container .delete-container .box-details button a:hover,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button a:hover {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button a:hover,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button a:hover {
   color: wheat;
   background: rgb(37, 21, 11);
 }
 .recipe-details .details-input .private-button-container .delete-container .box-delete button i,
 .recipe-details .details-input .private-button-container .delete-container .box-details button i,
 .recipe-details .details-input .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .details-input .private-button-container .delete-container .box-duplicate button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-delete button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-details button i,
 .recipe-details .details-input-stp .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .details-input-stp .private-button-container .delete-container .box-duplicate button i,
 .recipe-details .select-category .private-button-container .delete-container .box-delete button i,
 .recipe-details .select-category .private-button-container .delete-container .box-details button i,
-.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i {
+.recipe-details .select-category .private-button-container .delete-container .box-modif-back button i,
+.recipe-details .select-category .private-button-container .delete-container .box-duplicate button i {
   font-size: 1.4rem;
 }
 .recipe-details .details-input-stp h6 {

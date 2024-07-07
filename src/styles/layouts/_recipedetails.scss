@@ -10,8 +10,6 @@
     max-width: 95%;
   }
 
-
-
   .details-input,
   .details-input-stp,
   .select-category {
@@ -77,10 +75,9 @@
       // min-width: 150px;
       background: $parchemin3;
       width: 98%;
-      
 
       height: fit-content;
-     
+
       @media screen and (max-width: 1655px) {
         font-size: 1.2rem;
       }
@@ -91,20 +88,12 @@
       @media screen and (max-width: 700px) {
         font-size: 0.9rem;
         padding: 2px 5px 2px 10px;
-       
       }
 
       @media screen and (max-width: 520px) {
         padding: 2px 10px 2px 2px;
-       
-       
       }
-
-    
-   
     }
-
-   
 
     p {
       padding: 0 3px 0 3px;
@@ -127,7 +116,6 @@
       justify-content: space-between;
       margin-bottom: 20px;
       position: relative;
-    
 
       .details-input,
       .details-input-stp {
@@ -152,7 +140,6 @@
           @media screen and (max-width: 390px) {
             font-size: 0.9rem;
           }
-         
         }
 
         ////////////////////////////////////////////////////////////////
@@ -211,7 +198,7 @@
             @media screen and (max-width: 800px) {
               left: 20px;
             }
-           
+
             // transition: all 0.2s linear;
           }
 
@@ -237,8 +224,6 @@
 
         /////////////////////////////////////////
       }
-
-      
     }
 
     .ingredients-label {
@@ -248,23 +233,20 @@
       justify-content: space-between;
 
       h4 {
-      width: 255px;
+        width: 255px;
 
-      @media screen and (max-width: 1150px) {
-        font-size: 1.4rem;
+        @media screen and (max-width: 1150px) {
+          font-size: 1.4rem;
+        }
+        @media screen and (max-width: 690px) {
+          font-size: 1.2rem;
+        }
+        @media screen and (max-width: 630px) {
+          font-size: 1rem;
+          width: 135px;
+          margin: 0 auto;
+        }
       }
-      @media screen and (max-width: 690px) {
-        
-        font-size: 1.2rem;
-        
-      }
-      @media screen and (max-width: 630px) {
-        
-        font-size: 1rem;
-        width: 135px;
-        margin: 0 auto;
-      }
-    }
     }
 
     .ingredients-container-details {
@@ -275,17 +257,15 @@
       background: $green;
 
       // @media screen and (max-width: 520px) {
-        
-      //   margin: 0 auto;
-       
-      // }
 
+      //   margin: 0 auto;
+
+      // }
 
       .ingredient-bloc-details {
         margin: 5px 5px;
         display: flex;
 
-     
         .details-input,
         .select-category {
           width: 255px;
@@ -297,26 +277,18 @@
 
           @media screen and (max-width: 700px) {
             // width: 130px;
-           justify-content: space-around;
+            justify-content: space-around;
           }
 
           @media screen and (max-width: 520px) {
-        
             // width: 80px;
-           
           }
-    
 
           h6 {
-         
-          @media screen and (max-width: 520px) {
-           
-            font-size: 0.8rem;
-            
+            @media screen and (max-width: 520px) {
+              font-size: 0.8rem;
+            }
           }
-         
-          
-        }
         }
       }
     }
@@ -347,10 +319,10 @@
 
         padding: 0;
 
-
         .box-delete,
         .box-details,
-        .box-modif-back {
+        .box-modif-back,
+        .box-duplicate {
           // height: 30px;
           margin: 12px 2px;
 
@@ -368,7 +340,6 @@
               letter-spacing: 2.5px;
               background: $brown1;
               color: wheat;
-
             }
 
             a,
@@ -380,7 +351,6 @@
               font-weight: 700;
               align-items: center;
               color: $green2;
-
 
               text-decoration: none;
 
@@ -410,8 +380,6 @@
 
           //}
         }
-
-
       }
 
       // .box-message-conf {
@@ -440,25 +408,18 @@
   }
 
   .details-input-stp {
-
     h6 {
-    font-size: 1.2rem;
-    height: fit-content;
-    padding: 2px;
-   
+      font-size: 1.2rem;
+      height: fit-content;
+      padding: 2px;
 
-    @media screen and (max-width: 1655px) {
-      font-size: 1rem;
+      @media screen and (max-width: 1655px) {
+        font-size: 1rem;
+      }
+
+      @media screen and (max-width: 350px) {
+        font-size: 0.8rem;
+      }
     }
-
-    
-
-    @media screen and (max-width: 350px) {
-      font-size: 0.8rem;
-    }
-
-
   }
-}
-
 }

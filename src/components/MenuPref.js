@@ -91,6 +91,15 @@ const MenuPref = () => {
     dispatch(editMenuRecipe([newmeal, meal._id]));
   };
 
+  const handleChooseMeal = (chosenmeal, index, mealnb) => {
+    console.log("handleChooseMeal");
+    console.log("recette choisie: " + chosenmeal.title);
+
+    ////////////////////////////
+    dispatch(editCompo([chosenmeal, index, mealnb]));
+    dispatch(editMenuRecipe([chosenmeal, chosenmeal._id]));
+  };
+
   ///////////////////////////////////////
   const handleDeleteMeal = (meal, index, mealnb) => {
     // console.log("handleDeleteMeal");
@@ -156,6 +165,7 @@ const MenuPref = () => {
                 key={compo.index}
                 compo={compo}
                 handleChangeMeal={handleChangeMeal}
+                handleChooseMeal={handleChooseMeal}
                 handleDeleteMeal={handleDeleteMeal}
                 handleDetailsMeal={handleDetailsMeal}
               />

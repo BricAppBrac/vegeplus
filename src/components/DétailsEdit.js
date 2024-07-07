@@ -699,14 +699,8 @@ const DétailsEdit = () => {
     // console.log("stpId : " + stpId);
     // console.log("newRecipeData.steps.length : " + newRecipeData.steps.length);
     data = {
-      title: newRecipeData.title,
+      ...newRecipeData,
       author: "Melissande",
-      seasons: newRecipeData.seasons,
-      ingredients: newRecipeData.ingredients,
-      quantities: newRecipeData.quantities,
-      categories: newRecipeData.categories,
-      steps: newRecipeData.steps,
-      _id: newRecipeData._id,
     };
 
     arrayNew = [...data.steps];
@@ -725,10 +719,9 @@ const DétailsEdit = () => {
 
         newData = { ...data, steps: arrayNew };
         data = newData;
-
-        dispatch(createRecipe(data));
-        // console.log("après dispatch createRecipe ligne vide : " + i);
       }
+      dispatch(createRecipe(data));
+      // console.log("après dispatch createRecipe ligne vide : " + i);
     }
     // console.log(data);
 

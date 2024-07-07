@@ -7,16 +7,20 @@ import { deleteRecipe } from "../feature/liste.slice";
 import {
   useDeleteRecipeMutation,
   useGetRecipesQuery,
+  useAddNewRecipeMutation,
 } from "../feature/recipes/recipesApiSlice";
 
 const DetailsDeleteRecipe = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const checkedRecipe = useSelector((state) => state.checkedRec.checkedRecipe);
+  console.log("checkedRecipe.title");
+  console.log(checkedRecipe.title);
   const [message, setMessage] = useState("");
   const [origin, setOrigin] = useState(props.delOrigin);
 
   const [deleteRecipeMutation] = useDeleteRecipeMutation();
+  const [addNewRecipeMutation] = useAddNewRecipeMutation();
   const { refetch } = useGetRecipesQuery();
 
   //////////////////////////////////////////
@@ -75,9 +79,38 @@ const DetailsDeleteRecipe = (props) => {
     }
   };
 
+  //////////////////////////////////////////
+  const handleDuplicate = async () => {
+    // Dupliquer la recette en cours en changeant les 4 premiers caractères du title : remplacer par "COPY" et ajouter à la BDD
+
+    const newRecipe = {
+      ...checkedRecipe,
+      title: "COPY" + checkedRecipe.title.slice(4),
+      _id: Date.now().toString(),
+    };
+
+    try {
+      const response = await addNewRecipeMutation(newRecipe);
+      if (response.error) {
+        console.error("Failed to duplicate recipe:", response.error);
+      } else {
+        console.log("Successfully duplicated recipe");
+        refetch();
+      }
+    } catch (error) {
+      console.error("An error occurred while duplicating recipe:", error);
+    }
+    navigate("/PrivateRoute/HomeListeRecettesProtect");
+  };
+
   return (
     <div className="delete-container">
       {/* //////////////////////////////////////*/}
+      <div className="box-duplicate">
+        <button onClick={() => handleDuplicate()}>
+          <i className="fa-solid fa-copy"></i>
+        </button>
+      </div>
       <div className="box-modif-back">
         <button>
           <NavLink to="/PrivateRoute/HomeListeRecettesProtect">

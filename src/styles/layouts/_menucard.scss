@@ -6,19 +6,16 @@
   background: rgba(245, 245, 245, 0.315);
   box-shadow: 13px 11px 18px 3px rgb(37 21 11);
 
-
   @media screen and (max-width: 500px) {
     max-width: 95%;
   }
 
   .compo-card-content {
-
     h3 {
       padding: 10px 10px 5px 10px;
       font-size: 1.2rem;
       font-family: $font2;
       align-items: center;
-
 
       @media screen and (max-width: 1300px) {
         font-size: 1.1rem;
@@ -34,9 +31,6 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-
-
-
 
       h4 {
         padding: 5px;
@@ -65,7 +59,8 @@
         margin: 2px;
         justify-content: right;
 
-        button {
+        button,
+        input {
           border: 2px solid $brown1;
           background-color: $green3;
           transition: all 0.2s linear;
@@ -89,7 +84,6 @@
           }
         }
 
-
         #detailsicon {
           padding: 3px 3px;
         }
@@ -103,9 +97,5 @@
         }
       }
     }
-
   }
-
-
-
 }

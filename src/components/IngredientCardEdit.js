@@ -16,7 +16,7 @@ const IngredientCardEdit = (props) => {
             id={"editIngrédient" + props.index}
             autoComplete="off"
             defaultValue={props.recipe.ingredients[props.index]}
-            maxLength={25} // Limite la saisie à 25 caractères
+            maxLength={30} // Limite la saisie à 28 caractères
             onChange={(e) => {
               props.handleIngredients(
                 e.target.value,
