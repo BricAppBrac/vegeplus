@@ -155,7 +155,12 @@ const PageListeCourses = () => {
     }
 
     if (containsAsterisk) {
-      addText("* Demande un temps de trempage depuis la veille", 65, 60, 18);
+      addText(
+        "* Temps de trempage depuis la veille recommandé (plus digeste) mais facultatif",
+        25,
+        60,
+        16
+      );
     }
     return pdfDocMenu;
   };

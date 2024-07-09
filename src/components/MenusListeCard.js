@@ -275,7 +275,12 @@ const MenusListeCard = ({ menu }) => {
 
     // Add a line at the bottom if any meal contains "*"
     if (containsAsterisk) {
-      addText("* Demande un temps de trempage depuis la veille", 65, 60, 18);
+      addText(
+        "* Temps de trempage depuis la veille recommandé (plus digeste) mais facultatif",
+        25,
+        60,
+        16
+      );
     }
     // Générez le fichier PDF modifié
     const modifiedPdfBytesMenu = await pdfDocMenu.save();
