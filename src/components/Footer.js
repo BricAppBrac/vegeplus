@@ -31,13 +31,13 @@ const Footer = () => {
             </li>
             <li className="buy-me-a-coffee">
               <NavLink
-                to="https://www.buymeacoffee.com/bricappbrac"
+                to="https://fr.tipeee.com/casse-tes-lunettes-roses"
                 id="buy-me-a-coffee"
                 target="_blank"
               >
                 <i className="fa-solid fa-mug-saucer"></i> Pour garder l'accès
                 Abonné (conserver vos menus et générer les listes de courses -
-                gratuit 30j): buy me a coffee! Merci!
+                gratuit 30j): Merci de me soutenir sur Tipeee!
               </NavLink>
             </li>
           </ul>
@@ -53,7 +53,7 @@ const Footer = () => {
           <h3>BricAppBrac </h3>
         </div>
         <div className="copyright">
-          <h3>2023 © Copyright - Tous droits réservés</h3>
+          <h3>2024 © Copyright - Tous droits réservés</h3>
         </div>
       </div>
     </footer>

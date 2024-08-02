@@ -129,13 +129,13 @@ const Contact = () => {
         ) : null}
         <div className="buy-me-a-coffee">
           <NavLink
-            to="https://www.buymeacoffee.com/bricappbrac"
+            to="https://fr.tipeee.com/casse-tes-lunettes-roses"
             id="buy-me-a-coffee"
             target="_blank"
           >
             <i className="fa-solid fa-mug-saucer"></i> Pour garder l'accès
             Abonné (conserver vos menus et générer les listes de courses -
-            gratuit 30j): buy me a coffee! Merci!
+            gratuit 30j): Merci de me soutenir sur Tipeee!
           </NavLink>
         </div>
       </div>

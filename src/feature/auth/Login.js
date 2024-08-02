@@ -106,7 +106,7 @@ const Login = () => {
   };
 
   const handleBuyMeCoffee = async () => {
-    window.open("https://www.buymeacoffee.com/bricappbrac", "_blank");
+    window.open("https://fr.tipeee.com/casse-tes-lunettes-roses", "_blank");
   };
 
   const handleUnsubscription = async (userEmail) => {

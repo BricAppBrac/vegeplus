@@ -15,7 +15,6 @@ import {
 } from "../feature/menurecipes.slice";
 import { deleteListeMenu } from "../feature/menusliste.slice";
 
-// import axios from "axios";
 import { setStopReset } from "../feature/indicstopreset.slice";
 import { setStopResetDate } from "../feature/indicstopresetdate.slice";
 import CheeseburgerFont from "../assets/fonts/Cheeseburger.otf"; // Importer la police
@@ -240,8 +239,11 @@ const MenusListeCard = ({ menu }) => {
         symbolX = (pageWidth - symbolWidth) / 2;
         // addText(mealDetails, 245, 620 + index * -60);
         addText(mealDetails, symbolX, 620 + index * -60, 18);
-        if (menu.menuJ[index][2] || menu.menuJ[index][2].includes("*")) {
+
+        if (menu.menuJ[index][2] && menu.menuJ[index][2].includes("*")) {
           containsAsterisk = true;
+        } else {
+          containsAsterisk = false;
         }
       } else {
         mealDetails = `${menu.menuJ[index][2] ? menu.menuJ[index][2] : ""}`;
@@ -263,10 +265,10 @@ const MenusListeCard = ({ menu }) => {
         // addText(mealDetails, 245, 610 + index * -60);
         addText(mealDetails, symbolX, 595 + index * -80, 18);
         // Check for asterisk in meal details
-        if (menu.menuJ[index][2] || menu.menuJ[index][2].includes("*")) {
+        if (menu.menuJ[index][2] && menu.menuJ[index][2].includes("*")) {
           containsAsterisk = true;
         }
-        if (menu.menuJ[index][4] || menu.menuJ[index][4].includes("*")) {
+        if (menu.menuJ[index][4] && menu.menuJ[index][4].includes("*")) {
           containsAsterisk = true;
         }
       }
