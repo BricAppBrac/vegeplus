@@ -37,7 +37,7 @@ const Footer = () => {
               >
                 <i className="fa-solid fa-mug-saucer"></i> Pour garder l'accès
                 Abonné (conserver vos menus et générer les listes de courses -
-                gratuit 30j): Merci de me soutenir sur Tipeee!
+                gratuit 30j): Merci de me soutenir sur Tipeee pour prolonger!
               </NavLink>
             </li>
           </ul>

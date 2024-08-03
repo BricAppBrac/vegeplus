@@ -294,8 +294,8 @@ const Login = () => {
               <div className="sign-link1 sign-link3">
                 <h6>
                   Gratuit 30j : Accès Abonné (stocker les menus et générer les
-                  listes de courses) - Prolonger par votre soutien sur
-                  buymeacoffe.com
+                  listes de courses) - Merci de me soutenir sur Tipeee pour
+                  prolonger!
                 </h6>
                 <button onClick={() => handleBuyMeCoffee()}>
                   <i className="fa-solid fa-mug-saucer"></i>

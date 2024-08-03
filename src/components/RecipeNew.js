@@ -536,7 +536,7 @@ const RecipeNew = () => {
                 className="new"
                 id="newTitle"
                 autoComplete="off"
-                maxLength={45} // Limite la saisie à 45 caractères
+                maxLength={47} // Limite la saisie à 47 caractères
                 onChange={(e) => handleTitle(e.target.value)}
               />
             </div>

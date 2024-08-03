@@ -71,7 +71,7 @@ const Mentions = () => {
               L'application est lancée sur Render.com depuis septembre 2023 avec
               un accès Abonné gratuit pendant 30 jours. Pour prolonger cet accès
               Abonné qui permet de stocker des Menus et de générer des listes de
-              courses, il est demandé un soutien sur BuyMeACoffee.com (lien dans
+              courses, il est demandé un soutien sur Tipeee (lien dans
               l'application). Ce soutien n'est pas un achat, mais un soutien
               pour le travail fourni à la conception et création de
               l'application. L'application restera sur Render.com au moins tant
