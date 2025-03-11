@@ -104,9 +104,15 @@ const PageListeCourses = () => {
     //   res.arrayBuffer()
     // );
     // Désactiver le cache pour les fichiers PDF
-    const existingPdfBytesMenu = await fetch(
-      `${pdfMenu}?_=${new Date().getTime()}`
-    ).then((res) => res.arrayBuffer());
+    const existingPdfBytesMenu = await fetch(pdfMenu, {
+      cache: "no-store",
+    }).then((res) => {
+      if (!res.ok)
+        throw new Error(
+          `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+        );
+      return res.arrayBuffer();
+    });
 
     const pdfDocMenu = await PDFDocument.load(existingPdfBytesMenu);
     pdfDocMenu.registerFontkit(fontkit);
@@ -184,9 +190,15 @@ const PageListeCourses = () => {
     //   res.arrayBuffer()
     // );
     // Désactiver le cache pour les fichiers PDF
-    const existingPdfBytesCourses = await fetch(
-      `${pdfCourses}?_=${new Date().getTime()}`
-    ).then((res) => res.arrayBuffer());
+    const existingPdfBytesCourses = await fetch(pdfCourses, {
+      cache: "no-store",
+    }).then((res) => {
+      if (!res.ok)
+        throw new Error(
+          `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+        );
+      return res.arrayBuffer();
+    });
 
     const pdfDocCourses = await PDFDocument.load(existingPdfBytesCourses);
     pdfDocCourses.registerFontkit(fontkit);
@@ -238,9 +250,15 @@ const PageListeCourses = () => {
     //   res.arrayBuffer()
     // );
     // Désactiver le cache pour les fichiers PDF
-    const existingPdfBytesRecettes = await fetch(
-      `${pdfRecettes}?_=${new Date().getTime()}`
-    ).then((res) => res.arrayBuffer());
+    const existingPdfBytesRecettes = await fetch(pdfRecettes, {
+      cache: "no-store",
+    }).then((res) => {
+      if (!res.ok)
+        throw new Error(
+          `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+        );
+      return res.arrayBuffer();
+    });
 
     const pdfDocRecettes = await PDFDocument.load(existingPdfBytesRecettes);
     pdfDocRecettes.registerFontkit(fontkit);
