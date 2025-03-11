@@ -25,10 +25,10 @@ const MenuPref = () => {
   // MODIF 20240628 : choisir une recette dont la saison
   // contient prefSelected[2]
   // sachant que
-  // si    01/05 <= prefSelected[2] <= 30/06  alors season = printemps
-  // si    01/07 <= prefSelected[2] <= 31/10  alors season = été
-  // si    01/11 <= prefSelected[2] <= 31/12  alors season = automne
-  // si    01/01 <= prefSelected[2] <= 30/04  alors season = hiver
+  // si    01/04 <= prefSelected[2] <= 30/06  alors season = printemps
+  // si    01/07 <= prefSelected[2] <= 30/09  alors season = été
+  // si    01/10 <= prefSelected[2] <= 31/12  alors season = automne
+  // si    01/01 <= prefSelected[2] <= 31/03  alors season = hiver
 
   // Function to determine the season based on a given date
   // MODIF 20240628
@@ -36,11 +36,11 @@ const MenuPref = () => {
     const month = date.getMonth() + 1; // getMonth() is zero-based
     const day = date.getDate();
 
-    if ((month === 5 && day >= 1) || (month === 6 && day <= 30)) {
+    if ((month === 4 && day >= 1) || (month === 6 && day <= 30)) {
       return "printemps";
-    } else if ((month === 7 && day >= 1) || (month >= 8 && month <= 10)) {
+    } else if ((month === 7 && day >= 1) || (month >= 8 && month <= 9)) {
       return "été";
-    } else if ((month === 11 && day >= 1) || (month === 12 && day <= 31)) {
+    } else if ((month === 10 && day >= 1) || (month === 12 && day <= 31)) {
       return "automne";
     } else {
       return "hiver";
