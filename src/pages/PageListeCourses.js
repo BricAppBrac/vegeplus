@@ -54,9 +54,14 @@ const PageListeCourses = () => {
   };
 
   const handleGenerateEbook = async () => {
+    console.log("handleGenerateEbook called");
+
     const pdfDocMenu = await generatePDFMenu();
+    console.log("PDF Menu generated");
     const pdfDocCourses = await generatePDFCourses();
+    console.log("PDF Courses generated");
     const pdfDocRecettes = await generatePDFRecettes();
+    console.log("PDF Recettes generated");
 
     const menuBytes = await pdfDocMenu.save();
     const coursesBytes = await pdfDocCourses.save();
@@ -91,9 +96,14 @@ const PageListeCourses = () => {
   };
 
   const generatePDFMenu = async () => {
-    const existingPdfBytesMenu = await fetch(pdfMenu).then((res) =>
-      res.arrayBuffer()
-    );
+    // const existingPdfBytesMenu = await fetch(pdfMenu).then((res) =>
+    //   res.arrayBuffer()
+    // );
+    // Désactiver le cache pour les fichiers PDF
+    const existingPdfBytesMenu = await fetch(
+      `${pdfMenu}?_=${new Date().getTime()}`
+    ).then((res) => res.arrayBuffer());
+
     const pdfDocMenu = await PDFDocument.load(existingPdfBytesMenu);
     pdfDocMenu.registerFontkit(fontkit);
     const cheeseburgerFontBytes = await fetch(CheeseburgerFont).then((res) =>
@@ -166,9 +176,14 @@ const PageListeCourses = () => {
   };
 
   const generatePDFCourses = async () => {
-    const existingPdfBytesCourses = await fetch(pdfCourses).then((res) =>
-      res.arrayBuffer()
-    );
+    // const existingPdfBytesCourses = await fetch(pdfCourses).then((res) =>
+    //   res.arrayBuffer()
+    // );
+    // Désactiver le cache pour les fichiers PDF
+    const existingPdfBytesCourses = await fetch(
+      `${pdfCourses}?_=${new Date().getTime()}`
+    ).then((res) => res.arrayBuffer());
+
     const pdfDocCourses = await PDFDocument.load(existingPdfBytesCourses);
     pdfDocCourses.registerFontkit(fontkit);
     const cheeseburgerFontBytes = await fetch(CheeseburgerFont).then((res) =>
@@ -215,9 +230,14 @@ const PageListeCourses = () => {
   };
 
   const generatePDFRecettes = async () => {
-    const existingPdfBytesRecettes = await fetch(pdfRecettes).then((res) =>
-      res.arrayBuffer()
-    );
+    // const existingPdfBytesRecettes = await fetch(pdfRecettes).then((res) =>
+    //   res.arrayBuffer()
+    // );
+    // Désactiver le cache pour les fichiers PDF
+    const existingPdfBytesRecettes = await fetch(
+      `${pdfRecettes}?_=${new Date().getTime()}`
+    ).then((res) => res.arrayBuffer());
+
     const pdfDocRecettes = await PDFDocument.load(existingPdfBytesRecettes);
     pdfDocRecettes.registerFontkit(fontkit);
     const cheeseburgerFontBytes = await fetch(CheeseburgerFont).then((res) =>
