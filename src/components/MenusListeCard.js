@@ -23,7 +23,7 @@ import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 // import jsPDF from "jspdf"; // Importer jsPDF
 // import JSZip from "jszip";
 import { saveAs } from "file-saver";
-import pdfMenu from "../assets/img/FondMenu.pdf"; // Importer l'image
+// import pdfMenu from "/pdf/FondMenu.pdf"; // Importer l'image
 
 const MenusListeCard = ({ menu }) => {
   const dispatch = useDispatch();
@@ -32,6 +32,7 @@ const MenusListeCard = ({ menu }) => {
   const [deleteMenuMutation] = useDeleteMenuMutation();
   const { refetch } = useGetMenusQuery();
   const liste = useSelector((state) => state.listeRecipes.listeData);
+  const pdfMenu = process.env.PUBLIC_URL + "/pdf/FondMenu.pdf";
 
   let arrayNew = [];
 

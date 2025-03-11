@@ -8,14 +8,17 @@ import { PDFDocument, rgb } from "pdf-lib";
 // import jsPDF from "jspdf"; // Importer jsPDF
 // import JSZip from "jszip";
 import { saveAs } from "file-saver";
-import pdfMenu from "../assets/img/FondMenu.pdf";
-import pdfCourses from "../assets/img/FondCourses.pdf"; // Importer l'image
-import pdfRecettes from "../assets/img/FondRecettes.pdf"; // Importer l'image
+// import pdfMenu from "/pdf/FondMenu.pdf";
+// import pdfCourses from "/pdf/FondCourses.pdf"; // Importer l'image
+// import pdfRecettes from "/pdf/FondRecettes.pdf"; // Importer l'image
 import { useSelector } from "react-redux";
 
 const PageListeCourses = () => {
   // Récupération de la liste de courses selon catégorie
   // Pour écriture dans un PDF
+  const pdfMenu = process.env.PUBLIC_URL + "/pdf/FondMenu.pdf";
+  const pdfCourses = process.env.PUBLIC_URL + "/pdf/FondCourses.pdf";
+  const pdfRecettes = process.env.PUBLIC_URL + "/pdf/FondRecettes.pdf";
   const listeFL = useSelector(
     (state) => state.listeCourses.listeCoursesData[0]
   );
@@ -58,6 +61,7 @@ const PageListeCourses = () => {
 
     const pdfDocMenu = await generatePDFMenu();
     console.log("PDF Menu generated");
+
     const pdfDocCourses = await generatePDFCourses();
     console.log("PDF Courses generated");
     const pdfDocRecettes = await generatePDFRecettes();

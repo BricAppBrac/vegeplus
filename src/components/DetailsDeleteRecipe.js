@@ -7,7 +7,7 @@ import { deleteRecipe } from "../feature/liste.slice";
 import CheeseburgerFont from "../assets/fonts/Cheeseburger.otf";
 import * as fontkit from "fontkit";
 import { PDFDocument, rgb } from "pdf-lib";
-import pdfRecettes from "../assets/img/FondRecettes.pdf";
+// import pdfRecettes from "/pdf/FondRecettes.pdf";
 import {
   useDeleteRecipeMutation,
   useGetRecipesQuery,
@@ -23,6 +23,7 @@ const DetailsDeleteRecipe = (props) => {
   const [message, setMessage] = useState("");
   const [origin, setOrigin] = useState(props.delOrigin);
 
+  const pdfRecettes = process.env.PUBLIC_URL + "/pdf/FondRecettes.pdf";
   const [deleteRecipeMutation] = useDeleteRecipeMutation();
   const [addNewRecipeMutation] = useAddNewRecipeMutation();
   const { refetch } = useGetRecipesQuery();
