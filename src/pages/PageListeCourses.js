@@ -140,24 +140,16 @@ const PageListeCourses = () => {
       );
 
       const downloadPDF = (pdfBlob, fileName = "Ebook.pdf") => {
-        // Libérer l'ancienne URL Blob si elle existe
-        if (window.lastFileURL) {
-          URL.revokeObjectURL(window.lastFileURL);
-        }
-
-        // Créer une nouvelle URL Blob
+        // 🔹 Créer une nouvelle URL Blob
         const fileURL = URL.createObjectURL(pdfBlob);
-        window.lastFileURL = fileURL;
-
         console.log("📥 Nouvelle URL Blob :", fileURL);
 
-        // Forcer le téléchargement
-        const link = document.createElement("a");
-        link.href = fileURL;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // ⏳ Ajouter un délai pour éviter un blocage du navigateur
+        setTimeout(() => {
+          // 🔹 Ouvrir le PDF dans un nouvel onglet au lieu d’un téléchargement direct
+          window.open(fileURL, "_blank");
+          console.log("📥 PDF ouvert dans un nouvel onglet :", fileURL);
+        }, 500);
       };
 
       const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
