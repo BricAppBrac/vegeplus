@@ -136,8 +136,20 @@ const PageListeCourses = () => {
       const combinedPdfBytes = await combinedPdf.save();
       console.log("✅ PDF combiné sauvegardé");
 
+      const downloadPDF = (pdfBlob, fileName = "Ebook.pdf") => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(pdfBlob);
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        console.log(`📥 Téléchargement forcé : ${fileName}`);
+      };
       const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
-      saveAs(blob, "Ebook.pdf");
+      // saveAs(blob, "Ebook.pdf");
+      // Remplace `saveAs()` par :
+      downloadPDF(blob, "Ebook.pdf");
+
       console.log("📥 Ebook téléchargé");
     } catch (error) {
       console.error("❌ Erreur lors de la génération du PDF :", error);
