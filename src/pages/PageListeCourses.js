@@ -104,12 +104,25 @@ const PageListeCourses = () => {
     //   res.arrayBuffer()
     // );
     // Désactiver le cache pour les fichiers PDF
+
+    // const existingPdfBytesMenu = await fetch(pdfMenu, {
+    //   cache: "no-store",
+    // }).then((res) => {
+    //   if (!res.ok)
+    //     throw new Error(
+    //       `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+    //     );
+    //   return res.arrayBuffer();
+    // });
+    console.log("📢 Envoi de la requête PDF avec credentials:", pdfMenu);
     const existingPdfBytesMenu = await fetch(pdfMenu, {
+      method: "GET",
+      credentials: "include", // Permet d'envoyer les cookies
       cache: "no-store",
     }).then((res) => {
       if (!res.ok)
         throw new Error(
-          `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+          `❌ Erreur de chargement du PDF : ${res.status} ${res.statusText}`
         );
       return res.arrayBuffer();
     });
