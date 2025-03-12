@@ -132,19 +132,24 @@ const PageListeCourses = () => {
       );
       console.log(`📄 ${recettesPages.length} pages copiées du PDF Recettes`);
       recettesPages.forEach((page) => combinedPdf.addPage(page));
-
+      console.log("🛠️ Tentative de sauvegarde du PDF combiné...");
       const combinedPdfBytes = await combinedPdf.save();
-      console.log("✅ PDF combiné sauvegardé");
+      console.log(
+        "✅ PDF combiné sauvegardé - Taille :",
+        combinedPdfBytes.length
+      );
 
       const downloadPDF = (pdfBlob, fileName = "Ebook.pdf") => {
+        const fileURL = URL.createObjectURL(pdfBlob);
         const link = document.createElement("a");
-        link.href = URL.createObjectURL(pdfBlob);
-        link.download = fileName;
+        link.href = fileURL;
+        link.download = fileName; // 👈 Forcer le téléchargement
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        console.log(`📥 Téléchargement forcé : ${fileName}`);
+        console.log("📥 Téléchargement forcé :", fileName);
       };
+
       const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
       // saveAs(blob, "Ebook.pdf");
       // Remplace `saveAs()` par :
