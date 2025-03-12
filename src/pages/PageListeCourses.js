@@ -57,46 +57,94 @@ const PageListeCourses = () => {
   };
 
   const handleGenerateEbook = async () => {
-    console.log("handleGenerateEbook called");
+    // console.log("handleGenerateEbook called");
 
-    const pdfDocMenu = await generatePDFMenu();
-    console.log("PDF Menu generated");
+    // const pdfDocMenu = await generatePDFMenu();
+    // console.log("PDF Menu generated");
 
-    const pdfDocCourses = await generatePDFCourses();
-    console.log("PDF Courses generated");
-    const pdfDocRecettes = await generatePDFRecettes();
-    console.log("PDF Recettes generated");
+    // const pdfDocCourses = await generatePDFCourses();
+    // console.log("PDF Courses generated");
+    // const pdfDocRecettes = await generatePDFRecettes();
+    // console.log("PDF Recettes generated");
 
-    const menuBytes = await pdfDocMenu.save();
-    const coursesBytes = await pdfDocCourses.save();
-    const recettesBytes = await pdfDocRecettes.save();
+    // const menuBytes = await pdfDocMenu.save();
+    // const coursesBytes = await pdfDocCourses.save();
+    // const recettesBytes = await pdfDocRecettes.save();
 
-    const combinedPdf = await PDFDocument.create();
+    // const combinedPdf = await PDFDocument.create();
 
-    // Copy pages from the menu document
-    const menuPages = await combinedPdf.copyPages(
-      pdfDocMenu,
-      pdfDocMenu.getPageIndices()
-    );
-    menuPages.forEach((page) => combinedPdf.addPage(page));
+    // // Copy pages from the menu document
+    // const menuPages = await combinedPdf.copyPages(
+    //   pdfDocMenu,
+    //   pdfDocMenu.getPageIndices()
+    // );
+    // menuPages.forEach((page) => combinedPdf.addPage(page));
 
-    // Copy pages from the courses document
-    const coursesPages = await combinedPdf.copyPages(
-      pdfDocCourses,
-      pdfDocCourses.getPageIndices()
-    );
-    coursesPages.forEach((page) => combinedPdf.addPage(page));
+    // // Copy pages from the courses document
+    // const coursesPages = await combinedPdf.copyPages(
+    //   pdfDocCourses,
+    //   pdfDocCourses.getPageIndices()
+    // );
+    // coursesPages.forEach((page) => combinedPdf.addPage(page));
 
-    // Copy pages from the recettes document
-    const recettesPages = await combinedPdf.copyPages(
-      pdfDocRecettes,
-      pdfDocRecettes.getPageIndices()
-    );
-    recettesPages.forEach((page) => combinedPdf.addPage(page));
+    // // Copy pages from the recettes document
+    // const recettesPages = await combinedPdf.copyPages(
+    //   pdfDocRecettes,
+    //   pdfDocRecettes.getPageIndices()
+    // );
+    // recettesPages.forEach((page) => combinedPdf.addPage(page));
 
-    const combinedPdfBytes = await combinedPdf.save();
-    const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
-    saveAs(blob, "Ebook.pdf");
+    // const combinedPdfBytes = await combinedPdf.save();
+    // const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
+    // saveAs(blob, "Ebook.pdf");
+    try {
+      console.log("📢 Début de handleGenerateEbook");
+
+      const pdfDocMenu = await generatePDFMenu();
+      console.log("✅ PDF Menu généré");
+
+      const pdfDocCourses = await generatePDFCourses();
+      console.log("✅ PDF Courses généré");
+
+      const pdfDocRecettes = await generatePDFRecettes();
+      console.log("✅ PDF Recettes généré");
+
+      const combinedPdf = await PDFDocument.create();
+      console.log("🆕 Nouveau PDF combiné créé");
+
+      const menuPages = await combinedPdf.copyPages(
+        pdfDocMenu,
+        pdfDocMenu.getPageIndices()
+      );
+      console.log(`📄 ${menuPages.length} pages copiées du PDF Menu`);
+      menuPages.forEach((page) => combinedPdf.addPage(page));
+
+      const coursesPages = await combinedPdf.copyPages(
+        pdfDocCourses,
+        pdfDocCourses.getPageIndices()
+      );
+      console.log(`📄 ${coursesPages.length} pages copiées du PDF Courses`);
+      coursesPages.forEach((page) => combinedPdf.addPage(page));
+
+      const recettesPages = await combinedPdf.copyPages(
+        pdfDocRecettes,
+        pdfDocRecettes.getPageIndices()
+      );
+      console.log(`📄 ${recettesPages.length} pages copiées du PDF Recettes`);
+      recettesPages.forEach((page) => combinedPdf.addPage(page));
+
+      const combinedPdfBytes = await combinedPdf.save();
+      console.log("✅ PDF combiné sauvegardé");
+
+      const blob = new Blob([combinedPdfBytes], { type: "application/pdf" });
+      saveAs(blob, "Ebook.pdf");
+      console.log("📥 Ebook téléchargé");
+    } catch (error) {
+      console.error("❌ Erreur lors de la génération du PDF :", error);
+      alert(
+        "Une erreur s'est produite lors de la génération du PDF. Veuillez réessayer."
+      );
+    }
   };
 
   const generatePDFMenu = async () => {
@@ -105,24 +153,12 @@ const PageListeCourses = () => {
     // );
     // Désactiver le cache pour les fichiers PDF
 
-    // const existingPdfBytesMenu = await fetch(pdfMenu, {
-    //   cache: "no-store",
-    // }).then((res) => {
-    //   if (!res.ok)
-    //     throw new Error(
-    //       `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
-    //     );
-    //   return res.arrayBuffer();
-    // });
-    console.log("📢 Envoi de la requête PDF avec credentials:", pdfMenu);
     const existingPdfBytesMenu = await fetch(pdfMenu, {
-      method: "GET",
-      credentials: "include", // Permet d'envoyer les cookies
       cache: "no-store",
     }).then((res) => {
       if (!res.ok)
         throw new Error(
-          `❌ Erreur de chargement du PDF : ${res.status} ${res.statusText}`
+          `Erreur de chargement du PDF : ${res.status} ${res.statusText}`
         );
       return res.arrayBuffer();
     });
